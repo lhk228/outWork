@@ -1,0 +1,74 @@
+/* 공통 CSS */
+* { position:relative; margin:0; padding:0; list-style:none; text-decoration:none; box-sizing:border-box; touch-action: pan-y; -webkit-font-smoothing: antialiased; appearance: none; -webkit-appearance: none;  font-family:"SCoreDream"; }
+a { cursor:pointer; }
+body { position:fixed; top:0; left:0; width:100vw; height:100vh; }
+body::-webkit-scrollbar {
+	position:fixed;
+	width: 3px;
+}
+body::-webkit-scrollbar-thumb {
+	background-color: #fff;
+	border-radius: 2px;
+}
+body::-webkit-scrollbar-track {
+	background-color: transparent;
+}
+
+p { margin:0; padding:0; }
+
+#WRAPPER { background-color:transparent; }
+
+/* header  */
+#HEADER { height:60px; width:100%; background:var(--purple); position:fixed; top:0; }
+#HEADER li { width:200px; height:100%; display:flex; align-items: center; justify-content: center; transition: .3s; cursor:pointer; }
+#HEADER li:hover { background:#fff; color:var(--purple); }
+footer { height:60px; }
+
+/*flex*/
+.flex-row-center { display:flex; flex-flow:row wrap; align-items:center; justify-content:center; }
+.flex-row-start { display:flex; flex-flow:row wrap; align-items:center; justify-content:flex-start; }
+.flex-row-end { display:flex; flex-flow:row wrap; align-items:center; justify-content:flex-end; }
+.flex-row-sb { display:flex; flex-flow:row wrap;  align-items:center; justify-content:space-between; }
+
+.flex-column-center { display:flex; flex-flow:column wrap; align-items:center; justify-content:center; }
+.flex-column-start { display:flex; flex-flow:column wrap; align-items:center; justify-content:flex-start; }
+.flex-column-end { display:flex; flex-flow:column wrap; align-items:center; justify-content:flex-end; }
+.flex-column-sb { display:flex; flex-flow:column wrap;  align-items:center; justify-content:space-between; }
+
+.nowrap { flex-wrap: nowrap;}
+
+/*align*/
+.h_center { left:50%; transform:translateX(-50%); }
+.v_center { top:50%; transform:translateY(-50%); }
+.hv_center { left:50%; top:50%; transform:translate(-50%,-50%); }
+
+/*라이브러리용 클래스*/
+.nicescroll-cursors { border:none!important; background:var(--magenta)!important;  }
+.kakao-map { border-radius:5px; width:100%; }
+.kakao-map-marker { background:var(--magentaG); border-radius:5px; padding:4px 8px; min-width:130px; text-align:center;  border:1px solid #666; top:-80px; left:-65px; transition:.3s; }
+.kakao-map-marker.moved { top:-50px; left:-27px; }
+.mCustomScrollBox  { width:100%; }
+.mCSB_inside > .mCSB_container { margin-right:0!important; }
+/* .nicescroll-rails { z-index:101!important; } */
+
+
+/* button */
+.btn { border-radius:5px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.555), 0 4px 6px -4px rgba(0, 0, 0, 0.5); transition:.3s; display:flex; align-items: center;justify-content: center; padding:8px 16px; margin-left:8px; }
+.btn:hover { opacity:0.7; }
+.btn_purple { background:var(--purple); border:none; min-width:100px; }
+.btn_purple_w { background:#fff; color:var(--purple); border:1px solid var(--purple); }
+.btn_green { background:var(--green); color:#fff; }
+.btn_green_w { background:#fff; color:var(--green); border:1px solid var(--green); }
+.btn_red { background:var(--red); color:#fff; }
+.btn_red_w { background:#fff; color:var(--red); border:1px solid var(--red); }
+.btn_black { background:#000; color:#fff; }
+.btn_black_w { background:#fff; color:#000; border:1px solid #000; }
+.btn_disable { background:#C7C7C7; color:#fff; }
+.btn_gray { background:#fff; color:#000; border:1px solid #c2c2c2; }
+.btn_gray:hover { background:#F6F6F6; color:black; }
+/* root color */
+:root {
+	--purple : #6E4AEF;
+	--green : #00C337;
+	--red : #F0042F;
+}

@@ -1,0 +1,95 @@
+/* result-header */
+#SEARCH_PAGE .result-header { 
+	width:100%;
+	background:rgba(255,255,255,0.1);
+	height:35%;
+	border-radius:10px;
+	display:flex;
+	flex-flow:column nowrap;
+	justify-content: center;
+	align-items: center;
+	padding:8px;
+	min-height:140px;
+	/* max-height:240px; */
+}
+
+/* 탑3 순위 */
+#SEARCH_PAGE .result-header .toprank-view { 
+	height:100%; width:100%; padding:4px;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+.rank-box { 
+	border-radius:5px; overflow:hidden; padding:8px; 
+	display:flex; align-items:flex-end; justify-content: center;
+	background:var(--gradient1);
+	aspect-ratio: 1 / 1;
+	max-width:300px;
+}
+
+.rank-title { position:absolute; bottom:8px; }
+
+/* category-list */
+#SEARCH_PAGE .category-list { 
+	height:50px; width:100%; padding:8px 0;
+	display:flex; flex-flow:row nowrap;
+	align-items: center; justify-content: flex-start;
+	/* overflow-x:scroll; */
+	/* overflow-y:hidden; */
+	-webkit-overflow-scrolling: touch;
+	scroll-snap-type: x mandatory;
+	min-width:330px;
+}
+
+#SEARCH_PAGE .category-list button { 
+	height:100%; margin-right:8px;
+	flex:0 0 40%;
+}
+
+#SEARCH_PAGE .category-list button:last-child { margin-right:0;}
+
+
+/* 검색결과 테이블 영역 */
+#TABLE_SEARCH { 
+	width:100%;
+	height:calc(65% - 50px);
+	border:none;
+	background:rgba(255,255,255,0.1);
+}
+
+#TABLE_SEARCH * { color:#fff; }
+
+#TABLE_SEARCH_TBODY { height:100%; overflow-y:scroll; width:100%; }
+#TABLE_SEARCH_TBODY .table_row { border-bottom:none; }
+#TABLE_SEARCH_TBODY .table_row:after { content:''; border-bottom:1px solid rgba(255, 255, 255, 0.2); width:90%; position:absolute; left:5%; bottom:0; }
+#TABLE_SEARCH_TBODY .table_row:last-child:after { border-bottom:none; }
+#TABLE_SEARCH_TBODY .table_td { padding:8px; height:100%; }
+#TABLE_SEARCH_TBODY .table_td:nth-of-type(1) { flex:1; }
+#TABLE_SEARCH_TBODY .table_td:nth-of-type(2) { flex:3; display:flex; flex-flow:column nowrap; align-items: flex-start; justify-content: center; height:100%; padding:0; }
+#TABLE_SEARCH_TBODY .table_td:nth-of-type(2) > div { height:calc(100% / 3); display:flex; align-items: center; padding:4px; }
+#TABLE_SEARCH_TBODY .item-title { font-size:14px; }
+#TABLE_SEARCH_TBODY .item-price { font-size:14px; font-weight:400; }
+#TABLE_SEARCH_TBODY	.item-step { font-size:12px; border:1px solid #fff; width:auto; display:flex; align-items: center; justify-content: center; padding:4px; font-weight:500; margin-left:4px; }
+#TABLE_SEARCH_TBODY .item-step.mint { color:var(--mint); border:1px solid var(--mint); } 
+#TABLE_SEARCH_TBODY .item-step.blue { color:var(--blue); border:1px solid var(--blue); } 
+#TABLE_SEARCH_TBODY .item-step.red { color:var(--red); border:1px solid var(--red); } 
+#TABLE_SEARCH_TBODY .item-step.gray { color:var(--gray); border:1px solid var(--gray); } 
+#TABLE_SEARCH_TBODY .item-bookmark { position:absolute; right:10px; top:10px; border-radius:5px; border:1px solid var(--gray); background:var(--gray); padding:4px; color:#555; transition:.3s; }
+#TABLE_SEARCH_TBODY .item-bookmark.fa-solid { background:var(--magenta); border:1px solid var(--magenta); color:#fff; }
+#TABLE_SEARCH_TBODY .item-piece { font-size:11px; margin:0 4px; color:#ddd; }
+
+
+
+/* MAP VIEW*/
+.topmap-view {
+	height:100%; width:100%; padding:4px;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+.btn-change-mapview { position:absolute; right:8px; bottom:8px; z-index:10; }
+
+@media (max-height : 560px) {
+	#TABLE_SEARCH { height:calc(100% - 208px); }
+}

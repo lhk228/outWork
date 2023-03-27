@@ -1,0 +1,166 @@
+<link rel="stylesheet" href="resource/css/popup/pop_detail.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<div id="POPUP_DETAIL" class="popup absolute w-screen h-full flex flex-col items-center justify-start backdrop-blur-lg">
+	<div class="popup-header">
+		<i class="fa-solid fa-xmark btn_popup_close z-10"></i>
+		<span class="popup_title">상품상세정보</span>
+	</div>
+  <!-- popup-main : 팝업 메인영역 -->
+	<div class="popup-main flex-column-start">
+		<!-- detail-box : 상세정보 박스 -->
+		<div class="detail-box" style="display:none;">
+			<div class="detail-header">
+				<div class="item-thumb square-box" style="background-image:url('resource/images/test_thumb.jpg'); width:25%;"></div>
+				<div class="item-detail" style="width:75%;">
+					<p class="item-title">상품명</p>
+					<p class="item-context">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, eum?</p>
+					<p class="item-price">500,00,000 원</p>
+				</div>
+			</div>
+			<div id="ITEM_PROGRESS" class="detail-flow progress-container flex-row-center">
+				<div class="progress-name-container">
+					<p class="progress-name selected">사전공개중</p>
+					<p class="progress-name">투자모집</p>
+					<p class="progress-name">운영기간</p>
+					<p class="progress-name">수익분배</p>
+				</div>
+				<div class="progress-bar-container">
+					<div class="progress-bar"><span class="progress-ball"></span></div>
+				</div>
+			</div>
+			<div class="detail-main">
+				<!-- 모집달성률 -->
+				<div class="goal-rate-box">
+					<p style="font-size:12px;">모집현황</p>
+					<div class="goal-rate-container">
+						<div class="goal-rate-bar"></div>
+						<span class="goal-rate-text">0 / 50,000</span>
+					</div>
+				</div>
+				<!-- 투자 talk -->
+				<div class="detail-talk">
+					<p class="title flex-row-start"><i class="fa-solid fa-comments" style="margin-right:8px;"></i> 투자 TALK</p>
+					<div id="CHAT_DIALOGUE" class="flex-row-center">
+						<div class="chat-room">
+							<div class="chat-box p-4">
+								<div class="user-thumb">
+									<div class="square-box" style="background-image:url('resource/images/test_thumb.jpg')"></div>
+								</div>
+								<div class="chat-content">
+									<div class="user-id">투자자</div>
+									<div class="user-chat">안녕하세요?</div>
+									<div class="chat-timelog text-sm">19:37</div>
+								</div>
+							</div>
+						</div>
+						<div class="chat-input absolute w-full bottom-0 flex flex-col items-center justify-center">
+							<input type="text" placeholder="대화내용 입력" class="p-4">
+						</div>
+					</div>
+				</div>
+				<!-- 위치정보 -->
+				<div class="overoll-box">
+					<button id="BTN_COLLAPSE" class="btn btn_magenta" >위치정보</button>
+				</div>
+				<div id="DIV_COLL_LOCATION" class="detail-location">
+					<div id="MAP_COLL" class="kakaomap"></div>
+				  </div>				
+				
+				<!-- 투자기획/설명서 -->
+				<div class="detail-location overoll-box">
+					<button id="BTN_FLOWCHART" class="btn btn_magenta">진행보고</button>
+				</div>
+
+				<!-- 판매자정보 -->
+				<div class="detail-seller overoll-box">
+					<button id="BTN_COLLAPSE_3" class="btn btn_magenta">판매자정보</button>
+				</div>
+			</div>
+		</div>
+		<!-- flow-box : 진행보고 박스 -->
+		<div class="flow-box flex-column-start">
+			<i id="BTN_FLOW_LEFT" class="fa-solid fa-arrow-left z-10"></i>
+			<div class="flow-bar-box">
+				<ul class="flow-bar-container">
+					<li class="flow-bar"></li>
+				</ul>
+			</div>
+			<ul class="flow-list-container">
+				
+				<li class="flow-list" style="text-align: center">  
+					<button id="ADD_FLOW_LIST_BUTTON" class="btn btn_magenta w-52 mt-4 text-sm" >ADD</button>
+				</li>
+			</ul>
+
+			<div id="INPUT_PAGE" class="flow-view-box hidden">
+				<i id="CLOSE_FLOW" class="fa-solid fa-xmark btn_close z-10"></i>
+				<!-- change input -->
+				<p class="title">Title :</p>
+				<input id="TITLE_INPUT" type="text">
+				<p class="context">Context :</p>
+				<textarea name="" id="CONTEXT_INPUT" cols="30" rows="10"></textarea>
+				<br>
+				<input type="file" id="FILE_UPLOAD" value="file name" placeholder="file name" style="display: none;">
+				<div style="display: flex; align-items: center">
+					<button id="BTN_FILE_UPLOAD" class="btn btn_white">UPLOAD</button>
+					<p style="margin: 0 0 0 30px ;" id="UPLOAD_NAME"></p>
+				</div>
+				<button id="BTN_SAVE_FLOWCHART" class="btn btn_magenta w-52 mt-4 text-sm">Save</button>
+			</div>
+			<!-- Ready Page -->
+			<div id="READY_PAGE" class="flow-view-box hidden">
+				<i class="fa-solid fa-xmark btn_close z-10"></i>
+				<p id="TITLE" class="title"></p>
+				<input type="text" id="EDIT_TITLE_INPUT"  style="display: none;"><br><br>
+				<p id="CONTEXT" class="context"></p>
+				<textarea name="" id="EDIT_CONTEXT_INPUT" cols="30" rows="10" style="display: none;"></textarea>
+				<p id="UPLOAD_READY" class="context"></p>
+				<button id="BTN_EDIT_FLOWCHART" class="btn btn_magenta w-52 mt-4 text-sm">Edit</button>
+				<button id="BTN_NEWSAVE_FLOWCHART" class="btn btn_magenta w-52 mt-4 text-sm" style="display: none;">Save</button>
+			</div>
+			
+			<i id="BTN_WRITE_FLOW" class="fa-solid fa-pen-to-square"></i>
+		</div>
+  <!-- popup-main : 팝업 메인영역 END -->
+	</div>
+</div>
+
+<script>
+	
+
+// click FILE INPUT
+$(document).ready(function() {
+	$('#FILE_UPLOAD').change(function() {
+	  var upload_filename = $(this).val().split('\\').pop(); 
+	  $('#UPLOAD_NAME').text(upload_filename); 
+	});
+  });
+  
+//READY PAGE FUNCTION
+$(function(){
+	
+	$("#BTN_FILE_UPLOAD").click(function(){
+		let inputFile = $("#FILE_UPLOAD");
+		inputFile.click();
+		console.log(inputFile.val());
+	});
+	goalRateBarControl(); //상품 모집달성률
+
+	var mapContainer = document.getElementById('MAP_COLL'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+	// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+	var map = new kakao.maps.Map(mapContainer, mapOption); 
+	
+	// $(".flow-box").niceScroll({cursorwidth:'4px'})
+	
+	// $("").css({height:`calc(100% / ${count})`});
+
+});
+
+
+
+</script>

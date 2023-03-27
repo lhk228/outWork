@@ -1,0 +1,4 @@
+#PAGE_GREETINGS {background:#fff; border-radius:10px; height:calc(100% - 150px); top:75px; }
+.image-box { width:25%; height:100%; background:var(--blue); background-image:url('/elim/resource/images/greetings_bg.png') }
+.text-box { width:75%; height:100%; color:#000; padding:12px; font-size:16px; font-weight:600; }
+.text-box p { width:100%; }
