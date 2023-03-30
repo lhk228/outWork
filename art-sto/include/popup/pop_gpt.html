@@ -2,12 +2,12 @@
 <div id="POPUP_GPT" class="popup absolute w-screen h-full flex flex-col items-center justify-start backdrop-blur-lg">
 	<i class="fa-solid fa-xmark btn_popup_close z-10"></i>
 	<div class="popup-header">
-		<span class="popup_title">MEVER AI</span>
+		<span class="popup_title">AI 감정평가</span>
 	</div>
 	<div class="popup-main">
 		<div id="GPT_CHAT_BOX" class="flex-column-start nowrap">
-			<p class="font-bold mb-2">답변 내용은 300 Byte로 제한됩니다. 질문이 구체적일수록 좋은 답변을 얻을 수 있으며, 2021년까지의 수집데이터에 기반합니다</p>
-			<p class="gpt-chat drop-shadow-lg"><span class="chat">무엇을 도와드릴까요?</span> </p>
+			<p class="font-bold mb-2">미술품에 대한 감정평가를 Chat-GPT3.5 기반 실시간 AI로 진행합니다</p>
+			<p class="gpt-chat drop-shadow-lg"><span class="chat">어떤 작품을 감정해드릴까요?</span> </p>
 			<p id="GPT_LOADING" class="blink">답변을 고민중이에요</p>
 		</div>
 		<div class="div_button_area flex-row-center w-full">
@@ -18,7 +18,7 @@
 </div>
 	
 <script>
-var API_KEY = "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";
+var API_KEY = "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";
 var API_URL = "https://api.openai.com/v1/completions";
 $(function(){
 

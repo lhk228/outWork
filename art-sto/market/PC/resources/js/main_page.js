@@ -59,27 +59,26 @@ function makeTotalList()
 	let html = '';
 	html+=
 	`
-	<div class="item-box"><p class="item-subtitle">MEVER STO</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>메버</p></div>
-	<div class="item-box"><p class="item-subtitle">MEVER STO</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>부동산</p></div>
-	<div class="item-box"><p class="item-subtitle">MEVER STO</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>유형자산</p></div>
-	<div class="item-box"><p class="item-subtitle">MEVER STO</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>무형자산</p></div>
-	<div class="item-box"><p class="item-subtitle">MEVER STO</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>주류</p></div>
-	<div class="item-box"><p class="item-subtitle">MEVER STO</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>아바타</p></div>
-	<div class="item-box"><p class="item-subtitle">MEVER STO</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>미술품</p></div>
-	<div class="item-box"><p class="item-subtitle">MEVER STO</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>슈퍼카</p></div>
-	<div class="item-box"><p class="item-subtitle">MEVER STO</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>생필품</p></div>
-	<div class="item-box"><p class="item-subtitle">MEVER STO</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>한우</p></div>
-	<div class="item-box"><p class="item-subtitle">MEVER STO</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>지식재산권</p></div>
-	<div class="item-box"><p class="item-subtitle">MEVER STO</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>명품</p></div>
-	<div class="item-box"><p class="item-subtitle">MEVER STO</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>컴퓨터</p></div>
-	<div class="item-box"><p class="item-subtitle">MEVER STO</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>의류</p></div>
-	<div class="item-box"><p class="item-subtitle">MEVER STO</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>가전</p></div>
-	<div class="item-box"><p class="item-subtitle">MEVER STO</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>보석</p></div>
-	<div class="item-box"><p class="item-subtitle">MEVER STO</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>생활물품</p></div>
-	<div class="item-box"><p class="item-subtitle">MEVER STO</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>유튜버</p></div>
-	<div class="item-box"><p class="item-subtitle">MEVER STO</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>자동차</p></div>
-	<div class="item-box"><p class="item-subtitle">MEVER STO</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>식품</p></div>
-	<div class="item-box"><p class="item-subtitle">MEVER STO</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>도서</p></div>
+	<div class="item-box"><p class="item-subtitle">BLUECHIP</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>컬렉션</p></div>
+	<div class="item-box"><p class="item-subtitle">BLUECHIP</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>이우환</p></div>
+	<div class="item-box"><p class="item-subtitle">BLUECHIP</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>유화</p></div>
+	<div class="item-box"><p class="item-subtitle">BLUECHIP</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>김환기</p></div>
+	<div class="item-box"><p class="item-subtitle">BLUECHIP</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>순수미술</p></div>
+	<div class="item-box"><p class="item-subtitle">BLUECHIP</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>쿠사마야요이</p></div>
+	<div class="item-box"><p class="item-subtitle">BLUECHIP</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>점묘화</p></div>
+	<div class="item-box"><p class="item-subtitle">BLUECHIP</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>팝아트</p></div>
+	<div class="item-box"><p class="item-subtitle">BLUECHIP</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>수채화</p></div>
+	<div class="item-box"><p class="item-subtitle">BLUECHIP</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>전시회</p></div>
+	<div class="item-box"><p class="item-subtitle">BLUECHIP</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>설치물</p></div>
+	<div class="item-box"><p class="item-subtitle">BLUECHIP</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>현대미술</p></div>
+	<div class="item-box"><p class="item-subtitle">BLUECHIP</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>소묘</p></div>
+	<div class="item-box"><p class="item-subtitle">BLUECHIP</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>동양화</p></div>
+	<div class="item-box"><p class="item-subtitle">BLUECHIP</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>서양화</p></div>
+	<div class="item-box"><p class="item-subtitle">BLUECHIP</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>캔버스화</p></div>
+	<div class="item-box"><p class="item-subtitle">BLUECHIP</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>회화</p></div>
+	<div class="item-box"><p class="item-subtitle">BLUECHIP</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>조각</p></div>
+	<div class="item-box"><p class="item-subtitle">BLUECHIP</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>공예품</p></div>
+	<div class="item-box"><p class="item-subtitle">BLUECHIP</p><p class="item-pirce">10,400,380 P</p><p class='item-title'>판화</p></div>
 	`
 	table.html(html).niceScroll();
 	table.getNiceScroll().resize();

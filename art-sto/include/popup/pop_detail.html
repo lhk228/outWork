@@ -2,6 +2,7 @@
 <div id="POPUP_DETAIL" class="popup absolute w-screen h-full flex flex-col items-center justify-start backdrop-blur-lg">
 	<div class="popup-header">
 		<i class="fa-solid fa-xmark btn_popup_close z-10"></i>
+		<i id="BTN_FLOW_LEFT" class="fa-solid fa-arrow-left z-10"></i>
 		<span class="popup_title">상품상세정보</span>
 	</div>
   <!-- popup-main : 팝업 메인영역 -->
@@ -46,14 +47,15 @@
 									<div class="square-box" style="background-image:url('resource/images/test_thumb.jpg')"></div>
 								</div>
 								<div class="chat-content">
-									<div class="user-id">투자자</div>
-									<div class="user-chat">안녕하세요?</div>
+									<div class="user-id">관리자</div>
+									<div class="user-chat">안녕하세요</div>
 									<div class="chat-timelog text-sm">19:37</div>
 								</div>
 							</div>
 						</div>
-						<div class="chat-input absolute w-full bottom-0 flex flex-col items-center justify-center">
-							<input type="text" placeholder="대화내용 입력" class="p-4">
+						<div class="chat-input absolute w-full bottom-0 flex-row-center">
+							<input id="INPUT_USER_CHAT" type="text" placeholder="대화내용 입력" class="p-4">
+							<button id="BTN_CHAT_SUBMIT" class="btn btn_white">전송</button>
 						</div>
 					</div>
 				</div>
@@ -72,14 +74,19 @@
 
 				<!-- 판매자정보 -->
 				<div class="detail-seller overoll-box">
-					<button id="BTN_COLLAPSE_3" class="btn btn_magenta">판매자정보</button>
+					<button id="BTN_ARTIST_INFO" class="btn btn_magenta">작가정보</button>
+				</div>
+
+				<div class="seller-detail-box flex-column-start" style="display:none;">
+					<p class="seller-name">작가명</p>
+					<p class="seller-explan">설명</p>
+					<button class="btn btn_magenta seller-url"><a href="" target="_blank">상세정보</a></button>
 				</div>
 			</div>
 		</div>
 
 		<!-- flow-box : 진행보고 박스 -->
 		<div class="flow-box flex-column-start" style="display:none;">
-			<i id="BTN_FLOW_LEFT" class="fa-solid fa-arrow-left z-10"></i>
 			<div class="flow-bar-box">
 				<ul class="flow-bar-container">
 					<li class="flow-bar"></li>
@@ -87,15 +94,14 @@
 			</div>
 
       <!-- 일지 리스트 -->
-			<ul class="flow-list-container">
-				<li class="flow-list" style="text-align: center">  
+			<ul class="post-list-container">
+				<li class="post-list" style="text-align: center">  
           <i id="BTN_ADD_FLOW" class="fa-solid fa-plus"></i>
 				</li>
 			</ul>
       
       <!-- POST_PAGE : 글 작성하기-->
-			<div id="POST_PAGE" class="flow-view-box hidden">
-				<i id="CLOSE_POST" class="fa-solid fa-xmark btn_close z-10" style="opacity:0;"></i>
+			<div id="POST_PAGE" class="post-view-box hidden">
 				<button></button>
 				<input class="inputTitle" id="TITLE_INPUT" type="text" autocomplete="off" placeholder="제목을 입력해주세요">
 				<div class="post-menu">
@@ -132,6 +138,10 @@
 
 <script>
 $(function() {
+//정보 채우기
+viewItemDetail();
+
+
 // click FILE INPUT
 	$('#FILE_UPLOAD').change(function(){
 		var upload_fileName = $(this).val().split('\\').pop();

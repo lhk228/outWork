@@ -20,27 +20,29 @@ $(document).on("click","#BTN_COLLAPSE",function(){
 	
 });
 
+//채팅 전송버튼 클릭 : 채팅방에 채팅입력
+$(document).on('click','#BTN_CHAT_SUBMIT',function(){
+	let text 	 = $(`#INPUT_USER_CHAT`).val();
+	let target = $(`.chat-room`);
+	let time = moment().format('HH:mm');
 
-//투자모집 달성률 표시 + 애니메이션
-function goalRateBarControl(cnt = 12458, totalCnt = 50000)
-{
-	let rate = Math.round((cnt/totalCnt)*100);
-
-	$('.goal-rate-bar').delay(1000).animate({width:`${rate}%`},1000,'easeOutExpo');
-
-	$({ val : 0 }).delay(1000).animate({ val : cnt }, {
-		duration: 1000,
-	step: function() {
-		var num = numComma(Math.floor(this.val));
-		$(".goal-rate-text").text(`${num}/${numComma(totalCnt)}`);
-	},
-	complete: function() {
-		var num = numComma(Math.floor(this.val));
-		$(".goal-rate-text").text(`${num}/${numComma(totalCnt)}`);
-	}
-});
-
-}
+	console.log(time);
+	let chatBox= 
+	`
+	<div class="chat-box p-4">
+		<div class="user-thumb">
+			<div class="square-box" style="background-image:url('resource/images/test_thumb.jpg')"></div>
+		</div>
+		<div class="chat-content">
+			<div class="user-id">USER_001</div>
+			<div class="user-chat myChat">${text}</div>
+			<div class="chat-timelog text-sm">${time}</div>
+		</div>
+	</div>
+	`;
+	target.append(chatBox);
+	$(`#INPUT_USER_CHAT`).val('');
+})
 
 //플로우바 클릭 : 해당하는 페이지 오픈, 선택클래스 부여 
 $(document).on('click','.flow-bar',function(){
@@ -57,7 +59,7 @@ $(document).on('click','.flow-bar',function(){
 		$(".flow-bar").removeClass("selected");
 		$(this).toggleClass('selected');
 		$(`#POST_PAGE`).fadeIn().removeClass("hidden");
-		$(`.flow-list-container`).hide(0);
+		$(`.post-list-container`).hide(0);
 		
 		console.log("show edit or add chart!")
 	}
@@ -65,7 +67,7 @@ $(document).on('click','.flow-bar',function(){
 })
 
 //플로우리스트 클릭 : 해당하는 페이지 오픈, 선택클래스 부여
-$(document).on('click','.flow-list',function(e){
+$(document).on('click','.post-list',function(e){
 	let nodeName = e.target.nodeName;
 
 	switch(nodeName)
@@ -132,62 +134,62 @@ $(document).on('click','#BTN_NEWSAVE_FLOWCHART',function(){
 	$("#BTN_EDIT_FLOWCHART").show();
 });
 
-
-//닫기버튼 클릭 : 페이지 닫고 초기상태로
-// $(document).on('click','.btn_close',function(){ flowChartClose()});
-
-//뒤로가기 클릭 : 플로우차트 닫고 상세설명페이지로
+//뒤로가기 클릭 기능 분배
 $(document).on('click','#BTN_FLOW_LEFT',function(){
-	let flowBox		 	= $(`.flow-box`);
-	let detailBox	 	= $(`.detail-box`);
-	let flowDetail 	= $(`.flow-view-box`);
-	let flowDisplay = flowBox.css("display");
-	let detailDisplay = flowDetail.css("display");
-  let flowList = $(".flow-list-container");
-  let readyDisplay = $("#READY_PAGE").css("display");
-  
-  if(readyDisplay != "none")
+	let detailBox	 	= $(`.detail-box`);					//상세정보 박스
+	let flowBox		 	= $(`.flow-box`);						//상세정보 > 진행보고 박스
+	let postBox 		= $(`.post-view-box`);			//진행보고 > 포스팅박스
+  let postList 		= $(".post-list-container");//포스트 목록 컨테이너
+	let artistBox		= $(`.seller-detail-box`);
+
+	if(artistBox.css("display") != "none")
+	{
+		artistBox.fadeOut();
+		return;
+	}
+	//상품상세정봉에서 뒤로가기면 닫기
+	if(detailBox.css("display") != 'none')
+	{
+		$(".btn_popup_close").click();
+	}
+	//포스팅박스에서 뒤로가면 리스트로
+	if(postBox.css("display") == "block")
   {
-    flowDetail.hide(0);
-    flowList.fadeIn();
+    postBox.hide(0);
+    postList.fadeIn();
     return;
   }
 
-  if(detailDisplay == "block")
-  {
-    flowDetail.hide(0);
-    flowList.fadeIn();
-    return;
-  }
-
-
-	if(flowDisplay == "flex")
+	//진행보고 에서 뒤로가면 상세정보로
+	if(flowBox.css("display") == "flex")
 	{
 		flowBox.hide(0);
 		detailBox.fadeIn();
     return;
 	}
-
-
 })
 
-$(document).on('click','#BTN_WRITE_FLOW',function(){
-	console.log('작성모드')
+//작가정보 클릭 : 작가정보 표시
+$(document).on('click','#BTN_ARTIST_INFO',function(){
+	console.log("SELECTED_ITEM :",SELECTED_ITEM);
+	$(`.seller-detail-box`).fadeIn();
+	let { artist, explan, url } = SELECTED_ITEM;
+	$(`.seller-name`).text(artist);
+	$(`.seller-explan`).text(explan);	$(`.seller-url a`).attr("href",url);
+
 })
-
-
 //-- make flow list
 function makeFlowChartList(obj)
 {
 	let { title, context } = obj;
 	let li = 
 		`
-		<li class="flow-list">
+		<li class="post-list">
 			<p class="title">${title}</p>
 			<p class="context">클릭하여 글 확인하기</p>
 		</li>
 		`;
-	$(".flow-list-container").prepend(li);
+	$(".post-list-container").prepend(li);
 }
 
 //initFlowChartWrite
@@ -204,24 +206,10 @@ function initFlowChartWrite()
 	console.log('add new item');
 }
 
-$(document).on('click', '#CLOSE_POST', function(){flowChartClose
-console.log('close flow');
-})
-
-$(document).on('click','#BTN_CLOSE_READY #CLOSE_POST',function(){flowChartClose()});
-
-
-function flowPageClose(){
-	console.log('close');
-	$(`.flow-view-box`).hide(0);
-	$(`.flow-list-container`).fadeIn();
-	$(".flow-bar").removeClass("selected");
-}
-
 function flowChartClose(){
 	console.log('close');
-	$(`.flow-view-box`).hide(0);
-	$(`.flow-list-container`).fadeIn();
+	$(`.post-view-box`).hide(0);
+	$(`.post-list-container`).fadeIn();
 	$(".flow-bar").removeClass("selected");
 }
 
@@ -263,7 +251,7 @@ function viewFlowPost()
 	$(".flow-bar").removeClass("selected");
 	$(this).toggleClass('selected');
 	$(`#READY_PAGE`).fadeIn().removeClass("hidden");
-	$(`.flow-list-container`).hide(0);
+	$(`.post-list-container`).hide(0);
 
 	
 	$(`#TITLE`).text(title);
@@ -278,6 +266,12 @@ function viewFlowPost()
 	// {
 	// 	$("#CONTEXT").append(`${videoCollect[0]}`)
 	// }
+
+}
+$(document).on('','',function(){})
+function showArtistInfo()
+{
+	$(`.detail_box`).hide();
 
 }
 
@@ -295,3 +289,36 @@ function checkMemberType()
 
 }
 
+//투자모집 달성률 표시 + 애니메이션
+function goalRateBarControl(cnt = 12458, totalCnt = 50000)
+{
+	let rate = Math.round((cnt/totalCnt)*100);
+
+	$('.goal-rate-bar').delay(1000).animate({width:`${rate}%`},1000,'easeOutExpo');
+
+	$({ val : 0 }).delay(1000).animate({ val : cnt }, {
+		duration: 1000,
+	step: function() {
+		var num = numComma(Math.floor(this.val));
+		$(".goal-rate-text").text(`${num}/${numComma(totalCnt)}`);
+	},
+	complete: function() {
+		var num = numComma(Math.floor(this.val));
+		$(".goal-rate-text").text(`${num}/${numComma(totalCnt)}`);
+	}
+});
+
+}
+
+//선택한 매물 정보 보여주기
+function viewItemDetail()
+{
+	let { key, price, artist, name } = SELECTED_ITEM;
+	let header = $(".detail-header");
+
+	console.log(sampleData);
+	header.find(`.item-title`).text(name);
+	header.find(`.item-price`).text(numComma(price));
+	header.find(`.item-context`).text(artist);
+	header.find(`.item-thumb`).css({backgroundImage:`url('resource/images/${key}.jpg')`});
+}

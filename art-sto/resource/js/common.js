@@ -41,6 +41,7 @@ $(document).ready(function(){
 	$(document).on('keyup', "#INPUT_GPT_CHAT", (e)=>{ if(e.keyCode == 13) $("#BTN_GPT_SUBMIT").click(); });
 	$(document).on('keyup', "#INPUT_ITEM_ADDRESS", (e)=>{ if(e.keyCode == 13) $("#BTN_SEARCH_ADD").click(); });
 	$(document).on('keyup', "#SEARCH_ITEM_NAME", (e)=>{ if(e.keyCode == 13) $("#BTN_SEARCH_ITEM").click(); });
+	$(document).on('keyup', "#INPUT_USER_CHAT", (e)=>{ if(e.keyCode == 13) $("#BTN_CHAT_SUBMIT").click(); });
 
 	//-- 팝업바깥 클릭시 닫기
 	$(document).on("click","div.popup_container",function(e){

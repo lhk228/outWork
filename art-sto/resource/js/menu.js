@@ -42,7 +42,7 @@ $(function(){
 	
 	//거래소로
 	$("#GO_MARKET").click(function(){
-		location.href = 'https://mever.me/sto/market';
+		location.href = 'https://mever.me/outWork/art-sto/market';
 	});
 
 	//상품명 검색
