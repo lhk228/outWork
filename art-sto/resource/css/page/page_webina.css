@@ -1,0 +1,88 @@
+#PROJECT_WEBINA { width:1200px; height:800px; padding:0 12px; }
+#PROJECT_WEBINA #STEP_01_INPUT input { padding:5px; }
+#PROJECT_WEBINA h2 { text-align:center; }
+#BTN_NEXT_STEP { position: fixed;
+  bottom: 100px;
+  right: 20px;
+  width: 100px; }
+
+/********** STEP01 **********/
+/* 입력페이지 */
+#STEP_01_INPUT { width:calc(50% - 50px); height:100%; padding:10px; padding-top:0; }
+.header-input { width:100%; padding:8px; margin:12px 0; font-size:30px; }
+
+.video-box { width:100%; background:rgba(255,255,255,0.1); border-radius:10px; margin-top:12px; cursor:pointer; transition:.3s; overflow:hidden; }
+.video-box::before { padding-top:56.25%; content:''; }
+.video-box:hover { opacity:0.8; }
+.video-box iframe { max-width: 518px; max-height:291px; }
+
+
+.content-box { width:100%; background:rgba(255,255,255,0.1); color:#fff; margin-top:12px; padding:8px; font-size:12px; min-height:200px; border-radius:10px; }
+
+.consult-box { width:100%; background:#6700E7; padding:5px 10px; border-radius:10px; margin-top:12px; }
+.consult-box p { width:100%; }
+.consult-box input { background:#fff; color:#444; width:100%; margin:4px 0; font-size:12px; padding:5px; }
+.consult-box textarea { margin-top:8px; }
+.consult-box button { margin-top:8px; }
+.consult-box .btn_delete { transform: rotate(45deg); font-size:16px; margin-left:4px; }
+#INPUT_CONSULT_TITLE { width:60%; }
+
+/* 비디오 팝업 */
+#PROJECT_WEBINA .popup-container { width:100vw; height:100vh; position:fixed; background:rgba(0,0,0,0.8); top:0; left:0; z-index:100; }
+#PROJECT_WEBINA .popup { background:#6700E7; width:80%; }
+#PROJECT_WEBINA .popup input { width:100%; }
+
+.arrow-box { 
+	display:flex;
+	justify-content: center;
+	align-items: center;
+  border-radius:10px;
+	width:100px;
+  height:auto;
+  padding:10px;
+  font-size:30px;
+  cursor:pointer;
+  background:var(--magentaG);
+  transition:.3s;
+}
+
+.arrow-box:hover {  opacity:0.8; }
+
+/* 결과페이지 */
+#STEP_01_RESULT { width:calc(50% - 50px); height:100%; padding:10px; padding-top:0; }
+#HEADER_RESULT { width:100%; padding:5px; margin:12px 0; font-size:30px; }
+#BTN_SUBMIT { margin-top:12px; }
+
+/********** STEP02 **********/
+/* 입력페이지 */
+
+/* 결과페이지 */
+.step2-mainbox { width:calc(50% - 50px); height:100%; padding:10px; padding-top:0; }
+.step2-header { width:100%; padding:5px; margin:12px 0; font-size:30px; }
+.step2-content { width:100%; padding:5px; min-height:300px; }
+.step2-video-area { width:100%; }
+.step2-video-box { width:256px; background:rgba(255,255,255,0.1); border-radius:10px; margin-top:12px; cursor:pointer; transition:.3s; overflow:hidden; max-height:144px;}
+.step2-video-box iframe { width:100%; height:100%; }
+.step2-video-box:before { padding-top:56.25%; content:''; }
+.step2-video-box:hover { opacity:0.8; }
+.step2-video-text { padding:5px; width:256px; height:140px; margin-top:6px; background:rgba(255,255,255,0.1); border-radius:10px; cursor:pointer; transition:.3s; overflow:hidden; }
+#BTN_STEP2_SUBMIT { margin-top:12px; }
+
+/********** STEP03 **********/
+.step3-mainbox { width:calc(50% - 50px); height:100%; padding:10px; padding-top:0; }
+.step3-header { width:100%; padding:5px; margin:12px 0; font-size:20px; }
+.step3-video-area { width:100%; }
+.step3-video-box { width:256px; background:rgba(255,255,255,0.1); border-radius:10px; cursor:pointer; transition:.3s; max-height:144px; }
+.step3-video-box::before { padding-top:56.25%; content:''; }
+.step3-video-box:hover { opacity:0.8; }
+.step3-video-box iframe { width:100%; height:100%; }
+.step3-video-text { width:calc(100% - 256px); padding:10px; height:144px; }
+
+.step3-icon-box { width:100%; height:36px; margin-top:8px; }
+.step3-icon-box i { margin:0 8px; font-size:30px; }
+
+.step3-content { margin-top:12px; }
+.step3-content iframe { width:512px; aspect-ratio: 16/9; }
+#BTN_STEP3_SUBMIT { margin-top:12px; }
+
+div[contenteditable='true'] { overflow:hidden; }

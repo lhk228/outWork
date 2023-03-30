@@ -1,0 +1,6 @@
+/*SPAN CSS*/
+span.negative_msg { color:#df3f5c; font-size:1rem; padding-left:1rem; }
+span.positive_msg { color:#00ffc8; font-size:1rem; padding-left:1rem; }
+span.popup_close { position:absolute; right:1rem; top:0.5rem; transform:rotate(45deg); font-size:2rem; cursor:pointer; }
+span.red { color:#df3f5c; }
+span.blue { color:#257AEF; }

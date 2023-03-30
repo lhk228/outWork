@@ -1,0 +1,110 @@
+<!-- POPUP_NOTICE : 공지사항 팝업 -->
+<style>
+#POPUP_NOTICE { min-width:20rem; width:90%; padding:1rem; padding-top:0; transition:.3s; }
+#POPUP_NOTICE div.notice_content { display:none; font-size:1.2rem; }
+#POPUP_NOTICE_CONTENT { background:var(--boxColor); color:#bbb; max-height:26rem; border-radius:0.5rem; }
+</style>
+<div id="POPUP_NOTICE_CONTAINER" class="popup_container">
+	<div id="POPUP_NOTICE" class="popup">
+		<!-- popup_header -->
+		<div class="popup_header">
+			<span id="NOTICE_TITLE" class="popup_title">최근 공지사항</span>
+      <button class="btn_close" style="right:0;">+</button>
+		</div>
+		<!-- popup_main -->
+		<div id="POPUP_NOTICE_CONTENT" class="popup_main flex-row-start">
+			<div class="notice_content" date="23.02.06" recent="today">
+				<p class="title">3D 홈페이지 서비스 오픈</p>
+				<p>- 입점사를 위한 3D 홈페이지 제작 서비스를 시작합니다</p>
+				<p>- 81 PY 이상 거래소 IP 소유자에게 3D 홈페이지 매출의 1~5%를 월세로 드립니다</p>
+				<p>- 2023.2.5 금융위에서 발표한 STO 메타버스 IP거래 합법적 가이드라인을 준수합니다</p>
+				<p>- <a style="color:var(--gold); cursor:pointer;" href="https://mever.me">https://mever.me</a> 혹은 메뉴의 <a style="color:var(--gold); cursor:pointer;" href="https://mever.me">[메버 홈]</a>에서 관련 내용을 확인하실 수 있습니다</p>
+			</div>
+			<div class="notice_content" date="23.01.20">
+				<p class="title">회원정보 추가기능</p>
+				<p>- 회원정보 수정에서 내 프로필이미지, 아이콘을 설정할 수 있습니다</p>
+        <p class="title">[장바구니] 업데이트</p>
+				<p>- 블럭거래시 다중선택 후 [장바구니]아이콘을 클릭하여 한번에 여러 매물을 거래할 수 있습니다</p>
+        <p class="title">UI/UX 개선/변경</p>
+				<p>- 기존 안내 알림창 편의성을 개선하였습니다</p>
+				<p>- 더이상 화면을 가리지 않으며, 안내 후 자동으로 사라지도록 변경하였습니다</p>
+				<p>- 층 변경시 안내메세지를 출력하도록 변경하였습니다</p>
+				<p>- 전체건물목록 표시방식을 변경하였습니다</p>
+				<p>- 선택된 블럭을 한번 더 선택할 시, 거래기록등 상세정보를 볼 수 있도록 변경하였습니다</p>
+        <p class="title">문자알림기능 추가</p>
+        <p>- 포인트 충전, 분양승인 등 이벤트 발생시 고객님들에게 문자가 발송됩니다</p>
+			</div>
+			<div class="notice_content" date="23.01.13">
+				<p class="title">[마이페이지] 추가</p>
+				<p>- 로그인시 메뉴목록에 [마이페이지] 가 추가됩니다</p>
+				<p>- [내 정보 관리]에서 아이디, 비밀번호등 개인정보를 변경할 수 있습니다</p>
+				<p>- [내 정보 관리]에서 이메일 인증시 50,000이 지급됩니다</p>
+				<p>- [지갑] 페이지링크를 기존 우측상단에서 마이페이지 하위메뉴로 이동하였습니다</p>
+				<p>- 로그아웃 기능이 추가되었습니다</p>
+				<p class="title">분양신청내역</p>
+				<p>- 회원님이 신청하신 분양건을 조회하실 수 있습니다. [지갑] 페이지에서 조회 가능합니다</p>
+				<p>- 내역에는 본인이 신청하신 매물의 현 상태가 표시됩니다</p>
+				<p class="title">UI/UX 개선/변경</p>
+				<p>- [지도뷰]를 더 크게 볼 수 있도록 변경하였습니다</p>
+				<p>- [지도뷰]에서 건물을 클릭할 시 건물목록이 자동으로 스크롤됩니다</p>
+				<p>- 1회 클릭시 클릭한 위치를 강조, 2회 클릭시 팝업이 열리도록 변경되었습니다</p>
+				<p>- [건물상세 팝업]에서 건물이미지를 더 크게 볼 수 있도록 변경하였습니다</p>
+				<p>- [건물상세 팝업]에서 층 선택을 보다 더 편하게 하실수 있도록 변경하였습니다</p>
+				<p>- 메뉴목록에 [공지사항]이 추가되었습니다.</p>
+				<p>- 알림버튼을 눌러서 최근 공지사항을 볼 수 있도록 변경하였습니다</p>
+				<p>- 이용에 방해되던 팝업뷰를 개선하였습니다</p>
+				<p>- 네비게이션 메뉴를 클릭하면 목록이 닫히도록 변경하였습니다</p>
+				<p>- PC화면 뷰를 개선하였습니다</p>
+				<p>- 건물상세정보 팝업에서 건물영상이 잘못출력되던 문제를 수정하였습니다. 이후 3D뷰로 전환될 예정입니다</p>
+			</div>
+			<div class="notice_content" date="23.01.04">
+				<p class="title">충전/출금 신청</p>
+				<p>- 충전시 팝업 안내에 따라 실시간 푸쉬 확인 충전 안내됩니다.</p>
+				<p>- 출금시 2023년 2분기 이후 실시간 푸쉬 확인 출금이 가능합니다.</p>
+				<p>- 합법적 지식재산권(IP) 거래로서 NFT,코인등의 가상자산과 다릅니다.  </p>
+			</div>
+			<div class="notice_content" date="23.01.03">
+				<p class="title">편의성 개선</p>
+				<p>- 팝업호출시, 외부영역을 클릭하면 닫히도록 변경했습니다.</p>
+				<p>- 메인페이지의 건물선택지도 시작위치를 강남역으로 변경하였습니다.</p>
+				<p>- 거래소바로가기,빠른문의하기 아이콘을 업데이트 하였습니다.</p>
+			</div>
+			<div class="notice_content" date="23.01.01">
+				<p class="title">거래소 오픈</p>
+				<p>- 2023.1.1.0시 부터 온라인 거래소 오픈합니다</p>
+				<p>- 오픈이벤트로 2023.1한달간 회원가입시 50,000제공합니다</p>
+				<p>- 친구추천시 1명당 10,000 제공합니다</p>
+				<p>- 개선사항은 우측 하단의 [ 빠른문의 ]에 남겨주세요</p>
+			</div>
+				<!-- <p class="title">개발관련 안내</p>
+        <p>- [내 분양 신청목록]을 볼 수 있는 기능을 개발중입니다</p>
+        <p>- [본인인증] 관련 이메일, 전화번호등 다양한 수단을 지원할 예정입니다</p>
+        <p>- [회원정보변경] 기능을 통해 임시로 발급된 계정정보를 변경할 수 있도록 지원하겠습니다</p>
+        <p>- 분양신청시 한번에 여러 매물을 선택하여 신청할 수 있도록 변경할 예정입니다</p> -->
+
+
+
+			
+			<!--<div class="notice_content" date="23.01.03">
+				<p class="title">소제목</p>
+				<p>- 팝업호출시, 외부영역을 클릭하면 닫히도록 변경하였습니다</p>
+				<p>- 메인페이지의 건물선택지도 시작위치를 중앙으로 변경하였습니다</p>
+			</div> -->
+
+		</div>
+	</div>
+</div>
+<script>
+$(function(){
+  $("#POPUP_NOTICE_CONTENT").niceScroll();
+  if(NOTICE_DATA)
+  {
+    let { date, title } = NOTICE_DATA;
+    $("#NOTICE_TITLE").text(`[ ${date} ] - ${title}`)
+    $(`#POPUP_NOTICE div.notice_content[date='${date}']`).show();
+  }
+	// console.log("NOTICE_DATA :",NOTICE_DATA);
+});
+// $("#POPUP_NOTICE div.popup_title").text();
+</script>
+<!-- POPUP_NOTICE : 매수 팝업 END -->

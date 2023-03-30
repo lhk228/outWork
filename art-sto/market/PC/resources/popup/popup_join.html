@@ -1,0 +1,415 @@
+
+<style>
+#POPUP_JOIN { position:relative; background:#14152d; width:80%; }
+#POPUP_JOIN input { width:100%; }
+#JOIN_BTN_AREA button { margin-left:1rem; }
+</style>
+<div id="POPUP_JOIN_CONTAINER" class="popup_container">
+  <div id="POPUP_JOIN" class="popup">
+    <!-- popup_header -->
+    <div class="popup_header">
+      <span class="popup_title">회원가입</span>
+      <button class="btn_close">＋</button>
+    </div>
+    <!-- popup_main -->
+    <div class="popup_main flex-row-start" style="padding-bottom:0;">
+      <div class="div_category" >
+        <input id="INPUT_JOIN_ID" type="text" placeholder="아이디 (영문,숫자 4자 이상 예시:sm8918)">
+      </div>
+      <div class="div_category" >
+        <input id="INPUT_JOIN_PW" type="password" placeholder="비밀번호 (영문,숫자 혼용 8자 이상)">
+      </div>
+      <div class="div_category" >
+        <input id="INPUT_JOIN_PW_2" type="password" placeholder="비밀번호 재입력">
+        <span id="PW_CORRECT" class="err_msg" style="padding-left:0; top:0.3rem;"></span>
+      </div>
+      <div class="div_category" >
+        <input id="INPUT_JOIN_NICK" type="text" placeholder="닉네임 ('운영자'등 사칭 닉네임 사용불가)">
+      </div>
+      <div class="div_category" >
+        <span style="top:-0.5rem; padding-left:0;">입력한 주소로 알림(거래, 회원정보변경 등)이 전송됩니다</span>
+        <input id="INPUT_JOIN_EMAIL" type="text" placeholder="이메일 주소 예시:sm@mever.me">
+      </div>
+      <div class="div_category flex-row-sb" >
+        <span style="top:-0.5rem; padding-left:0;">문자인증시 <font style="color:var(--red)">50,000P</font> 가 적립됩니다</span>
+        <input id="INPUT_JOIN_PHONE" type="text" placeholder="전화번호('-' 생략, 10~11자리)" style="width:calc(100% - 9rem);">
+        <button id="BTN_PHONE_APPLY" class="btn_default">문자발송</button>
+      </div>
+      <div class="div_category flex-row-sb" >
+        <input id="INPUT_PHONE_ACCESS" type="text" placeholder="인증번호 4자리 입력" style="width:calc(100% - 9rem);">
+        <button id="BTN_PHONE_ACCESS" class="btn_default btn_pink disable">인증요청</button>
+      </div>
+      <div class="div_category flex-row-start" >
+        <span style="top:-0.5rem; padding-left:0;">유효한 추천인 입력시 <font style="color:var(--red)">10,000P</font> 가 적립됩니다</span>
+        <input id="INPUT_JOIN_RECOMMEND" type="text" placeholder="추천인 전화번호('-' 생략, 10~11자리)" style="width:100%">
+      </div>
+    </div>
+
+    <!-- div_button_area -->
+    <style>
+    #JOIN_BTN_AREA { position:relative; }
+    #JOIN_BTN_AREA label { margin:0; font-size:1.4rem; cursor:pointer; }
+    #JOIN_BTN_AREA input[type="checkbox"] { width:1.5rem; margin-right:0.5rem; }
+    #BTN_JOIN_CONFIRM { position:absolute; right:1rem; }
+    </style>
+    <div id="JOIN_BTN_AREA" class="div_button_area flex-row-start" style="padding-top:0;">
+      <input type="checkbox" name="" id="AGREE_PRIVATE"><label id="BTN_POP_AGREE" for="">개인정보동의</label>
+      <button id="BTN_JOIN_CONFIRM"  class="btn_default btn_blue">확인</button>
+    </div>
+  </div>
+
+  <!-- 개인정보 동의 팝업 -->
+  <style>
+  #POPUP_PRIVATE_AGREE { position:absolute; width:90%; height:30rem; background:#14152d; border-radius:1rem; overflow:hidden; padding:1rem; padding-top:0; }
+  #POPUP_PRIVATE_AGREE div.textarea { height:25rem; width:100%; background:#07060e; padding:1rem; line-height:2.5rem; font-size:1.3rem; border-radius:1rem; }
+  #POPUP_PRIVATE_AGREE div.textarea p { padding:0; }
+  </style>
+  <div id="POPUP_PRIVATE_AGREE" class="hv_center flex-row-center" style="display:none;">
+    <!-- popup_header -->
+    <div class="popup_header">
+      <span class="popup_title">개인정보약관</span>
+      <button class="btn_close">＋</button>
+    </div>
+    <div id="PRIVATE_AGREE_SCROLL" class="textarea">
+      <p>&lt; 메버 &gt;(&apos;<a data-fr-linked="true" href="https://mever.me/">https://mever.me/</a>&apos;이하 &apos;메버- 메타버스 제작&apos;)은(는) 「개인정보 보호법」 제30조에 따라 정보주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립&middot;공개합니다.</p>
+      <p><br></p>
+      <p>○ 이 개인정보처리방침은 2022년 1월 1부터 적용됩니다.</p>
+      <p><br></p>
+      <p><br></p>
+      <p>제1조(개인정보의 처리 목적)</p>
+      <p><br></p>
+      <p>&lt; 메버 &gt;(&apos;<a data-fr-linked="true" href="https://mever.me/">https://mever.me/</a>&apos;이하 &apos;메버- 메타버스 제작&apos;)은(는) 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며 이용 목적이 변경되는 경우에는 「개인정보 보호법」 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.</p>
+      <p><br></p>
+      <p>1. 홈페이지 회원가입 및 관리</p>
+      <p><br></p>
+      <p>회원 가입의사 확인, 회원제 서비스 제공에 따른 본인 식별&middot;인증, 회원자격 유지&middot;관리, 서비스 부정이용 방지 목적으로 개인정보를 처리합니다.</p>
+      <p><br></p>
+      <p><br></p>
+      <p>2. 재화 또는 서비스 제공</p>
+      <p><br></p>
+      <p>물품배송, 서비스 제공, 계약서&middot;청구서 발송, 콘텐츠 제공, 맞춤서비스 제공, 본인인증, 연령인증, 요금결제&middot;정산을 목적으로 개인정보를 처리합니다.</p>
+      <p><br></p>
+      <p><br></p>
+      <p>3. 마케팅 및 광고에의 활용</p>
+      <p><br></p>
+      <p>신규 서비스(제품) 개발 및 맞춤 서비스 제공, 이벤트 및 광고성 정보 제공 및 참여기회 제공 , 인구통계학적 특성에 따른 서비스 제공 및 광고 게재 , 서비스의 유효성 확인, 접속빈도 파악 또는 회원의 서비스 이용에 대한 통계 등을 목적으로 개인정보를 처리합니다.</p>
+      <p><br></p>
+      <p><br></p>
+      <p><br></p>
+      <p><br></p>
+      <p>제2조(개인정보의 처리 및 보유 기간)</p>
+      <p><br></p>
+      <p>① &lt; 메버 &gt;은(는) 법령에 따른 개인정보 보유&middot;이용기간 또는 정보주체로부터 개인정보를 수집 시에 동의받은 개인정보 보유&middot;이용기간 내에서 개인정보를 처리&middot;보유합니다.</p>
+      <p><br></p>
+      <p>② 각각의 개인정보 처리 및 보유 기간은 다음과 같습니다.</p>
+      <p><br></p>
+      <p>1.&lt;홈페이지 회원가입 및 관리&gt;</p>
+      <p>&lt;홈페이지 회원가입 및 관리&gt;와 관련한 개인정보는 수집.이용에 관한 동의일로부터&lt;5년&gt;까지 위 이용목적을 위하여 보유.이용됩니다.</p>
+      <p>보유근거 : 법령에 근거</p>
+      <p>관련법령 : 1)신용정보의 수집/처리 및 이용 등에 관한 기록 : 3년</p>
+      <p>2) 소비자의 불만 또는 분쟁처리에 관한 기록 : 3년</p>
+      <p>3) 대금결제 및 재화 등의 공급에 관한 기록 : 5년</p>
+      <p>4) 계약 또는 청약철회 등에 관한 기록 : 5년</p>
+      <p>5) 표시/광고에 관한 기록 : 6개월</p>
+      <p>예외사유 :</p>
+      <p><br></p>
+      <p><br></p>
+      <p>제3조(개인정보의 제3자 제공)</p>
+      <p><br></p>
+      <p>① &lt; 메버 &gt;은(는) 개인정보를 제1조(개인정보의 처리 목적)에서 명시한 범위 내에서만 처리하며, 정보주체의 동의, 법률의 특별한 규정 등 「개인정보 보호법」 제17조 및 제18조에 해당하는 경우에만 개인정보를 제3자에게 제공합니다.</p>
+      <p><br></p>
+      <p>② &lt; 메버 &gt;은(는) 다음과 같이 개인정보를 제3자에게 제공하고 있습니다.</p>
+      <p><br></p>
+      <p>1. &lt; 주식회사 메버 &gt;</p>
+      <p>개인정보를 제공받는 자 : 주식회사 메버</p>
+      <p>제공받는 자의 개인정보 이용목적 : 이메일, 휴대전화번호, 비밀번호 질문과 답, 비밀번호, 로그인ID, 성별, 생년월일, 이름, 기념일, 결혼여부, 취미, 신용카드정보, 은행계좌정보, 서비스 이용 기록, 접속 로그, 쿠키, 접속 IP 정보, 결제기록</p>
+      <p>제공받는 자의 보유.이용기간: 5년</p>
+      <p><br></p>
+      <p><br></p>
+      <p>제4조(개인정보처리 위탁)</p>
+      <p><br></p>
+      <p>① &lt; 메버 &gt;은(는) 원활한 개인정보 업무처리를 위하여 다음과 같이 개인정보 처리업무를 위탁하고 있습니다.</p>
+      <p><br></p>
+      <p>1. &lt; 주식회사 메버 &gt;</p>
+      <p>위탁받는 자 (수탁자) : 이용자</p>
+      <p>위탁하는 업무의 내용 : 구매 및 요금 결제, 물품배송 또는 청구서 등 발송, 본인인증(금융거래, 금융서비스), 회원제 서비스 이용에 따른 본인확인, 불만처리 등 민원처리, 고지사항 전달, 신규 서비스(제품) 개발 및 맞춤 서비스 제공, 이벤트 및 광고성 정보 제공 및 참여기회 제공</p>
+      <p>위탁기간 : 5년</p>
+      <p>② &lt; 메버 &gt;은(는) 위탁계약 체결시 「개인정보 보호법」 제26조에 따라 위탁업무 수행목적 외 개인정보 처리금지, 기술적․관리적 보호조치, 재위탁 제한, 수탁자에 대한 관리․감독, 손해배상 등 책임에 관한 사항을 계약서 등 문서에 명시하고, 수탁자가 개인정보를 안전하게 처리하는지를 감독하고 있습니다.</p>
+      <p><br></p>
+      <p>③ 위탁업무의 내용이나 수탁자가 변경될 경우에는 지체없이 본 개인정보 처리방침을 통하여 공개하도록 하겠습니다.</p>
+      <p><br></p>
+      <p><br></p>
+      <p><br></p>
+      <p>제5조(정보주체와 법정대리인의 권리&middot;의무 및 그 행사방법)</p>
+      <p><br></p>
+      <p><br></p>
+      <p><br></p>
+      <p>① 정보주체는 메버에 대해 언제든지 개인정보 열람&middot;정정&middot;삭제&middot;처리정지 요구 등의 권리를 행사할 수 있습니다.</p>
+      <p><br></p>
+      <p>② 제1항에 따른 권리 행사는메버에 대해 「개인정보 보호법」 시행령 제41조제1항에 따라 서면, 전자우편, 모사전송(FAX) 등을 통하여 하실 수 있으며 메버은(는) 이에 대해 지체 없이 조치하겠습니다.</p>
+      <p><br></p>
+      <p>③ 제1항에 따른 권리 행사는 정보주체의 법정대리인이나 위임을 받은 자 등 대리인을 통하여 하실 수 있습니다.이 경우 &ldquo;개인정보 처리 방법에 관한 고시(제2020-7호)&rdquo; 별지 제11호 서식에 따른 위임장을 제출하셔야 합니다.</p>
+      <p><br></p>
+      <p>④ 개인정보 열람 및 처리정지 요구는 「개인정보 보호법」 제35조 제4항, 제37조 제2항에 의하여 정보주체의 권리가 제한 될 수 있습니다.</p>
+      <p><br></p>
+      <p>⑤ 개인정보의 정정 및 삭제 요구는 다른 법령에서 그 개인정보가 수집 대상으로 명시되어 있는 경우에는 그 삭제를 요구할 수 없습니다.</p>
+      <p><br></p>
+      <p>⑥ 메버은(는) 정보주체 권리에 따른 열람의 요구, 정정&middot;삭제의 요구, 처리정지의 요구 시 열람 등 요구를 한 자가 본인이거나 정당한 대리인인지를 확인합니다.</p>
+      <p><br></p>
+      <p><br></p>
+      <p><br></p>
+      <p>제6조(처리하는 개인정보의 항목 작성)</p>
+      <p><br></p>
+      <p>① &lt; 메버 &gt;은(는) 다음의 개인정보 항목을 처리하고 있습니다.</p>
+      <p><br></p>
+      <p>1&lt; 홈페이지 회원가입 및 관리 &gt;</p>
+      <p>필수항목 : 이메일, 휴대전화번호, 비밀번호 질문과 답, 비밀번호, 로그인ID, 성별, 생년월일, 이름, 취미, 신용카드정보, 은행계좌정보, 서비스 이용 기록, 접속 로그, 쿠키, 접속 IP 정보, 결제기록</p>
+      <p>선택항목 : 이메일, 휴대전화번호, 자택주소, 비밀번호 질문과 답, 비밀번호, 로그인ID, 성별, 생년월일, 이름, 기념일, 취미, 신용카드정보, 은행계좌정보, 서비스 이용 기록, 접속 로그, 쿠키, 접속 IP 정보, 결제기록</p>
+      <p><br></p>
+      <p><br></p>
+      <p>제7조(개인정보의 파기)</p>
+      <p><br></p>
+      <p><br></p>
+      <p>① &lt; 메버 &gt; 은(는) 개인정보 보유기간의 경과, 처리목적 달성 등 개인정보가 불필요하게 되었을 때에는 지체없이 해당 개인정보를 파기합니다.</p>
+      <p><br></p>
+      <p>② 정보주체로부터 동의받은 개인정보 보유기간이 경과하거나 처리목적이 달성되었음에도 불구하고 다른 법령에 따라 개인정보를 계속 보존하여야 하는 경우에는, 해당 개인정보를 별도의 데이터베이스(DB)로 옮기거나 보관장소를 달리하여 보존합니다.</p>
+      <p>1. 법령 근거 :</p>
+      <p>2. 보존하는 개인정보 항목 : 계좌정보, 거래날짜</p>
+      <p><br></p>
+      <p>③ 개인정보 파기의 절차 및 방법은 다음과 같습니다.</p>
+      <p>1. 파기절차</p>
+      <p>&lt; 메버 &gt; 은(는) 파기 사유가 발생한 개인정보를 선정하고, &lt; 메버 &gt; 의 개인정보 보호책임자의 승인을 받아 개인정보를 파기합니다.</p>
+      <p><br></p>
+      <p>2. 파기방법</p>
+      <p><br></p>
+      <p>전자적 파일 형태의 정보는 기록을 재생할 수 없는 기술적 방법을 사용합니다</p>
+      <p><br></p>
+      <p><br></p>
+      <p><br></p>
+      <p>제8조(개인정보의 안전성 확보 조치)</p>
+      <p><br></p>
+      <p>&lt; 메버 &gt;은(는) 개인정보의 안전성 확보를 위해 다음과 같은 조치를 취하고 있습니다.</p>
+      <p><br></p>
+      <p>1. 정기적인 자체 감사 실시</p>
+      <p>개인정보 취급 관련 안정성 확보를 위해 정기적(분기 1회)으로 자체 감사를 실시하고 있습니다.</p>
+      <p><br></p>
+      <p>2. 개인정보 취급 직원의 최소화 및 교육</p>
+      <p>개인정보를 취급하는 직원을 지정하고 담당자에 한정시켜 최소화 하여 개인정보를 관리하는 대책을 시행하고 있습니다.</p>
+      <p><br></p>
+      <p>3. 내부관리계획의 수립 및 시행</p>
+      <p>개인정보의 안전한 처리를 위하여 내부관리계획을 수립하고 시행하고 있습니다.</p>
+      <p><br></p>
+      <p>4. 해킹 등에 대비한 기술적 대책</p>
+      <p>&lt;메버&gt;(&apos;메버- 메타버스 제작&apos;)은 해킹이나 컴퓨터 바이러스 등에 의한 개인정보 유출 및 훼손을 막기 위하여 보안프로그램을 설치하고 주기적인 갱신&middot;점검을 하며 외부로부터 접근이 통제된 구역에 시스템을 설치하고 기술적/물리적으로 감시 및 차단하고 있습니다.</p>
+      <p><br></p>
+      <p>5. 개인정보의 암호화</p>
+      <p>이용자의 개인정보는 비밀번호는 암호화 되어 저장 및 관리되고 있어, 본인만이 알 수 있으며 중요한 데이터는 파일 및 전송 데이터를 암호화 하거나 파일 잠금 기능을 사용하는 등의 별도 보안기능을 사용하고 있습니다.</p>
+      <p><br></p>
+      <p>6. 접속기록의 보관 및 위변조 방지</p>
+      <p>개인정보처리시스템에 접속한 기록을 최소 1년 이상 보관, 관리하고 있으며,다만, 5만명 이상의 정보주체에 관하여 개인정보를 추가하거나, 고유식별정보 또는 민감정보를 처리하는 경우에는 2년이상 보관, 관리하고 있습니다.</p>
+      <p>또한, 접속기록이 위변조 및 도난, 분실되지 않도록 보안기능을 사용하고 있습니다.</p>
+      <p><br></p>
+      <p>7. 개인정보에 대한 접근 제한</p>
+      <p>개인정보를 처리하는 데이터베이스시스템에 대한 접근권한의 부여,변경,말소를 통하여 개인정보에 대한 접근통제를 위하여 필요한 조치를 하고 있으며 침입차단시스템을 이용하여 외부로부터의 무단 접근을 통제하고 있습니다.</p>
+      <p><br></p>
+      <p>8. 문서보안을 위한 잠금장치 사용</p>
+      <p>개인정보가 포함된 서류, 보조저장매체 등을 잠금장치가 있는 안전한 장소에 보관하고 있습니다.</p>
+      <p><br></p>
+      <p>9. 비인가자에 대한 출입 통제</p>
+      <p>개인정보를 보관하고 있는 물리적 보관 장소를 별도로 두고 이에 대해 출입통제 절차를 수립, 운영하고 있습니다.</p>
+      <p><br></p>
+      <p><br></p>
+      <p><br></p>
+      <p><br></p>
+      <p>제9조(개인정보 자동 수집 장치의 설치&bull;운영 및 거부에 관한 사항)</p>
+      <p><br></p>
+      <p><br></p>
+      <p><br></p>
+      <p>① 메버 은(는) 이용자에게 개별적인 맞춤서비스를 제공하기 위해 이용정보를 저장하고 수시로 불러오는 &lsquo;쿠키(cookie)&rsquo;를 사용합니다.</p>
+      <p>② 쿠키는 웹사이트를 운영하는데 이용되는 서버(http)가 이용자의 컴퓨터 브라우저에게 보내는 소량의 정보이며 이용자들의 PC 컴퓨터내의 하드디스크에 저장되기도 합니다.</p>
+      <p>가. 쿠키의 사용 목적 : 이용자가 방문한 각 서비스와 웹 사이트들에 대한 방문 및 이용형태, 인기 검색어, 보안접속 여부, 등을 파악하여 이용자에게 최적화된 정보 제공을 위해 사용됩니다.</p>
+      <p>나. 쿠키의 설치&bull;운영 및 거부 : 웹브라우저 상단의 도구&gt;인터넷 옵션&gt;개인정보 메뉴의 옵션 설정을 통해 쿠키 저장을 거부 할 수 있습니다.</p>
+      <p>다. 쿠키 저장을 거부할 경우 맞춤형 서비스 이용에 어려움이 발생할 수 있습니다.</p>
+      <p><br></p>
+      <p>제10조 (개인정보 보호책임자)</p>
+      <p><br></p>
+      <p>① 메버 은(는) 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.</p>
+      <p><br></p>
+      <p>▶ 개인정보 보호책임자</p>
+      <p>성명 :이상민</p>
+      <p>직책 :대표</p>
+      <p>직급 :대표</p>
+      <p>연락처 :01075521110, <a data-fr-linked="true" href="mailto:79market.dev@gmail.com">79market.dev@gmail.com</a>,</p>
+      <p>※ 개인정보 보호 담당부서로 연결됩니다.</p>
+      <p><br></p>
+      <p>▶ 개인정보 보호 담당부서</p>
+      <p>부서명 :이상민</p>
+      <p>담당자 :대표</p>
+      <p>연락처 :01075521110, <a data-fr-linked="true" href="mailto:79market.dev@gmail.com">79market.dev@gmail.com</a>,</p>
+      <p>② 정보주체께서는 메버 의 서비스(또는 사업)을 이용하시면서 발생한 모든 개인정보 보호 관련 문의, 불만처리, 피해구제 등에 관한 사항을 개인정보 보호책임자 및 담당부서로 문의하실 수 있습니다. 메버 은(는) 정보주체의 문의에 대해 지체 없이 답변 및 처리해드릴 것입니다.</p>
+      <p><br></p>
+      <p>제11조(개인정보 열람청구)</p>
+      <p>정보주체는 ｢개인정보 보호법｣ 제35조에 따른 개인정보의 열람 청구를 아래의 부서에 할 수 있습니다.</p>
+      <p>&lt; 메버 &gt;은(는) 정보주체의 개인정보 열람청구가 신속하게 처리되도록 노력하겠습니다.</p>
+      <p><br></p>
+      <p>▶ 개인정보 열람청구 접수&middot;처리 부서</p>
+      <p>부서명 : 개인정보처리</p>
+      <p>담당자 : 이상민</p>
+      <p>연락처 : 01075521110, <a data-fr-linked="true" href="mailto:79market.dev@gmail.com">79market.dev@gmail.com</a>,</p>
+      <p><br></p>
+      <p><br></p>
+      <p>제12조(권익침해 구제방법)</p>
+      <p><br></p>
+      <p><br></p>
+      <p><br></p>
+      <p>정보주체는 개인정보침해로 인한 구제를 받기 위하여 개인정보분쟁조정위원회, 한국인터넷진흥원 개인정보침해신고센터 등에 분쟁해결이나 상담 등을 신청할 수 있습니다. 이 밖에 기타 개인정보침해의 신고, 상담에 대하여는 아래의 기관에 문의하시기 바랍니다.</p>
+      <p><br></p>
+      <p>1. 개인정보분쟁조정위원회 : (국번없이) 1833-6972 (<a data-fr-linked="true" href="//www.kopico.go.kr">www.kopico.go.kr</a>)</p>
+      <p>2. 개인정보침해신고센터 : (국번없이) 118 (privacy.kisa.or.kr)</p>
+      <p>3. 대검찰청 : (국번없이) 1301 (<a data-fr-linked="true" href="//www.spo.go.kr">www.spo.go.kr</a>)</p>
+      <p>4. 경찰청 : (국번없이) 182 (ecrm.cyber.go.kr)</p>
+      <p><br></p>
+      <p>「개인정보보호법」제35조(개인정보의 열람), 제36조(개인정보의 정정&middot;삭제), 제37조(개인정보의 처리정지 등)의 규정에 의한 요구에 대 하여 공공기관의 장이 행한 처분 또는 부작위로 인하여 권리 또는 이익의 침해를 받은 자는 행정심판법이 정하는 바에 따라 행정심판을 청구할 수 있습니다.</p>
+      <p><br></p>
+      <p>※ 행정심판에 대해 자세한 사항은 중앙행정심판위원회(<a data-fr-linked="true" href="//www.simpan.go.kr">www.simpan.go.kr</a>) 홈페이지를 참고하시기 바랍니다.</p>
+      <p><br></p>
+      <p>제13조(영상정보처리기기 설치&middot;운영)</p>
+      <p>① &lt; 메버 &gt;은(는) 아래와 같이 영상정보처리기기를 설치&middot;운영하고 있습니다.</p>
+      <p><br></p>
+      <p>1.영상정보처리기기 설치근거&middot;목적 : &lt; 메버 &gt;의</p>
+      <p><br></p>
+      <p>2.설치 대수, 설치 위치, 촬영 범위 :</p>
+      <p>설치대수 : 대</p>
+      <p>설치위치 :</p>
+      <p>촬영범위 :</p>
+      <p>3.관리책임자, 담당부서 및 영상정보에 대한 접근권한자 :</p>
+      <p><br></p>
+      <p>4.영상정보 촬영시간, 보관기간, 보관장소, 처리방법</p>
+      <p>촬영시간 : 시간</p>
+      <p>보관기간 : 촬영시부터 년</p>
+      <p>보관장소 및 처리방법 :</p>
+      <p>5.영상정보 확인 방법 및 장소 :</p>
+      <p><br></p>
+      <p>6.정보주체의 영상정보 열람 등 요구에 대한 조치 : 개인영상정보 열람.존재확인 청구서로 신청하여야 하며, 정보주체 자신이 촬영된 경우 또는 명백히 정보주체의 생명.신체.재산 이익을 위해 필요한 경우에 한해 열람을 허용함</p>
+      <p><br></p>
+      <p>7.영상정보 보호를 위한 기술적.관리적.물리적 조치 :</p>
+      <p><br></p>
+      <p><br></p>
+      <p><br></p>
+      <p>제14조(개인정보 처리방침 변경)</p>
+      <p><br></p>
+      <p><br></p>
+      <p>① 이 개인정보처리방침은 2022년 1월 1부터 적용됩니다.</p>
+    </div>
+  </div>
+</div>
+<script>
+$(function(){
+
+  //아이디 입력시 영문+숫자만 되도록
+  $("#INPUT_JOIN_ID").on("blur",function(){
+    let id  = $("#INPUT_JOIN_ID").val();
+    var num = id.search(/[0-9]/g);
+    var eng = id.search(/[a-z]/ig);
+    var spe = id.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+
+    if(id.length > 0 && (id.length < 6 || id.length > 20)){
+      customAlert("아이디 설정","6자리 ~ 20자리 이내로 입력해주세요","notice");$(this).val('');
+      return false;
+    }else if(id.search(/\s/) != -1){
+      customAlert("아이디 설정","아이디엔 공백이 들어갈 수 없습니다","notice");$(this).val('');
+      return false;
+    }else if(spe > 0 ){
+      customAlert("아이디 설정","아이디엔 특수문자가 들어갈 수 없습니다","notice");$(this).val('');
+      return false;
+    }else {
+      return true;
+    }
+  });
+
+  // 가입시 비밀번호 일치 확인 글자수제한, 규칙등 검사해야함
+  $("#INPUT_JOIN_PW").on("blur",function(){
+    let pw  = $("#INPUT_JOIN_PW").val();
+    var num = pw.search(/[0-9]/g);
+    var eng = pw.search(/[a-z]/ig);
+    var spe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+
+    if(pw.length > 0 && (pw.length < 8 || pw.length > 20)){
+      customAlert("비밀번호 설정","8자 ~ 20자 이내로 입력해주세요","notice");$(this).val('');
+      return false;
+    }else if(pw.search(/\s/) != -1){
+      customAlert("비밀번호 설정","비밀번호에는 공백이 들어갈 수 없습니다","notice");$(this).val('');
+      return false;
+    }else if(num < 0 || eng < 0 || spe < 0 ){
+      customAlert("비밀번호 설정","영문,숫자, 특수문자를 혼합하여 입력해주세요","notice");$(this).val('');
+      return false;
+    }else {
+        return true;
+    }
+  });
+  // 가입시 비밀번호 일치 확인 TODO : 글자수제한, 규칙등 검사해야함
+  $("#INPUT_JOIN_PW_2").on("input",function(){
+    let v1 = $("#INPUT_JOIN_PW").val();
+    let v2 = $(this).val();
+    let msg = $("#PW_CORRECT");
+    msg.removeClass();
+    v1 == v2 
+    ? msg.text('비밀번호가 일치합니다').addClass("positive_msg") 
+    : msg.text("비밀번호가 일치하지 않습니다").addClass('negative_msg');
+  });
+
+  // 가입시 닉네임에 운영자 사용불가능
+  $("#INPUT_JOIN_NICK").on("blur",function(){
+    let nickname  = $("#INPUT_JOIN_NICK").val();
+
+    if(nickname.includes('운영자')){ customAlert("별명 설정 안내","'운영자'는 사용할 수 없는 닉네임입니다","notice");$(this).val(''); }
+  });
+
+  // 전화번호 입력시 번호만쓰도록
+  $("#INPUT_JOIN_PHONE").on("input",function(){inputNumber(this);});
+
+  //-- 문자발송요청버튼
+  $("#BTN_PHONE_APPLY").click(function(){
+    let Phone = $("#INPUT_JOIN_PHONE").val();
+    let data = { Phone };
+    
+    //전화번호 자릿수 확인
+    if(Phone.length == 11 || Phone.length == 10){ api_post('phoneauthstart/notoken',data); }
+    else { customAlert("전화번호 오류", "전화번호는 10~11자리로 입력해주세요","notice");  $("#INPUT_JOIN_PHONE").val(''); }
+    
+  });
+
+  //-- 문자인증요청버튼
+  $("#BTN_PHONE_ACCESS").click(function(){
+    let KeyCode = Number($("#INPUT_PHONE_ACCESS").val());
+    let Phone   = $("#INPUT_JOIN_PHONE").val();
+    let data    = { Phone, KeyCode }
+    api_post('phoneauthend/notoken',data);
+  });
+
+  $("#PRIVATE_AGREE_SCROLL").niceScroll();
+  
+  //개인정보동의 글자클릭 > 팝업나옴
+  $("#BTN_POP_AGREE").click(function(){
+    $("#POPUP_PRIVATE_AGREE").fadeIn();
+    $("#PRIVATE_AGREE_SCROLL").getNiceScroll().resize();
+  });
+
+  //개인정보동의 닫기 > 기존 닫기버튼이랑 달라야해서 따로 기능하고 false 리턴
+  $("#POPUP_PRIVATE_AGREE .btn_close").click(function(){
+    $("#POPUP_PRIVATE_AGREE").fadeOut();
+    return false;
+  });
+  
+  // 가입확인버튼 클릭 : 가입신청
+  $("#BTN_JOIN_CONFIRM").click(function(){
+    let agreeCheck = $("#AGREE_PRIVATE").prop("checked");
+    
+    //개인정보 동의 확인
+    if(!agreeCheck){ customAlert("회원가입","개인정보활용에 동의해주세요","notice"); return; }
+
+    memberJoin();
+  });
+});
+</script>
+<!-- POPUP_JOIN : 로그인 메뉴(회원가입 + 로그인) END -->

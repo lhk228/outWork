@@ -1,0 +1,69 @@
+<link rel="stylesheet" href="resource/css/page/page_flow.css">
+<div id="FLOW_PAGE">
+	<div class="flow-bar-box">
+		<ul class="flow-bar-container">
+			<li class="flow-bar active"></li>
+			<li class="flow-bar"></li>
+			<li class="flow-bar"></li>
+			<li class="flow-bar"></li>
+			<li class="flow-bar"></li>
+			<li class="flow-bar"></li>
+		</ul>
+	</div>
+	<ul class="flow-list-container">
+		<li class="flow-list">
+			<p class="title">Lorem, ipsum.</p>
+			<p class="context">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+		</li>
+		<li class="flow-list">
+			<p class="title">Lorem, ipsum.</p>
+			<p class="context">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+		</li>
+		<li class="flow-list">
+			<p class="title">Lorem, ipsum.</p>
+			<p class="context">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+		</li>
+		<li class="flow-list">
+			<p class="title">Lorem, ipsum.</p>
+			<p class="context">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+		</li>
+		<li class="flow-list">
+			<p class="title">Lorem, ipsum.</p>
+			<p class="context">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+		</li>
+		<li class="flow-list">
+			<p class="title">Lorem, ipsum.</p>
+			<p class="context">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+		</li>
+	</ul>
+	<div class="flow-view-box hidden">
+		<i class="fa-solid fa-xmark btn_close z-10"></i>
+		<p class="title">Lorem, ipsum.</p>
+		<p class="context">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Exercitationem ratione nisi, perspiciatis aperiam ab quod, sed quidem vitae autem minus facilis libero voluptates sequi dolore blanditiis sit dignissimos vero ducimus tempore sunt nulla unde architecto! Ipsum aperiam deserunt optio aut.</p>
+	</div>
+	<i id="BTN_WRITE_FLOW" class="fa-solid fa-pen-to-square"></i>
+</div>
+<script>
+$(function(){
+	//플로우바 클릭 : 해당하는 페이지 오픈, 선택클래스 부여
+	$(`.flow-bar`).click(function (){
+		$(".flow-bar").removeClass("selected");
+		$(this).toggleClass('selected');
+		$(`.flow-view-box`).fadeIn();
+		$(`.flow-list-container`).hide(0);
+	});
+
+	//플로우리스트 클릭 : 해당하는 페이지 오픈, 선택클래스 부여
+	$(`.flow-list`).click(function (){ 
+		let listNum = $(this).index();
+		$(".flow-bar").eq(listNum).click();
+	})
+
+	 //닫기버튼 클릭 : 페이지 닫고 초기상태로
+	$(`.btn_close`).click(function(){
+		$(`.flow-view-box`).hide(0);
+		$(`.flow-list-container`).fadeIn();
+		$(".flow-bar").removeClass("selected");
+	});
+});
+</script>

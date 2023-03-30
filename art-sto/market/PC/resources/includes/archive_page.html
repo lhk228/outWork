@@ -1,0 +1,101 @@
+<style>
+
+	h1{
+		text-align: center;
+		color: white;
+		font-size: 5em;
+		margin-bottom: 50px;
+	}
+	.archiveAll{
+		width: 100%;
+		/* text-align: center; */
+	}
+	.archiveAll ul{
+		margin: 0 auto;
+		width: 80%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 30px;
+	}
+	.archiveAll ul li{
+		font-size: 4em;
+		color: white;
+	}
+
+	.seeButton a{
+		font-size: 3em;
+		color: #00378a;
+		font-weight: 600;
+		background-color: white;
+		padding: 5px 30px;
+		border-radius: 50px;
+		margin-right: 10px;
+		border: 2px solid transparent;
+		transition: 0.2s linear;
+		cursor: pointer;
+	}
+	.seeButton a:hover{
+		color: white;
+		border: 2px solid white;
+		background-color: transparent;
+	}
+
+	@media (max-width:1200px) {
+		h1{
+			font-size: 4em;
+		}
+		.archiveAll ul{
+			width: 100%;
+			padding: 0 10px 0 10px;
+			flex-direction: column;
+		}
+		.archiveAll ul li{
+			font-size: 2.5em;
+			margin-bottom: 20px;
+		}
+		.seeButton a{
+			font-size: 2em;
+		}
+	}
+
+</style>
+
+<div class="archiveAll subpage nowrap">
+	<h1>자료실</h1>
+	<ul>
+		<li>지적재산권</li>
+		<div class="seeButton">
+			<a target="_blank" href="/PC/resources/asset/reward.pdf">바로보기</a>
+			<a href="/PC/resources/asset/reward.pdf" download>다운로드</a>
+		</div>
+	</ul>
+	<ul>
+		<li>계약서</li>
+		<div class="seeButton">
+			<a target="_blank" href="/PC/resources/asset/contract.pdf">바로보기</a>
+			<a href="/PC/resources/asset/contract.pdf" download>다운로드</a>
+		</div>
+	</ul>
+	<ul>
+		<li>약관</li>
+		<div class="seeButton">
+			<a target="_blank" href="/PC/resources/asset/meverappointment.pdf">바로보기</a>
+			<a href="/PC/resources/asset/meverappointment.pdf" download>다운로드</a>
+		</div>
+	</ul>
+	<ul>
+		<li>홍보리플릿</li>
+		<div class="seeButton">
+			<a target="_blank" href="/PC/resources/asset/meverpapers.pdf">바로보기</a>
+			<a href="/PC/resources/asset/meverpapers.pdf" download>다운로드</a>
+		</div>
+	</ul>
+	<ul>
+		<li>회사소개서</li>
+		<div class="seeButton">
+			<a target="_blank" href="/PC/resources/asset/meVerIR.pdf">바로보기</a>
+			<a href="/PC/resources/asset/meVerIR.pdf" download>다운로드</a>
+		</div>
+	</ul>
+</div>

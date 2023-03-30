@@ -1,0 +1,50 @@
+<!-- POPUP_PHONE_EDIT : 전화번호 인증 팝업 -->
+<style>
+#POPUP_PHONE_EDIT { position:relative; background:#14152d; width:70%; }
+#POPUP_PHONE_EDIT input { width:100%; }
+#BTN_AREA button { margin-left:1rem; }
+</style>
+<div id="POPUP_CONTAINER" class="popup_container">
+	<div id="POPUP_PHONE_EDIT" class="popup">
+		<!-- popup_header -->
+		<div class="popup_header">
+			<span class="popup_title">핸드폰 인증</span>
+			<button class="btn_close">＋</button>
+		</div>
+		<!-- popup_main -->
+		<div class="popup_main flex-row-start">
+			<div class="div_category" >
+				<p class="item_title">핸드폰 번호</p>
+				<input id="INPUT_PHONE_EDIT" type="text" placeholder="예시) 01012345678('-' 생략)">
+			</div>
+			<div class="div_category" >
+				<p class="item_title">핸드폰 인증코드</p>
+				<input id="INPUT_CODE" type="text" placeholder="인증코드 입력" readonly>
+			</div>
+		</div>
+		<!-- div_button_area -->
+		<div id="BTN_AREA" class="div_button_area flex-row-end">
+			<button id="BTN_CERT_PHONE" class="btn_default btn_blue_g">문자발송</button>
+			<button id="BTN_CONFIRM_PHONE" class="btn_default btn_blue_g" style="display:none">확인</button>
+		</div>
+	</div>
+</div>
+<script>
+$(function(){
+	//-- 핸드폰 인증요청
+	$("#BTN_CERT_PHONE").click(function(){
+		$("#BTN_CERT_PHONE").hide(0);
+		$("#BTN_CONFIRM_PHONE").show(0);
+		$("#INPUT_CODE").attr("readonly",false);
+		let PHONE = $("#INPUT_PHONE_EDIT").val(); //변경할 핸드폰
+		api_post('phoneauthstart',{Token:TOKEN, PHONE});
+	});
+
+	//-- 핸드폰 인증코드 입력확인
+	$("#BTN_CONFIRM_PHONE").click(function(){
+		let KeyCode = Number($("#INPUT_CODE").val());
+		api_post('phoneauthend',{Token:TOKEN, KeyCode});
+	});
+});
+</script>
+<!-- POPUP_PHONE_EDIT : 전화번호 인증 팝업 END -->

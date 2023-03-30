@@ -1,0 +1,7 @@
+/*custom_select CSS*/
+div.custom_select_container { position:relative; }
+input.custom_select_value { width:100%; border-radius:0.3rem; cursor:pointer; }
+ul.custom_select { position:fixed; max-height:21rem; background:#fff; border:0.1rem solid #bbb; border-radius:0.3rem; display:none; box-shadow:0 0.3rem 0.5rem rgba(0,0,0,0.2); }
+ul.custom_select li { width:100%; padding-left:1rem; height:3rem; display:flex; align-items:center; font-size:1.2rem; color:#666; }
+ul.custom_select li:hover { background:#df3f5c; color:#fff; cursor:pointer; }
+div.category { width:100%; padding:1rem; }

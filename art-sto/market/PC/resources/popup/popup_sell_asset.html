@@ -1,0 +1,83 @@
+<!-- POPUP_SELL_ASSET_CONTAINER : 매수 팝업 -->
+<style>
+#POPUP_SELL_ASSET { min-width:20rem; width:70%; max-width:40rem; }
+#POPUP_SELL_ASSET input { width:100%; }
+</style>
+<div id="POPUP_SELL_ASSET_CONTAINER" class="popup_container">
+  <div id="POPUP_SELL_ASSET" class="popup">
+    <!-- popup_header -->
+    <div class="popup_header">
+      <span class="popup_title">매도 예약</span>
+      <button class="btn_close">＋</button>
+    </div>
+    <!-- popup_main -->
+    <div class="popup_main flex-row-start">
+      <div class="div_category" >
+        <p class="category_title">매물명</p>
+        <input id="INPUT_SELL_ASSET_NAME" type="text" readonly>
+      </div>
+      <div class="div_category">
+        <p class="category_title">금액설정</p>
+        <input id="INPUT_SELL_PRICE" type="text" style="width:100%;">
+      </div>
+    </div>
+    <!-- div_button_area -->
+    <div class="div_button_area flex-row-end">
+      <button id="BTN_SELL_CANCEL" class="btn_default btn_pink" style="margin-left:0.5rem">매도취소</button>
+      <button id="BTN_SELL_APPLY" class="btn_default btn_blue" style="margin-left:0.5rem">매도예약</button>
+    </div>
+  </div>
+</div>
+<script>
+$(function(){
+  let { Contract, AVG, MIN, MAX, Price, Serial } = SELECT_MY_ASSET;
+  
+  $("#INPUT_SELL_ASSET_NAME").val(convertSerialAll(Serial));
+  $("#INPUT_SELL_PRICE").val(Price);
+  
+  switch(Contract)
+  {
+    case 100 : $("#BTN_SELL_CANCEL").hide(0); break;
+    case 200 : $("#BTN_SELL_CANCEL").show(0); break;
+    default:break;
+  }
+
+  //-- 금액입력 완료 후 1000단위로 변경
+  $("#INPUT_SELL_PRICE").on("blur",function(){
+    let inputPrice = Number($(this).val());
+
+    //1000단위로 끊기
+    inputPrice = Math.floor(inputPrice/1000) * 1000; 
+
+    $(this).val(numberWithCommas(inputPrice));
+  });
+
+  //-- 매도버튼 클릭
+  $("#BTN_SELL_APPLY").on("click",function(){
+
+    let Items  = new Array();
+    Items.push(Number(Serial));
+
+    let inputPrice = Number(($("#INPUT_SELL_PRICE").val()).replaceAll(",",""));
+    let maxPrice   = Number(MAX)*1.5; //최대가격 1.5배(150%);
+    let minPrice   = Number(MIN)*0.5; //최소가격 0.5배(50%);
+
+    if(maxPrice >= inputPrice && minPrice <= inputPrice){api_post('assetsell',{Token:TOKEN, Price:inputPrice, Items, Contract:200});}
+    else
+    {
+      customAlert("매도조건 안내",`최대가격 ${numberWithCommas(maxPrice)} 이하, 최소가격 ${numberWithCommas(minPrice)} 이상으로 설정해주세요`,'notice');
+      $("#INPUT_SELL_PRICE").val(numberWithCommas(Price));
+    }
+  });
+
+  //-- 매도취소버튼 클릭
+  $("#BTN_SELL_CANCEL").click(function(){
+    let Items  = new Array();
+    Items.push(Number(Serial));
+    api_post('assetsell',{Token:TOKEN, Price, Items, Contract:100});
+  });
+});
+
+
+</script>
+<!-- POPUP_SELL_ASSET_CONTAINER : 매수 팝업 END -->

@@ -1,0 +1,14 @@
+/*INPUT CSS*/
+input { border-radius:0.3rem; outline:none; border:1px solid transparent; color:#bbb; background:var(--boxColor); min-height:4rem; text-indent:0.5rem; font-size:1.2rem; transition:.3s; }
+input:focus { 
+	border:0.1rem solid transparent; 
+	background-image: linear-gradient(#0F0F21, #0F0F21), linear-gradient(to right, #0BE4D6, #002BFE);
+	background-origin: border-box;
+	background-clip: content-box, border-box;
+	border-radius:0.5rem;
+}
+	
+	input:hover { border:0.1rem solid var(--blue); }
+	input::placeholder { color:var(--gray); }
+	input:read-only { background:var(--disable)!important; }
+	input:read-only::placeholder { color:rgb(79, 90, 105); }

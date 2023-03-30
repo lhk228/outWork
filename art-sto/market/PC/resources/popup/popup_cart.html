@@ -1,0 +1,265 @@
+<!-- POPUP_CART : 장바구니 -->
+<style>
+	#POPUP_CART { min-width:20rem; width:95%; max-width:40rem; }
+	#POPUP_CART input { width:100%; height:80%; background:var(--bluegray); min-height:0; font-size:var(--fSmall); }
+	#DETAIL_THUMBNAIL { width:100%; background:#26283b; color:#fff; border-radius:0.5rem; }
+	#DETAIL_THUMBNAIL:after { content: "";display: block; padding-bottom: calc(100% * 0.5625); }
+	</style>
+	<div id="POPUP_CART_CONTAINER" class="popup_container">
+		<div id="POPUP_CART" class="popup">
+			<!-- popup_header -->
+			<div class="popup_header" style="padding:0; background:#fff;">
+				<span class="popup_title" style="height:100%; padding:4px;"><img id="DETAIL_ASSET_NAME" src="" alt="" style="height:100%; padding:5px; border-radius:5px;"></span>
+				<button class="btn_close">＋</button>
+			</div>
+			<!-- popup_main -->
+			<div class="popup_main flex-row-start" style="padding-bottom:0;">
+				<div class="div_category">
+					<p class="category_title">매물목록</p>
+					<style>
+					#POPUP_CART_LIST { position:relative; width:100%; overflow:hidden; height:15rem; }
+					#POPUP_CART_LIST_TBODY { width:100%; height:100%; }
+					#POPUP_CART_LIST_TBODY div.table_row { height:3rem; }
+					#POPUP_CART_LIST_TBODY div.table_row.selected { background:#272b5c; }
+					#POPUP_CART_LIST_TBODY div.table_row div.table_td { flex:1; line-height:3rem; }
+					#POPUP_CART_LIST_TBODY div.table_row div.table_td:nth-of-type(1) { flex:1; }
+					#POPUP_CART_LIST_TBODY div.table_row div.table_td:nth-of-type(2) { flex:0.5; }
+					#POPUP_CART_LIST_TBODY div.table_row div.table_td:nth-of-type(3) { flex:1; text-align:right; padding-right:1rem; }
+					#POPUP_CART_LIST_TBODY div.table_row div.table_td:nth-of-type(4) { flex:0.1; text-align:right; padding-right:1rem; }
+					</style>
+					<div id="POPUP_CART_LIST" class="table_container">
+						<div id="POPUP_CART_LIST_TBODY" class="table_tbody">
+							<div class="table_row">
+								<div class="table_td">N구간 S조각</div>
+								<div class="table_td">판매자</div>
+								<div class="table_td"><input type="text" value="10,000"></div>
+								<div class="table_td"><i class="fa-solid fa-xmark item_remove" style="color:var(--red); font-size:var(--fMedium)"></i></div>
+							</div>
+						</div>
+					</div>
+					<!-- POPUP_CART_LIST : 장바구니 목록 END -->
+				</div>
+			</div>
+			<!-- popup_main END -->
+			<div id="SET_PRICE_ALL" class="category flex-row-end" style="padding-top:0;">
+				<button id="BTN_SET_PRICE_ALL" class="btn_default btn_blue" style="margin-right:1rem;">일괄설정</button><input id="INPUT_SET_PRICE_ALL" type="text" style="width:30%; height:3.6rem;" value="10,000">
+			</div>
+			<div class="category flex-row-end" style="font-size:var(--fSmall); height:3.6rem; padding:0; padding-right:1rem;">합계 <span id="TOTAL_CART_PRICE" class="flex-row-end" style="width:30%; height:3.6rem; color:var(--red)">10,000</span></div>
+			<div class="category flex-row-end" style="font-size:var(--fSmall); height:3.6rem; padding:0; padding-right:1rem;">현재 보유액 <span id="MY_PRICE" class="flex-row-end" style="width:30%; height:3.6rem; color:var(--mint)">10,000</span></div>
+			<div class="category flex-row-end" style="font-size:var(--fSmall); height:3.6rem; padding:0; padding-right:1rem;">예상 잔여액 <span id="EXCHANGE_PRICE" class="flex-row-end" style="width:30%; height:3.6rem; color:var(--mint)">10,000</span></div>
+			<!-- div_button_area -->
+			<div class="div_button_area flex-row-end">
+				<button id="BTN_CHARGE_APPLY" class="btn_default btn_pink" style="margin-left:0.5rem">충전신청</button>
+				<button id="BTN_PURCHASE_APPLY" class="btn_default btn_blue_g disable" style="margin-left:0.5rem">확인</button>
+			</div>
+		</div>
+	</div>
+<script>
+$(function(){
+	$("#DETAIL_ASSET_NAME").attr("src",`/sto/market/PC/resources/images/trader/${traderNumber}.png`)
+	makeCartListTable();
+
+	//장바구니 구매신청
+	$("#BTN_PURCHASE_APPLY").click(function(){
+
+		let Items = CART_LIST.map((x)=>{return Number(x)});
+		let totalPrice = 0;
+		let allPrice = Number(replaceAll($("#INPUT_SET_PRICE_ALL").val(),",",''));
+
+		console.log("CARTLIST :",CART_LIST);
+
+		//모든 가격이 같을때 : 일괄설정 되어있음
+		if($("#BTN_SET_PRICE_ALL").hasClass("set"))
+		{
+			switch(SELECT_BLOCK_TYPE)
+			{
+				case "default":
+					api_post('assetpresell',{Token:TOKEN, Price:allPrice, Items});
+					break;
+				case "myblock":
+					api_post('assetsell',{Token:TOKEN, Price:allPrice, Items, Contract:200});
+					break;
+				case "sales":
+					api_post('assetbuy',{Token:TOKEN, Items});
+					break;
+			}
+		}
+		else
+		{
+			postCartList();
+		}
+	});
+
+	function postCartList()
+	{
+		//반복문 돌면서 post요청
+		$("#POPUP_CART_LIST_TBODY div.table_row").each(function(x){
+			let Items = [Number($(this).attr("item-serial"))];
+			let price = $(this).find("input").val();
+
+			price = Number(replaceAll(price,",",''))
+
+			console.log("11serial :",Items);
+			console.log("11price :",price);
+
+			switch(SELECT_BLOCK_TYPE)
+			{
+				case "default":
+					api_post('assetpresell',{Token:TOKEN, Price:price, Items});
+					break;
+				case "myblock":
+					api_post('assetsell',{Token:TOKEN, Price:price, Items, Contract:200});
+					break;
+				case "sales":
+					api_post('assetbuy',{Token:TOKEN, Items});
+					break;
+			}
+		})
+	}
+	//일괄설정 버튼 클릭
+	$("#BTN_SET_PRICE_ALL").click(function(){
+		
+		let btn = $("#BTN_SET_PRICE_ALL");
+		
+		btn.toggleClass("set");
+
+		if( btn.hasClass("set") ){ btn.text("설정해제") }
+		else { btn.text("일괄설정") }
+
+		let target = $("#INPUT_SET_PRICE_ALL");
+		let price  =  Number(replaceAll(target.val(),",",''))
+		let valid = true;
+
+		SELECT_CART_LIST.forEach(function(x){
+			let MIN = Number(x.MIN);
+			let MAX = Number(x.MAX);
+			let minPrice = MIN*0.5;
+			let maxPrice = MAX*1.5;
+
+			//내 매물가격을 일괄설정할때 최소, 최대가격 제한
+			if(SELECT_BLOCK_TYPE == "myblock")
+			{
+				if(price < minPrice){ customAlert("최소가격의 50% 이하로 설정할 수 없습니다"); target.val(numberWithCommas(MIN)); setCartResult();  valid=false; return; }
+				if(price > maxPrice){customAlert("최대가격의 150% 이상으로 설정할 수 없습니다"); target.val(numberWithCommas(MAX)); setCartResult(); valid=false; return; }
+				if(price < 50000){customAlert("50,000 이하의 금액은 설정할 수 없습니다"); target.val(numberWithCommas(50000)); setCartResult(); valid=false; return;}
+			}
+
+			if(SELECT_BLOCK_TYPE == "default")
+			{
+				if(price < 50000){customAlert("50,000 이하의 금액은 설정할 수 없습니다"); target.val(numberWithCommas(50000)); setCartResult(); valid=false; btn.removeClass("set").text("일괄설정"); return;}
+			}
+
+		});
+
+		if(valid == true && $(this).hasClass("set")) { $("#POPUP_CART input").val(numberWithCommas(price)).attr("readonly",true); setCartResult(); }
+		if(valid == true && $(this).hasClass("set") == false) { $("#POPUP_CART input").val(numberWithCommas(price)).attr("readonly",false); setCartResult(); }
+		
+	});
+
+	$("#POPUP_CART input").on("keyup change", function(){
+		setCartResult(); 
+	});
+
+	//가격 설정할때
+	$("#POPUP_CART input").on("blur", function(){
+		let target = $(this);
+		let serial = $(this).parents("div.table_row").attr("item-serial");
+		let price = Number(replaceAll($(this).val(),",",''))
+
+		//최소가격, 최대가격, 50000이상 하도록
+		SELECT_CART_LIST.forEach(function(x){
+			let MIN = Number(x.MIN);
+			let MAX = Number(x.MAX);
+			let minPrice = MIN*0.5;
+			let maxPrice = MAX*1.5;
+
+			//내 매물가격을 일괄설정할때 최소, 최대가격 제한
+			if(x.Serial == serial)
+			{
+				if(price < minPrice){ customAlert("최소가격의 50% 이하로 설정할 수 없습니다"); target.val(numberWithCommas(MIN)); setCartResult(); return false; }
+				if(price > maxPrice){customAlert("최대가격의 150% 이상으로 설정할 수 없습니다"); target.val(numberWithCommas(MAX)); setCartResult(); return false; }
+				if(price < 50000){customAlert("50,000 이하의 금액은 설정할 수 없습니다"); target.val(numberWithCommas(50000)); setCartResult(); return false;}
+			}
+		});
+	});
+
+});
+
+//-- 장바구니 가격정산
+function setCartResult()
+{
+	let coin       = USER_INFO.Coin;
+	let totalPrice = 0;
+	
+	$("#POPUP_CART input").not("#INPUT_SET_PRICE_ALL").each(function(){totalPrice += Number(replaceAll($(this).val(),",",''))});
+	$("#TOTAL_CART_PRICE").text(numberWithCommas(totalPrice));
+	$("#MY_PRICE").text(numberWithCommas(coin));
+
+	let exPrice = coin - totalPrice
+
+	$("#EXCHANGE_PRICE").text(numberWithCommas(exPrice));
+
+	if(exPrice < 0){$("#BTN_PURCHASE_APPLY").addClass("disable"); customAlert('금액부족','보유금액이 부족합니다','notice','1500'); }
+	else {$("#BTN_PURCHASE_APPLY").removeClass("disable"); }
+
+}
+
+//-- 거래기록 테이블 만들기
+function makeCartListTable()
+{
+
+	let table = $("#POPUP_CART_LIST_TBODY");
+	let html 	= '';
+	let total = 0;
+
+	SELECT_CART_LIST.forEach((v, num)=>
+	{
+		let { Serial, Price, Nickname } = v;
+
+		total += Price;
+		html+=
+		`
+		<div class="table_row" item-serial='${Serial}'>
+			<div class="table_td">${convertSerialAll(Serial)}</div>
+			<div class="table_td">${Nickname}</div>
+			<div class="table_td"><input type="text" value="${numberWithCommas(Price)}"></div>
+			<div class="table_td"><i class="fa-solid fa-xmark item_remove" style="color:var(--red); font-size:var(--fMedium)"></i></div>
+		</div>
+		`
+	})
+
+	let coin = USER_INFO.Coin;
+
+	$("#TOTAL_CART_PRICE").text(numberWithCommas(total));
+	$("#MY_PRICE").text(numberWithCommas(coin));
+	$("#EXCHANGE_PRICE").text(numberWithCommas(coin - total));
+
+	table.html(html);
+	table.niceScroll();
+	table.getNiceScroll().resize();
+
+	//선택한 블록타입에 따라 팝업 디자인 변경
+	switch(SELECT_BLOCK_TYPE)
+	{
+		case "default":$("#SET_PRICE_ALL").show(); $("#POPUP_CART input").attr("readonly",false);break;
+		case "myblock":$("#SET_PRICE_ALL").show(); $("#POPUP_CART input").attr("readonly",false);break;
+		case "sales":$("#SET_PRICE_ALL").hide(); $("#POPUP_CART input").attr("readonly",true); break;
+	}
+	setCartResult();
+
+}
+
+$("#BTN_CHARGE_APPLY").click(function(){
+	pageLoader('my_wallet');
+});
+
+//장바구니 삭제버튼 클릭
+$(document).on("click",".item_remove",function(){
+	let targetRow = $(this).parents("div.table_row");
+	let targetSerial = targetRow.attr("item-serial");
+	targetRow.remove();
+	CART_LIST = CART_LIST.filter((x)=>{ return x != targetSerial});
+	setCartResult();
+});
+</script>
+<!-- POPUP_CART : 장바구니 END -->

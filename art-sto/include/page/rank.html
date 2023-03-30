@@ -1,0 +1,78 @@
+<link rel="stylesheet" href="resource/css/page/page_rank.css">
+
+<div id="SEARCH_PAGE" class="flex-column-start w-screen h-full p-4">
+	<div class="result-header">
+		<div class="toprank-view">
+			<div class="rank-box drop-shadow-lg" style="width:40%; left:10px; background:var(--gradient2); max-width:150px;">
+				<p class="rank-title">2nd</p>
+			</div>
+			<div class="rank-box drop-shadow-lg" style="width:50%; z-index:1; max-width:190px;">
+				<p class="rank-title text-2xl">1st</p>
+			</div>
+			<div class="rank-box drop-shadow-lg" style="width:35%; right:10px; background:var(--gradient3); max-width:140px;">
+				<p class="rank-title">3rd</p>
+			</div>
+		</div>
+		<div class="topmap-view" style="display:none;">
+			<div id="searchMap" class="kakao-map"></div>
+		</div>
+	</div>
+	<div class="category-list">
+		<button class="btn btn_magenta">부동산</button>
+		<button class="btn btn_magenta">식품</button>
+		<button class="btn btn_magenta">무형자산(IP)</button>
+		<button class="btn btn_magenta">귀중품</button>
+		<button class="btn btn_magenta">차량</button>
+	</div>
+	<div id="TABLE_RANK" class="item-rank-list table_container">
+		<div class="table_thead">
+			<div class="table_td">순위</div>
+			<div class="table_td">상품명</div>
+			<div class="table_td">발행가격</div>
+		</div>
+		<div id="TABLE_RANK_TBODY" class="table_tbody">
+		</div>
+	</div>
+
+	<i id="BTN_MAPVIEW" class="btn btn_magenta btn-change-mapview fa-solid fa-map-location-dot text-xl"></i>
+	<i id="BTN_RANKVIEW" class="btn btn_magenta fa-solid fa-trophy btn-change-mapview text-xl" style="display:none;"></i>
+</div>
+
+<script>
+$(function(){
+	// $(`#TABLE_RANK_TBODY`).niceScroll();
+	$("#TABLE_RANK_TBODY").easeScroll({
+		frameRate: 60,
+		animationTime: 1500,
+		stepSize: 10,
+		pulseAlgorithm: !0,
+		pulseScale: 8,
+		pulseNormalize: 1,
+		accelerationDelta: 20,
+		accelerationMax: 1,
+		keyboardSupport: !0,
+		arrowScroll: 50
+	});
+
+	$(`.category-list`).niceScroll({horizrailenabled: true, cursorwidth:'3px', emulatetouch: true, cursordragontouch: true, oneaxismousemode:'auto'});
+
+	makeSearchResult();
+});
+//검색결과
+function makeSearchResult()
+{
+	for(let i=0; i<30; i++)
+	{
+		let str = 
+		`
+		<div class="table_row">
+			<div class="table_td">${i+1}</div>
+			<div class="table_td">홍우빌딩${i+1}</div>
+			<div class="table_td">50,000</div>
+		</div>
+		`;
+		$("#TABLE_RANK_TBODY").append(str);
+	}
+	
+}
+</script>

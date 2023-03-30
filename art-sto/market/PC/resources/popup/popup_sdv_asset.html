@@ -1,0 +1,78 @@
+<!-- POPUP_SDV_ASSET_CONTAINER : 분양신청 팝업 -->
+<style>
+#POPUP_SDV_ASSET { min-width:20rem; width:70%; max-width:40rem; }
+#POPUP_SDV_ASSET input { width:100%; }
+</style>
+<div id="POPUP_SDV_ASSET_CONTAINER" class="popup_container">
+	<div id="POPUP_SDV_ASSET" class="popup">
+		<!-- popup_header -->
+		<div class="popup_header">
+			<span class="popup_title">분양신청</span>
+			<button class="btn_close">＋</button>
+		</div>
+		<!-- popup_main -->
+		<div class="popup_main flex-row-start">
+			<div class="div_category" >
+				<p class="category_title">매물명</p>
+				<input id="INPUT_SDV_ASSET_NAME" type="text" readonly>
+			</div>
+			<div class="div_category">
+				<p class="category_title">판매자</p>
+				<input id="INPUT_SELLER_NAME" type="text" readonly placeholder="(주)MEVER">
+			</div>
+			<div class="div_category">
+				<p class="category_title">최고입찰가</p>
+				<input id="INPUT_MAX_PRICE" type="text" readonly>
+			</div>
+			<div class="div_category">
+				<p class="category_title">신청가격</p>
+				<input id="INPUT_SDV_PRICE" type="text" style="width:100%;" placeholder="1,000단위 입력">
+			</div>
+		</div>
+		<!-- div_button_area -->
+		<div class="div_button_area flex-row-end">
+			<button id="BTN_SDV_APPLY" class="btn_default btn_blue" style="margin-left:0.5rem">신청</button>
+		</div>
+	</div>
+</div>
+<script>
+//-- 분양신청버튼 클릭
+$("#BTN_SDV_APPLY").click(function(){
+
+	if(!USER_INFO){customAlert("분양신청 안내","로그인이 필요합니다","notice"); return;}
+
+	let Serial 		= $("#INPUT_SDV_ASSET_NAME").attr("item-serial");
+	let Items 		= new Array();
+	let Price 		= replaceAll($("#INPUT_SDV_PRICE").val(),',','');
+	let maxPrice 	= replaceAll($("#INPUT_MAX_PRICE").val(),',','');
+
+	Items.push(Number(Serial));
+
+	let userCoin = USER_INFO.Coin;
+		
+		// if(userCoin < maxPrice)
+		// {
+		// 	customAlert("분양신청 안내","보유중인 금액이 최고 입찰가보다 낮습니다. [내 지갑]에서 포인트 충전 후 이용해주세요","notice");
+		// 	return;
+		// } 
+		// else if(Price < maxPrice)
+		// {
+		// 	customAlert("분양신청 안내","입찰금액이 최고 입찰가보다 낮습니다","notice");
+		// 	return;
+		// }
+		
+	api_post('assetpresell',{Token:TOKEN, Price:Number(Price), Items});
+});
+
+//-- 금액입력 완료 후 1000단위로 변경
+$(document).on("blur", "#INPUT_SDV_PRICE",function(){
+	let price = Number(replaceAll($(this).val(),',',''));
+	let originPrice = $(this).attr("origin-price");
+	let minPrice = 50000;
+
+	price = Math.floor(price/1000) * 1000; 
+
+	$(this).val(numberWithCommas(price));
+});
+</script>
+<!-- POPUP_SDV_ASSET_CONTAINER : 분양신청 팝업 END -->

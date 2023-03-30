@@ -1,0 +1,17 @@
+
+#PROJECT_PAGE { width:1000px; height:800px; }
+.project-select { width:100%; display:flex; align-items:center; height:calc(100% - 40px); }
+.project-card { 
+	width:300px; height:600px; display:flex; align-items: center; justify-content: center;
+	flex-flow:row wrap;
+	background:rgba(255,255,255,0.1);
+	border-radius:10px; transition:.3s;
+	border:1px solid rgba(0,0,0,0);
+}
+.project-card:nth-of-type(2) { margin:0 50px; }
+.project-card:hover { border:1px solid rgb(183, 0, 255); background:rgba(255,255,255,0.2); box-shadow:0 0 5px 3px rgba(255, 0, 221, 0.336); }
+.project-card:hover button { opacity:1; pointer-events: auto; bottom:25%; }
+.project-card:hover i { opacity:1; pointer-events: auto; top:-30px; }
+.project-card p { width:100%; text-align:center; }
+.project-card button { position:absolute; bottom:20%; opacity:0; pointer-events: none; transition:.3s; }
+.project-card i { position:absolute; top:-50px; font-size:20px; opacity:0; pointer-events: none; transition:.3s; color:var(--magenta); text-shadow:0 0 5px rgb(255, 0, 221); }

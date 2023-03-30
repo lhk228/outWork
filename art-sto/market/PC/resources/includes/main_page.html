@@ -1,0 +1,133 @@
+<!-- MAIN_PAGE : 거래소 메인 페이지 -->
+<style>
+#MAIN_PAGE { position:relative; width:100%; align-items: stretch; }
+#MAIN_PAGE .selected { animation-duration:2.2s; animation-name:flash; animation-iteration-count: infinite; }
+#MAIN_TITLE_AREA { width:100%; }
+</style>
+<div id="MAIN_PAGE" class="flex-row-start subpage">
+
+	<div id="MAIN_TITLE_AREA" class="flex-column-start">
+		<p style="font-size:var(--fLarger); text-align:center;">3D 홈페이지 매출의 3% 수익!</p>
+		<p style="font-size:var(--fMedium); text-align:center;">어서오세요, 메타버스 STO 거래소 메버입니다</p>
+	</div>
+	<!-- MAP_VIEW : 메인 지도 -->
+	<style>
+	#MAP_VIEW { position:relative; width:100%; height:50vh; overflow:hidden; border-radius:0.5rem; }
+	</style>
+	<p class="title">상품위치안내</p>
+	<div id="MAP_VIEW">
+
+	</div>
+	<!-- MAP_VIEW : 메인 지도 END -->
+
+	<!-- TOTAL_ITEM_LIST : 전체 건물 목록-->
+	<p class="title">전체 상품 목록</p>
+	<div id="TOTAL_ITEM_LIST" class="table_container">
+
+	</div>
+	<!-- TOTAL_ITEM_LIST : 전체 건물 목록 END -->
+
+	<!-- POPUP_BIND_CONTAINER : 하위 매물목록 팝업 -->
+	<div id="POPUP_BIND_CONTAINER" class="popup_container" style="z-index:101; display:none;">
+		<div id="POPUP_BIND" class="popup" style="min-width:20rem; width:95%; height:95%; max-width:50rem;">
+			<!-- popup_header -->
+			<div class="popup_header">
+				<span id="ITEM_NAME" class="popup_title">상품상세정보</span>
+				<button id="BTN_BIND_CLOSE" class="btn_close">＋</button>
+			</div>
+			<!-- popup_main -->
+			<div class="popup_main flex-column-start nowrap" style="max-width:58rem;">
+				<!-- POPUP_BIND_HEADER : 팝업 상단부분 -->
+				<style>
+				#POPUP_BIND_HEADER { width:100%; }
+				#ITEM_THUMBNAIL { width:85%; height:100%; }
+				#ITEM_THUMBNAIL::after { display:block; content:""; padding-bottom:100%; }
+				#THUMNAIL_IMG { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; }
+				#BLOCK_TABLE { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; }
+				#FLOOR_TABLE { padding-left:1rem; width:15%; height:100%; }
+				#FLOOR_TABLE li { width:100%; height:calc((100%/10) - 0.45rem); background:#fff; margin-bottom:0.5rem; border-radius:0.3rem; transition:.3s; display:flex; align-items:center; justify-content:center;}
+				#FLOOR_TABLE li:hover { transform:scale(1.3); background:var(--mint); opacity:0.8; cursor:pointer; color:#fff; }
+				#FLOOR_TABLE li.selected { transform:scale(1.3); background:var(--mint); opacity:0.8; cursor:pointer; color:#fff; }
+				#BTN_CHANGE_VIEW { width:100%; }
+				#BTN_CART_POPUP { width:calc(15% - 1rem); margin-left:1rem; min-width:0rem; display:none; }
+				#BLOCK_TABLE li { width:calc(100% / 10); height:calc(100% / 10); border:0.1rem solid #272b5c; transition:.3s; }
+				#BLOCK_TABLE li:hover { transform:scale(1.3); background:var(--mint); opacity:0.8; cursor:pointer; }
+				#BLOCK_TABLE li.default:hover { transform:scale(1.3); background:var(--mint); opacity:0.8; cursor:pointer; }
+				#BLOCK_TABLE li.selected:not(.complete) { transform:scale(1.3); background:rgb(197 106 255)!important; opacity:0.8; }
+				#BLOCK_TABLE li.sales { background:var(--red); /*매도예약중*/}
+				#BLOCK_TABLE li.complete { background:var(--gray); /*분양완료*/transform:scale(1); opacity:1; }
+				#BLOCK_TABLE li.default { background:var(--lightgray); /*분양중*/}
+				#BLOCK_TABLE li.myblock { background:var(--blue); /*내꺼다*/}
+				</style>
+				<div id="POPUP_BIND_HEADER" class="flex-row-start">
+					<div id="ITEM_THUMBNAIL">
+						<ul id="BLOCK_TABLE" class="flex-row-start" style="display:none; opacity:0.8; z-index:1;"></ul>
+						<iframe src="https://renaultespace.littleworkshop.fr/" frameborder="0" id="THUMNAIL_IMG"></iframe>
+					</div>
+					<ul id="FLOOR_TABLE">
+						<li floor="10">10</li>
+						<li floor="9">09</li>
+						<li floor="8">08</li>
+						<li floor="7">07</li>
+						<li floor="6">06</li>
+						<li floor="5">05</li>
+						<li floor="4">04</li>
+						<li floor="3">03</li>
+						<li floor="2">02</li>
+						<li floor="1"style="margin-bottom:0;">01</li>
+					</ul>
+					<div class="flex-row-sb" style="width:100%; padding-top:1rem;">
+						<button id="BTN_CHANGE_VIEW" class="btn_default" style="background:var(--magentaG); color:#fff;">조각 보기</button>
+						<button id="BTN_CART_POPUP" class="btn_default btn_blue"><i class="fa-solid fa-cart-shopping"></i></button>
+					</div>
+				</div>
+				<!-- POPUP_BIND_HEADER : 팝업 상단부분 END -->
+
+				<!-- TRADER_LIST : 팝업 하단 목록부분 -->
+				<div id="TRADER_LIST" class="table_container"></div>
+				<!-- TRADER_LIST : 팝업 하단 목록부분 END -->
+			</div>
+		</div>
+	</div>
+	<!-- POPUP_BIND_CONTAINER : 하위 매물목록 팝업 END -->
+</div>
+<!-- MAIN_PAGE END -->
+<script>
+$(function(){
+  $('#TOTAL_ITEM_LIST_TBODY').niceScroll();
+  $('#TRADER_LIST').niceScroll();
+	
+	//dev
+	// viewDetailInfo();
+	kakaoItemMap();
+	makeTotalList();
+	makeTraderList();
+	
+	//상품클릭
+	$("#TOTAL_ITEM_LIST .item-box").click(function(){
+		let itemName = $(this).find(".item-title").text();
+		let target = $(this);
+    let randomNum = Math.floor(Math.random() * 4)+2;
+
+    console.log("zzzzzzzzzzzzzzzzzz",randomNum);
+    switch(randomNum)
+    {
+			case 2: kakaoItemMap('강남대로 94길 34', itemName); break;
+			case 3: kakaoItemMap('강남대로 373', itemName); break;
+			case 4: kakaoItemMap('경수대로 401', itemName); break;
+			case 5: kakaoItemMap('전라북도 군산시 비응로 71', itemName); break;
+    }
+		
+		
+		if(target.hasClass("selected") == true){
+			viewDetailInfo();
+		}
+		else {
+			$("#TOTAL_ITEM_LIST .item-box").removeClass('selected');
+			$(this).addClass("selected");
+		}
+	});
+
+});
+</script>
+<!-- 거래소 메인 페이지  END -->

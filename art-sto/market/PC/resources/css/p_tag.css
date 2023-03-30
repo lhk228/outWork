@@ -1,0 +1,17 @@
+/* P TAG CSS */
+p { padding:0.5rem 0; width:100%; color:#ddd; font-size:1.3rem; }
+
+p.title { font-size:1.2rem; color:#fff; padding:1rem 0; }
+p.sub_title { font-size:1.1rem; }
+
+p.item_title { color:#fff; font-size:1.2rem; padding:0.5rem 0; }
+p.item_sub_title { font-size:1.1rem; }
+
+/* 테이블에 들어가는 p태그 */
+p.td_title { width:100%; height:3rem; font-size:1.2rem; font-weight:500; }
+p.td_text { width:100%; height:2rem; font-size:1.1rem; }
+
+/* 색상 */
+p.red { color:#df3f5c; }
+p.blue { color:#257AEF; }
+p.green { color:#60ff9d; }

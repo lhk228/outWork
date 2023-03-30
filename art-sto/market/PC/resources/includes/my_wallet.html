@@ -1,0 +1,170 @@
+<!-- 내 지갑 페이지 -->
+<style>
+#DIV_IMG_PRINT { position:fixed; z-index:99999; width:192rem; height:108rem; background:var(--modalColor); display:none; }
+#IMG_CONTAINER p { font-size:4rem; color:#162E52; position:absolute; top:32.4%; left:47%; font-weight:bold; width:auto; }
+#IMG_CONTAINER p:nth-of-type(2) { top:47%; left:45%; }
+</style>
+
+<div id="MY_WALLET" class="flex-row-start subpage">
+	<!-- DIV_MY_TOP_AREA : 마이페이지 상단 뷰 -->
+	<style>
+	#DIV_MY_TOP_AREA { width:100%; height:20rem; }
+	#DIV_MY_DETAIL { width:100%; height:100%; }
+	#DIV_MY_POINT_AREA { width:100%; height:60% }
+	#DIV_MY_POINT_AREA p { width:70%; height:calc(100% / 3); font-size:1.5rem; text-align:right; }
+	#DIV_MY_POINT_AREA p.item_title { width:30%; text-align:left; font-size:1.3rem; }
+	#DIV_MY_BTN_AREA { width:100%; height:40%; }
+	#DIV_MY_BTN_AREA button { width:47%; font-size:1.2rem; }
+
+	</style>
+	<div id="DIV_MY_TOP_AREA" class="flex-row-start">
+		<div id="DIV_MY_DETAIL" class="flex-row-start">
+			<div id="DIV_MY_POINT_AREA" class="flex-row-start">
+				<p class="item_title">계정정보</p><p id="MY_MEVER_ACCOUNT"></p>
+				<p class="item_title">보유포인트</p><p id="MY_MEVER_POINT"></p>
+				<p class="item_title">자산평가가치</p><p id="MY_EXPECT_POINT"></p>
+			</div>
+			<div id="DIV_MY_BTN_AREA" class="flex-row-sb">
+				<button id="BTN_CHARGE_POINT" class="btn_default btn_pink" style="margin:0;">충전</button>
+				<button id="BTN_WITHDRAW_POINT" class="btn_default btn_blue_g">환전신청</button>
+			</div>
+		</div>
+	</div>
+	<!-- DIV_MY_TOP_AREA : 마이페이지 상단 뷰 END -->
+	<!-- DIV_POINT_LIST : 포인트 내역 -->
+	<style>
+	#DIV_POINT_LIST { position:relative; width:100%; height:24.5rem; }
+	#POINT_LIST_TBODY { width:100%; height:100%; max-height:50rem; }
+	#POINT_LIST_TBODY div.table_row { height:8rem; }
+	#POINT_LIST_TBODY div.table_td:nth-of-type(1) { flex:4; }
+	#POINT_LIST_TBODY div.table_td:nth-of-type(2) { flex:6; text-align:right; padding-right:1rem; }
+	</style>
+	<p class="item_title">포인트 현황</p>
+	<div id="DIV_POINT_LIST" class="table_container">
+		<div id="POINT_LIST_TBODY" class="table_tbody"></div>
+	</div>
+	<!-- DIV_POINT_LIST : 포인트 내역 테이블 END -->
+	
+	<!-- DIV_MY_ASSET_LIST : 내 자산 내역 -->
+	<style>
+	#DIV_MY_ASSET_LIST { width:100%; height:24.5rem; }
+	#MY_ASSET_LIST_TBODY { width:100%; height:100%; max-height:50rem; }
+	#MY_ASSET_LIST_TBODY div.table_row { height:8rem; }
+	#MY_ASSET_LIST_TBODY div.table_td:nth-of-type(1) { flex:5; }
+	#MY_ASSET_LIST_TBODY div.table_td:nth-of-type(2) { flex:5; text-align:right; padding-right:1rem; }
+	</style>
+
+	<p class="item_title" style="margin-top:1rem;">내 자산 목록</p>
+	<div id="DIV_MY_ASSET_LIST" class="table_container">
+		<div id="MY_ASSET_LIST_TBODY" class="table_tbody"></div>
+	</div>
+	<!-- DIV_MY_ASSET_LIST : 내 자산 내역 END -->
+
+	<!-- DIV_MY_PRESELL_LIST : 내 분양신청 내역 -->
+	<style>
+	#DIV_MY_PRESELL_LIST { box-sizing:border-box; width:100%; height:24.5rem; }
+	#MY_PRESELL_LIST_TBODY { width:100%; height:100%; max-height:50rem; }
+	#MY_PRESELL_LIST_TBODY div.table_row { height:8rem; }
+	#MY_PRESELL_LIST_TBODY div.table_td:nth-of-type(1) { flex:5; }
+	#MY_PRESELL_LIST_TBODY div.table_td:nth-of-type(2) { flex:5; text-align:right; padding-right:1rem; }
+	</style>
+
+	<p class="item_title" style="margin-top:1rem;">내 분양신청 목록</p>
+	<div id="DIV_MY_PRESELL_LIST" class="table_container">
+		<div id="MY_PRESELL_LIST_TBODY" class="table_tbody">
+
+		</div>
+	</div>
+	<!-- DIV_MY_PRESELL_LIST : 내 분양신청 내역 END -->
+
+	<!-- POPUP_CHARGE : 충전신청 팝업 -->
+	<style>
+	#POPUP_CHARGE { min-width:20rem; width:90%; max-width:40rem; }
+	</style>
+	<div id="POPUP_CHARGE_CONTAINER" class="popup_container" style="display:none;">
+		<div id="POPUP_CHARGE" class="popup">
+			<!-- popup_header -->
+			<div class="popup_header">
+				<span class="popup_title" style="font-size:1.8rem">메버포인트 충전(1원 = 1메버)</span>
+				<button class="btn_close">＋</button>
+			</div>
+			<!-- popup_main -->
+			<div class="popup_main flex-row-start">
+				<div class="div_category" >
+					<p class="category_title">은행명</p>
+					<input id="INPUT_BANK_NAME" type="text" placeholder="신청자 계좌은행을 입력해주세요">
+				</div>
+				<div class="div_category" >
+					<p class="category_title">계좌번호</p>
+					<input id="INPUT_BANK_NO" type="text" placeholder="신청자 계좌번호를 입력해주세요">
+				</div>
+				<div class="div_category">
+					<p class="category_title">충전금액</p>
+					<input id="INPUT_CHARGE_VALUE" type="text" placeholder="충전할 금액을 입력해주세요" style="width:100%;">
+				</div>
+				<div class="div_category">
+					<p class="category_title">* 입금계좌 안내</p>
+					<p class="item_sub_title flex-row-start" >SBI 상호저축은행 02812-13-0862521(예금주 : 주식회사 메버)</p>
+				</div>
+			</div>
+			<!-- div_button_area -->
+			<div class="div_button_area flex-row-end">
+				<button id="BTN_CHARGE_APPLY" class="btn_default btn_blue" style="margin-left:0.5rem">신청하기</button>
+			</div>
+		</div>
+	</div>
+	<!-- POPUP_CHARGE : 충전신청 팝업 END -->
+
+	<!-- POPUP_WITHDRAW : 출금신청 팝업 -->
+	<style>
+	#POPUP_WITHDRAW { min-width:20rem; width:90%; max-width:40rem; }
+	</style>
+	<div id="POPUP_WITHDRAW_CONTAINER" class="popup_container" style="display:none;">
+		<div id="POPUP_WITHDRAW" class="popup">
+			<!-- popup_header -->
+			<div class="popup_header">
+				<span class="popup_title">메버포인트 환전신청</span>
+				<button class="btn_close">＋</button>
+			</div>
+			<!-- popup_main -->
+			<div class="popup_main flex-row-start">
+				<div class="div_category" >
+					<p class="category_title">신청 메세지</p>
+					<input id="INPUT_WITHDRAW_MSG" type="text" placeholder="신청 메세지를 입력해주세요">
+				</div>
+				<div class="div_category">
+					<p class="category_title">환전금액</p>
+					<input id="INPUT_WITHDRAW_VALUE" type="text" placeholder="환전할 금액을 입력해주세요" style="width:100%;">
+				</div>
+				<div class="div_category">
+					<p class="category_title">예금주</p>
+					<input id="INPUT_WITHDRAW_MASTER_NAME" type="text" placeholder="예금주를 입력해주세요" style="width:100%;">
+				</div>
+				<div class="div_category">
+					<p class="category_title">은행명</p>
+					<input id="INPUT_WITHDRAW_BANK_NAME" type="text" placeholder="송금받으실 은행명을 입력해주세요" style="width:100%;">
+				</div>
+				<div class="div_category">
+					<p class="category_title">계좌번호</p>
+					<input id="INPUT_WITHDRAW_BANK_NUMBER" type="text" placeholder="송금받으실 계좌번호를 입력해주세요" style="width:100%;">
+				</div>
+			</div>
+			<!-- div_button_area -->
+			<div class="div_button_area flex-row-end">
+				<button id="BTN_WITHDRAW_APPLY" class="btn_default btn_blue" style="margin-left:0.5rem">신청하기</button>
+			</div>
+		</div>
+	</div>
+	<!-- POPUP_WITHDRAW : 출금신청 팝업 END -->
+</div>
+<script>
+$(function(){
+	api_post('userinfo',{Token:TOKEN});
+	api_post('userasset',{ Token:TOKEN });
+	api_post('mytransfer',{ Token:TOKEN });
+	api_post('mypreselllist', { Token:TOKEN });
+});
+//READY END
+</script>
+<!-- 내 지갑 페이지 END -->
+	

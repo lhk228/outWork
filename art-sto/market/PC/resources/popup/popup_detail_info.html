@@ -1,0 +1,79 @@
+<!-- POPUP_ASSET_DETAIL_CONTAINER : 매수 팝업 -->
+<style>
+#POPUP_ASSET_DETAIL { min-width:20rem; width:95%; max-width:40rem; }
+#POPUP_ASSET_DETAIL input { width:100%; }
+#DETAIL_THUMBNAIL { width:100%; background:#26283b; color:#fff; border-radius:0.5rem; }
+#DETAIL_THUMBNAIL:after { content: "";display: block; padding-bottom: calc(100% * 0.5625); }
+#POPUP_ASSET_DETAIL button { width:7rem; }
+</style>
+<div id="POPUP_ASSET_DETAIL_CONTAINER" class="popup_container">
+  <div id="POPUP_ASSET_DETAIL" class="popup">
+    <!-- popup_header -->
+    <div class="popup_header">
+      <span id="DETAIL_ASSET_NAME" class="popup_title">매물상세정보</span>
+      <button class="btn_close">＋</button>
+    </div>
+    <!-- popup_main -->
+    <div class="popup_main flex-row-start">
+      <div id="DETAIL_THUMBNAIL" class="flex-row-center">
+        <p style="text-align:center; font-size:1.8rem;">
+          준비중입니다<br>
+          <span style="font-size:1rem; padding-top:1rem;"><font color="#ffae00">9PY</font> 이상 소유시 <font color="#ffae00">홈페이지</font>를 건물에 입점받아<br>매출 1~5% 의 <font color="#ffae00">월세소득</font>을 받을 수 있습니다</span>
+        </p>
+        
+      </div>
+      <div class="div_category">
+        <p class="category_title">부가정보 <span style="position:absolute; right:0; bottom:0; text-align:right; font-size:1rem"><span id="ASSET_OWNER" style=" color:#ffae00;">meVer</span> 님</span></p>
+        <input id="INPUT_ASSET_DETAIL" readonly placeholder="저장된 정보가 없습니다">
+      </div>
+      <div class="div_category">
+        <p class="category_title">거래기록</p>
+        <style>
+        #POPUP_TRADE_LIST { position:relative; width:100%; overflow:hidden; height:15rem; }
+        #POPUP_TRADE_LIST_TBODY { width:100%; height:100%; }
+        #POPUP_TRADE_LIST_TBODY div.table_row { height:3rem; }
+        #POPUP_TRADE_LIST_TBODY div.table_row.selected { background:#272b5c; }
+        #POPUP_TRADE_LIST_TBODY div.table_row div.table_td { flex:1; line-height:3rem; }
+        #POPUP_TRADE_LIST_TBODY div.table_row div.table_td:nth-of-type(1) { flex:1; }
+        #POPUP_TRADE_LIST_TBODY div.table_row div.table_td:nth-of-type(2) { flex:0.25; }
+        #POPUP_TRADE_LIST_TBODY div.table_row div.table_td:nth-of-type(3) { flex:0.65; }
+        #POPUP_TRADE_LIST_TBODY div.table_row div.table_td:nth-of-type(4) { flex:0.7; text-align:right; padding-right:1rem;  }
+        </style>
+        <div id="POPUP_TRADE_LIST" class="table_container">
+          <div id="POPUP_TRADE_LIST_TBODY" class="table_tbody">
+            <div class="table_row">
+              <div class="table_td">2023-01-06</div>
+              <div class="table_td">분양신청</div>
+              <div class="table_td">이한결</div>
+              <div class="table_td">금액</div>
+            </div>
+          </div>
+        </div>
+        <!-- POPUP_TRADE_LIST : 팝업 하단 목록부분 END -->
+      </div>
+    </div>
+    <!-- div_button_area -->
+    <div class="div_button_area flex-row-end">
+      <button id="BTN_SALES_APPLY" class="btn_default btn_pink disable" style="">임대</button>
+      <button id="BTN_RENT_APPLY" class="btn_default btn_blue disable" style="margin-left:0.5rem">임차</button>
+      <button id="BTN_SELL_RESERVE" class="btn_default btn_blue disable" style="margin-left:0.5rem; width:8rem;">매도예약</button>
+      <button id="BTN_DETAIL_APPLY" class="btn_default btn_blue_g disable" style="margin-left:0.5rem">적용</button>
+    </div>
+  </div>
+</div>
+<script>
+$(function(){
+ 
+  let detailTarget;
+ 
+  //현재 접속한 페이지에따라 다른 분기로 실행되어야한다
+  if(PAGE == "my_wallet"){detailTarget = SELECT_MY_ASSET;}
+  else{detailTarget = BIND_LIST.find((x)=>{return x.Serial == SELECT_ASSET});}
+  
+  showDetailPopup(detailTarget, TRADE_LIST);
+
+});
+
+
+</script>
+<!-- POPUP_ASSET_DETAIL_CONTAINER : 매수 팝업 END -->

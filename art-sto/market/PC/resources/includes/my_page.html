@@ -1,0 +1,143 @@
+<!-- 내 지갑 페이지 -->
+<style>
+#MY_PAGE { position:relative; padding:2rem; width:100%; }
+#MY_PAGE i { font-size:1.8rem; margin-left:0.5rem; }
+#MY_PAGE i.con { display:none; }
+</style>
+<div id="MY_PAGE" class="flex-column-start nowrap">
+	<!-- MY_PROFILE : 프로필 표시 -->
+	<style>
+	#MY_PROFILE { width:100%; }
+	#MY_PROFILE p { width:100%; font-size:2rem; text-align:center; }
+	#MY_PROFILE_DIV { width:100%; height:20rem; text-align:center; }
+	#MY_PROFILE_DIV img { width:20rem; cursor:pointer; border-radius:50%; overflow:hidden; }
+	</style>
+	<div id="MY_PROFILE" class="flex-row-center">
+		<div id="MY_PROFILE_DIV">
+			<img id="MY_PROFILE_IMG" eferrerpolicy="no-referrer" src="PC/resources/images/sample_avatar.png" alt="">
+		</div>
+		<input id="P_NICKNAME" placeholder="닉네임을 설정해주세요" readonly style="background:none; text-align:center; color:#fff; font-size:2.0rem;">
+		<i id="BTN_MOD_NICK" class="mod fa-solid fa-pencil" style="font-size:1.2rem"></i>
+		<i id="BTN_CON_NICK" class="con fa-solid fa-circle-check"></i>
+		<p id="P_ID" style="color:#888;">(lhk228)</p>
+	</div>
+	<script>
+	$(function(){
+		$("#MY_PROFILE_IMG").click(function(){
+			popupLoader("popup_profile_set");
+		});
+	});
+	</script>
+	<!-- MY_ACCOUNT : 계정정보 -->
+	<style>
+	#MY_ACCOUNT { width:100%; }
+	#MY_ACCOUNT input { width:90%; margin:0.5rem 0; }
+	#ICON_LIST { max-width:20rem; position:fixed; background:rgba(0,0,0,0.5); padding:0.5rem; border-radius:0.5rem; }
+	#ICON_LIST li { padding:0.5rem; }
+	#ICON_LIST li img { width:2.5rem; }
+	#ICON_LIST li span { margin-top:0.2rem; }
+	</style>
+	<div id="MY_ACCOUNT">
+		<div class="category">
+      <p class="item_title">비밀번호</p>
+      <input type="text" placeholder="******" readonly>
+			<i id="BTN_MOD_PW" class="fa-solid fa-pencil"></i>
+		</div>
+		<div class="category">
+			<p class="item_title">2차 비밀번호</p>
+			<input type="text" placeholder="******" readonly>
+	  	<i id="BTN_MOD_PW2" class="mod fa-solid fa-pencil"></i>
+	  </div>
+		<div class="category">
+      <p class="item_title">이메일</p>
+      <input id="INPUT_CON_EMAIL"type="text" placeholder="이메일" readonly>
+			<i id="BTN_MOD_EMAIL" class="mod fa-solid fa-pencil"></i>
+		</div>
+		<div class="category">
+			<p class="item_title">연락처</p>
+			<input id="INPUT_CON_PHONE" type="text" placeholder="핸드폰번호" readonly>
+			<i id="BTN_MOD_PHONE" class="mod fa-solid fa-pencil"></i>
+		</div>
+		<div class="category">
+			<p class="item_title" style="padding-left:0;"><span style="padding-left:0;" class="positive_msg">본인소유의 블럭에 표시됩니다</span></p>
+			<button id="BTN_SELECT_ICON" class="btn_default btn_blue_g">아이콘 선택</button>
+			<ul id="ICON_LIST" class="flex-row-start" style="display:none; ">
+				<li num="1" class="flex-column-start"><img src='PC/resources/images/icon/cityLogo1.png'><span>서울</span></li>
+				<li num="2" class="flex-column-start"><img src='PC/resources/images/icon/cityLogo2.png'><span>강원</span></li>
+				<li num="3" class="flex-column-start"><img src='PC/resources/images/icon/cityLogo3.png'><span>경기</span></li>
+				<li num="4" class="flex-column-start"><img src='PC/resources/images/icon/cityLogo4.png'><span>경남</span></li>
+				<li num="5" class="flex-column-start"><img src='PC/resources/images/icon/cityLogo5.png'><span>경북</span></li>
+				<li num="6" class="flex-column-start"><img src='PC/resources/images/icon/cityLogo6.png'><span>충남</span></li>
+				<li num="7" class="flex-column-start"><img src='PC/resources/images/icon/cityLogo7.png'><span>충북</span></li>
+				<li num="8" class="flex-column-start"><img src='PC/resources/images/icon/cityLogo8.png'><span>전남</span></li>
+				<li num="9" class="flex-column-start"><img src='PC/resources/images/icon/cityLogo9.png'><span>전북</span></li>
+				<li num="10" class="flex-column-start"><img src='PC/resources/images/icon/cityLogo10.png'><span>제주</span></li>
+				<li num="11" class="flex-column-start"><img src='PC/resources/images/icon/cityLogo11.png'><span>광주</span></li>
+				<li num="12" class="flex-column-start"><img src='PC/resources/images/icon/cityLogo12.png'><span>대구</span></li>
+				<li num="13" class="flex-column-start"><img src='PC/resources/images/icon/cityLogo13.png'><span>대전</span></li>
+				<li num="14" class="flex-column-start"><img src='PC/resources/images/icon/cityLogo14.png'><span>부산</span></li>
+				<li num="15" class="flex-column-start"><img src='PC/resources/images/icon/cityLogo15.png'><span>울산</span></li>
+				<li num="16" class="flex-column-start"><img src='PC/resources/images/icon/cityLogo16.png'><span>인천</span></li>
+			</ul>
+		</div>
+  </div>
+</div>
+
+<script>
+$(function(){
+	writeUserData();
+	
+	//수정버튼 기본동작
+	$("i.mod").not("#BTN_MOD_PW, #BTN_MOD_EMAIL, #BTN_MOD_PW2, #BTN_MOD_PHONE").click(function(){
+		$(this).siblings("input").removeAttr("readonly");
+		$(this).siblings("i.con").show();
+		$(this).hide();
+	});
+	
+	//확인버튼 기본동작
+	$("i.con").click(function(){
+		$(this).hide();
+		$(this).siblings("input").attr("readonly",true);
+		$(this).siblings("i.mod").show();
+	});
+
+	//닉네임 수정확인 클릭
+	$("#BTN_CON_NICK").click(function(){
+		let UserNickname = $('#P_NICKNAME').val();
+		api_post('editusernickname', {Token:TOKEN, UserNickname});
+	});
+
+	//연락처 수정 클릭
+	$("#BTN_MOD_PHONE").click(function(){
+		popupLoader('popup_phone_edit')
+	});
+
+	//비밀번호 변경 클릭
+	$("#BTN_MOD_PW").click(()=>{popupLoader('popup_pw_change')});
+
+	//이메일 수정 클릭
+	$("#BTN_MOD_EMAIL").click(function(){popupLoader('popup_email_edit')});
+
+	//2차 비밀번호 수정 클릭
+	$("#BTN_MOD_PW2").click(function(){popupLoader('popup_pw2_change')});
+
+	$("#BTN_SELECT_ICON").click(function(){
+		console.log("USER_INFO111 :",USER_INFO);
+		let x = $(this).offset().left;
+		let y = $(this).offset().top;
+		$("#ICON_LIST").css({top:y-230, left:x, display:"flex"});
+		let num = USER_INFO.ICON;
+		$("#ICON_LIST li").css({outline:'none'});
+		$(`#ICON_LIST li[num='${num}']`).css({outline:"2px solid red"});
+	});
+
+	//-- 팝업바깥 클릭시 닫기
+	$("#ICON_LIST").click(function(){$(this).fadeOut(300)});
+
+	$("#ICON_LIST li").click(function(){
+		let icon = Number($(this).attr("num"));
+		api_post("editusericon",{Token:TOKEN, ICON:icon});
+	});
+});
+</script>
+<!-- 내 정보 관리 페이지 END -->

@@ -1,0 +1,52 @@
+<!-- NOTICE_PAGE : 공지사항 영역 -->
+<div id="NOTICE_PAGE" class="flex-column-start subpage" style="height:100vh;">
+<style>
+  #NOTICE_LIST { width:100%; height:auto; border-radius:0.5rem; background:#12142a; }
+  #NOTICE_LIST_TBODY { height:100%; }
+  #NOTICE_LIST_TBODY div.table_row { height:3rem; }
+  #NOTICE_LIST_TBODY div.table_td { line-height:3rem; font-size:1.2rem; }
+  #NOTICE_LIST_TBODY div.table_td:nth-of-type(1) { flex:2.5; }
+  #NOTICE_LIST_TBODY div.table_td:nth-of-type(2) { flex:7.5; }
+  </style>
+  <p class="title">공지사항</p>
+  <div id="NOTICE_LIST" class="table_container">
+    <div id="NOTICE_LIST_TBODY" class="table_tbody">
+      <div class="table_row" recent="today">
+        <div class="table_td notice_date">23.02.06</div>
+        <div class="table_td notice_title">3D 홈페이지 서비스 오픈</div>
+      </div>
+      <div class="table_row" recent="today">
+        <div class="table_td notice_date">23.01.20</div>
+        <div class="table_td notice_title">1.04ver 업데이트 내역</div>
+      </div>
+      <div class="table_row">
+        <div class="table_td notice_date">23.01.13</div>
+        <div class="table_td notice_title">1.03ver 업데이트 내역</div>
+      </div>
+      <div class="table_row">
+        <div class="table_td notice_date">23.01.04</div>
+        <div class="table_td notice_title">1.02ver 업데이트 내역</div>
+      </div>
+      <div class="table_row">
+        <div class="table_td notice_date">23.01.03</div>
+        <div class="table_td notice_title">1.01ver 업데이트 내역</div>
+      </div>
+      <div class="table_row">
+        <div class="table_td notice_date">23.01.01</div>
+        <div class="table_td notice_title">거래소 오픈</div>
+      </div>
+    </div>
+  </div>
+<script>
+$(function(){
+  $("#NOTICE_LIST_TBODY").niceScroll();
+
+  $("#NOTICE_LIST_TBODY div.table_row").click(function(){
+    let date 	= $(this).find(".notice_date").text();
+    let title = $(this).find(".notice_title").text();
+    NOTICE_DATA = { date, title }
+    popupLoader('popup_notice');
+  });
+});
+</script>
+</div>

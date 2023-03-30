@@ -1,0 +1,117 @@
+<link rel="stylesheet" href="resource/css/page/page_search.css">
+
+<div id="SEARCH_PAGE" class="flex-column-start w-full h-full p-4">
+	<div class="result-header">
+		<i id="BTN_MAPVIEW" class="btn btn_magenta btn-change-mapview fa-solid fa-map-location-dot text-xl"></i>
+		<i id="BTN_SEARCHVIEW" class="btn btn_magenta fa-solid fa-trophy btn-change-mapview text-xl" style="display:none;"></i>
+		<div class="toprank-view">
+			<div class="rank-box" style="width:40%; left:10px; background:var(--gradient2); max-width:150px;">
+        <img src="resource/images/b1.jpg" alt="" style="width:100%; height:100%;">
+				<p class="rank-title">김환기<br></p>
+			</div>
+			<div class="rank-box" style="width:50%; z-index:1; max-width:190px;">
+        <img src="resource/images/a1.jpg" alt="" style="width:100%; height:100%;">
+				<p class="rank-title text-xl">이우환</p>
+			</div>
+			<div class="rank-box" style="width:35%; right:10px; background:var(--gradient3); max-width:140px;">
+        <img src="resource/images/c1.jpg" alt="" style="width:100%; height:100%;">
+				<p class="rank-title text-xs">K.야요이</p>
+			</div>
+		</div>
+		<div class="topmap-view" style="display:none;">
+			<div id="searchMap" class="kakao-map"></div>
+		</div>
+	</div>
+	<div class="category-list">
+		<button class="btn btn_magenta">현대미술</button>
+		<button class="btn btn_magenta">소묘</button>
+		<button class="btn btn_magenta">설치미술</button>
+		<button class="btn btn_magenta">캔버스</button>
+		<button class="btn btn_magenta">그래피티</button>
+	</div>
+	<!-- TABLE_SEARCH : 검색결과 테이블 -->
+	<div id="TABLE_SEARCH" class="item-rank-list table_container">
+		<div id="TABLE_SEARCH_TBODY" class="table_tbody">
+			<div class="table_row">
+				<div class="table_td">
+					<div class="square-box" style="background-image:url('resource/images/a1.jpg')"></div>
+				</div>
+				<div class="table_td">
+					<div class="item-title">부동산</div>
+					<div class="item-step mint">투자모집중</div>
+					<div class="item-price">10,000,000 ￦ <span class="item-piece">(남은조각수 : 3,211)</span></div>
+					<i class="item-bookmark fa-regular fa-star"></i>
+				</div>
+			</div>
+			<div class="table_row">
+				<div class="table_td">
+					<div class="square-box" style="background-image:url('resource/images/b1.jpg')"></div>
+				</div>
+				<div class="table_td">
+					<div class="item-title">상품명</div>
+					<div class="item-step mint">투자모집중</div>
+					<div class="item-price">10,000 ￦ <span class="item-piece">(남은조각수 : 311)</span></div>
+					<i class="item-bookmark fa-regular fa-star"></i>
+				</div>
+			</div>
+			<div class="table_row">
+				<div class="table_td">
+					<div class="square-box" style="background-image:url('resource/images/c1.jpg')"></div>
+				</div>
+				<div class="table_td">
+					<div class="item-title">상품명</div>
+					<div class="item-step blue">발행중</div>
+					<div class="item-price">10,000 ￦ <span class="item-piece">(남은조각수 : 23)</span></div>
+					<i class="item-bookmark fa-regular fa-star"></i>
+				</div>
+			</div>
+			<div class="table_row">
+				<div class="table_td">
+					<div class="square-box" style="background-image:url('resource/images/a2.jpg')"></div>
+				</div>
+				<div class="table_td">
+					<div class="item-title">상품명</div>
+					<div class="item-step red">투자마감</div>
+					<div class="item-price">10,000 ￦</div>
+					<i class="item-bookmark fa-regular fa-star"></i>
+				</div>
+			</div>
+			<div class="table_row">
+				<div class="table_td">
+					<div class="square-box" style="background-image:url('resource/images/b2.jpg')"></div>
+				</div>
+				<div class="table_td">
+					<div class="item-title">상품명</div>
+					<div class="item-step gray">정산중</div>
+					<div class="item-price">10,000 ￦</div>
+					<i class="item-bookmark fa-regular fa-star"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+$(function(){
+	// popupControl('show',`${POPUP_PATH}/pop_detail.html`);
+
+	$(`#TABLE_SEARCH_TBODY`).niceScroll({cursorwidth:'3px'});
+	// $("#TABLE_SEARCH_TBODY").easeScroll({
+	// 	frameRate: 60,
+	// 	animationTime: 1500,
+	// 	stepSize: 10,
+	// 	pulseAlgorithm: !0,
+	// 	pulseScale: 8,
+	// 	pulseNormalize: 1,
+	// 	accelerationDelta: 20,
+	// 	accelerationMax: 1,
+	// 	keyboardSupport: !0,
+	// 	arrowScroll: 50
+	// });
+
+	$(`.category-list`).niceScroll({horizrailenabled: true, cursorwidth:'3px',  cursordragontouch: true, touchbehavior: true, emulatetouch:true, oneaxismousemode:'auto', });
+	$(`.category-list`).getNiceScroll().resize()
+
+	// makeSearchResult();
+});
+</script>

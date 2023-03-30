@@ -1,0 +1,77 @@
+#FLOW_PAGE { display:flex; justify-content: flex-start; align-items: center;
+width:100%;
+height:100%;
+overflow-y:scroll;
+padding:8px 0;
+position:relative;
+}
+
+#FLOW_PAGE p.title { font-size:20px; padding:4px; }
+#FLOW_PAGE p.context { font-size:14px; padding:4px; }
+#FLOW_PAGE i.btn_close { top:0; }
+
+#BTN_WRITE_FLOW { 
+	position:fixed;
+	right:12px;
+	bottom:72px;
+	font-size:32px;
+}
+
+/* 플로우 바 */
+.flow-bar-box {
+	width:40px;
+	height:100%;
+}
+
+.flow-bar-container {
+	width:5px;
+	left:50%;
+	transform: translateX(-50%);
+	background:linear-gradient(to top, #D700FF, #6f00ff);
+	border-radius:5px;
+	height:100%;
+	z-index:0;
+	/* background:#000; */
+
+}
+
+.flow-bar {
+	width:100%;
+	height:calc(100% / 5);
+	background:#72056d;
+	z-index:1;
+	border-bottom:1px solid rgba(0, 0, 0, 0.315);
+	transition:.3s;
+}
+
+.flow-bar.active {
+	box-shadow: 0px 0px 13px 0px #FF00D7;
+	background:transparent;
+	/* background: */
+}
+
+.flow-bar.selected {
+	background:#fff;
+	box-shadow: 0px 0px 20px 4px #d400ff;
+
+}
+
+/* 플로우 리스트 */
+.flow-list-container {
+	width:calc(100% - 40px);
+	height:100%;
+	/* display:none; */
+}
+
+.flow-list { 
+	width:100%;
+	height:calc(100% / 5);
+	border-bottom:1px solid rgba(0, 0, 0, 0.315); 
+}
+
+/* 플로우 뷰 박스 */
+.flow-view-box { 
+	width:calc(100% - 40px);
+	height:100%;
+}
+

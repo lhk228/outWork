@@ -1,0 +1,150 @@
+<!-- PC버전 기본페이지(헤드, 메인, 푸터) -->
+
+<!-- 스크립트 -->
+<script src="PC/resources/js/common.js"></script>
+<script src="PC/resources/js/login.js"></script>
+<script src="PC/resources/js/db_api.js"></script>
+<script src="PC/resources/js/main_page.js"></script>
+<script src="PC/resources/js/detail_popup.js"></script>
+<script src="PC/resources/js/my_wallet.js"></script>
+<script src="PC/resources/js/my_page.js"></script>
+<script src="PC/resources/js/three.min.js"></script>
+<script src="PC/resources/js/vanta.globe.min.js"></script>
+
+<!-- 기본 CSS -->
+<link href="PC/resources/css/common.css" rel="stylesheet">
+<link href="PC/resources/css/button.css" rel="stylesheet">
+<link href="PC/resources/css/popup.css" rel="stylesheet">
+<link href="PC/resources/css/input.css" rel="stylesheet">
+<link href="PC/resources/css/div_table.css" rel="stylesheet">
+<link href="PC/resources/css/p_tag.css" rel="stylesheet">
+<link href="PC/resources/css/span_tag.css" rel="stylesheet">
+<link href="PC/resources/css/custom_select.css" rel="stylesheet">
+<link href="PC/resources/css/custom_alert.css" rel="stylesheet">
+</head>
+
+
+<!-- <video src="PC/resources/mov/main.mp4" autoplay="" muted="" loop="" playsinline="" style="position:fixed; top:0; left:0; z-index:-1; filter:blur(5px) brightness(70%); width:100vw; margin-top:5rem; cursor:default;"></video> -->
+<div id="VANTA" style="width:100vw; height:100vh; position:fixed; left:0; top:0; z-index:-1;"></div>
+<script>
+  VANTA.GLOBE({
+  el: "#VANTA",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00
+})
+</script>
+<a class="csicon" target="_blank" href="https://mever.me/include/consult"><i class="fa-regular fa-comment-dots" style="font-size:4rem"></i></a>
+
+<!-- header  -->
+<header class="flex-row-center">
+<p id="NAV_LOGO" class="flex-row-center">메버 STO 거래소</p>
+<a id="BTN_HOME" href="https://mever.me"><i class="fa-solid fa-house"></i></a>
+<!-- 3단 메뉴바 -->
+<input type="checkbox" id="MENU_ICON"><label for="MENU_ICON"><span></span><span></span><span></span></label>	
+
+<!-- 사이드바 -->
+<nav id="SIDEBAR">
+<ul>
+  <li class='title'>외부링크</li>
+  <li url="mever">메버 홈</li>
+  <li url="merisa">메리사</li>
+  <!-- <li url="future">쩐의 미래</li> -->
+  <li class='title'>거래소</li>
+  <li url="main_page" class="selected">메인페이지</li>
+  <li url="notice_page">공지사항</li>
+  <li url="archive_page">자료실</li>
+  <li class="login_menu title">마이페이지</li>
+  <li class="login_menu" url="my_wallet">지갑</li>
+  <li class="login_menu" url="my_page">내 정보 관리</li>
+  <li class="login_menu" url="logout">로그아웃</li>
+</ul>
+<style>
+#SIDEBAR_BOTTOM { position:absolute; bottom:0; left:0; padding:1.0rem; width:100%; }
+#SIDEBAR_BOTTOM p { font-size:1rem; color:#fff; font-weight:lighter; }
+</style>
+<div id="SIDEBAR_BOTTOM">
+  <p>(주)메버</p>
+  <p>대표자 : 이상민</p>
+  <p>사업자 등록번호 : 653-81-02062</p>
+  <p>주소 : 서울시 서초구 테헤란로 216</p>
+  <p>E-mail : sm@mever.me</p>
+  <p>개인정보책임자 : 김홍열</p>
+  <p style="margin-top:2rem;">ⓒ meVer All rights reserved</p>
+</div>
+</nav>
+<!--좌측 사이드 END -->
+
+<div id="MENU_AREA" class="flex-row-end v_center">
+  <i id='BTN_POP_NOTICE' class="fa-solid fa-bell" style="font-size:1.8rem;"></i>
+  <i id='BTN_POP_WALLET' class="fa-solid fa-wallet" style="display:none"></i>
+  <i id='BTN_POP_LOGIN' class="fa-solid fa-user"></i>
+</div>
+</header>
+<!-- header END -->
+
+<!-- LOADING_SCREEN : 로딩화면 -->
+<style>
+#LOADING_SCREEN { position:absolute; width:100%; height:100%; left:0; top:0; z-index:10; background:var(--modalColor); }
+</style>
+<div id="LOADING_SCREEN" class='flex-row-center'>
+	<img src="PC/resources/images/loading.svg" alt="">
+</div>
+<!-- LOADING_SCREEN : 로딩화면 END -->
+
+<!-- PAGE_VIEW : 페이지 뷰 / 페이지 로드되는곳 -->
+<style>
+#PAGE_VIEW { position:relative; width:100vw; height:calc(100vh - 5rem); margin:5.0rem auto 0; outline:1px solid red; overflow-x:hidden; max-width:100rem; }
+</style>
+<div id="PAGE_VIEW" class="flex-row-start">
+
+</div>
+
+<!-- PAGE_VIEW : 페이지 뷰 END -->
+
+<!-- POPUP_VIEW : 팝업 뷰 / 팝업 로드되는곳 -->
+<style>
+#POPUP_VIEW { position:fixed; top:0; left:0; z-index:200; display:none; width:100vw; height:100vh; flex-wrap:nowrap; }
+</style>
+<div id="POPUP_VIEW">
+	
+</div>
+<!-- POPUP_VIEW : 팝업 뷰 END -->
+
+<!-- FOOTER_VIEW : 하단 뷰 -->
+<style>
+#FOOTER_VIEW { width:100vw; height:100vh; background:var(--modalColor); position:fixed; bottom:0; left:0; z-index:9998; }
+</style>
+<div id="FOOTER_VIEW" class="flex-column-end" style="display:none;">
+	<!-- PROFILE_MENU : 개인 프로필 메뉴 -->
+	<style>
+	#PROFILE_MENU { background:#020516; min-width:27rem; border-radius:1rem; border:none; color:#ddd; min-height:22.5vh}
+	#PROFILE_MENU li { padding:0.5rem 1rem; font-size:1.2rem; text-align:center; cursor:pointer; transition:.3s; min-height:4rem; }
+	#PROFILE_MENU li:hover { opacity:0.5; }
+	#PROFILE_MENU li:last-child { border:none; }
+	#PROFILE_MENU li p { padding:0.5rem 0; }
+	#PROFILE_MENU li p.title { font-size:1.3rem; font-weight:bold; color:#fff; }
+	</style>
+	<ul id="PROFILE_MENU" style="display:none;">
+		<li>
+			<p id="LOGIN_ID"></p>
+			<p class="item_title">총 보유 금액</p>
+			<p id="LOGIN_COIN"></p>
+		</li>
+	</ul>
+	<!-- PROFILE_MENU : 개인 프로필 메뉴 -->
+</div>
+<!-- FOOTER_VIEW : 하단 뷰 -->
+
+<!-- CUSTOM_ALERT   -->
+<div class="ca_container">
+  <div class="ca_box" type="ok">
+    <div class="ca_title"></div>
+  </div>
+</div>
+<script>
+</script>
