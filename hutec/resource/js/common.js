@@ -32,6 +32,7 @@ $(document).ready(function(){
 
 	//-- 닫기버튼 클릭 : 팝업닫기
 	$(document).on("click",".btn_popup_close",function(){ popupControl('hide');});
+	$(document).on("click",".btn_cancel",function(){ popupControl('hide');});
 
 	//-- redLine 온오프 F4
 	$(window).on('keyup', function(e){ if(e.keyCode == 115) redLine == false ? devLine("on") : devLine("off"); });
@@ -87,14 +88,14 @@ function popupControl(view, url='', callback=false, data='데이터 X') {
 	switch(view)
 	{
 		case 'show':
-			$("#POPUP_VIEW").removeClass("hidden"); 
-			$("#POPUP_VIEW").load(url,function(){
-				setTimeout(()=>{$(".popup").css({top:'0vh'});},100);
+			$("#POPUP_VIEW").fadeIn(); 
+			$("#POPUP_VIEW").load(POPUP_PATH+url+'.html',function(){
+				setTimeout(()=>{$(".popup").css({top:'0vh',opacity:1});},100);
 			});
 			break;
 		case 'hide':
-			$(".popup").css({top:'100vh'});
-			setTimeout(()=>{$("#POPUP_VIEW").addClass("hidden");},500)
+			$(".popup").css({top:'5vh'});
+			$("#POPUP_VIEW").fadeOut();
 			break;
 	}
 	if(callback) {callback(data);}

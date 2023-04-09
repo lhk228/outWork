@@ -1,0 +1,150 @@
+<link rel="stylesheet" href="resource/css/page/page_admin.css">
+
+<!--헤더박스영역 -->
+<div class="header-box flex-row-start">
+	<div id="HEADER_TITLE">활성화된 메뉴가 없습니다. 좌측에서 메뉴를 선택해주세요</div>
+	<div class="trans-search" style="display:none;" name="TRANS_ADMIN">
+		<input id="INPUT_SEARCH" type="text" placeholder="검색(이름, 번역물번호)">
+		<input id="SELECT_DATE" type="text" style="text-align:center; cursor:pointer; margin-left:4px;" readonly placeholder="날짜선택">
+		<button id="BTN_SET_SEARCH_OPTION" class="btn btn_purple_w">검색옵션설정</button>
+		<button id="BTN_SEARCH" class="btn btn_purple">검색</button>
+	</div>
+	<div class="member-search" style="display:none;" name="MEMBER_ADMIN">
+		<input id="INPUT_SEARCH" type="text" placeholder="검색(회원명, 전화번호)">
+		<!-- <input id="SELECT_DATE" type="text" style="text-align:center; cursor:pointer; margin-left:4px;" readonly placeholder="날짜선택"> -->
+		<button id="BTN_SET_SEARCH_OPTION" class="btn btn_purple_w">검색옵션설정</button>
+		<button id="BTN_SEARCH" class="btn btn_purple">검색</button>
+	</div>
+</div>
+
+<div class="search-option-box box" style="min-height:0; min-width:0; display:none;">
+	<div id="TABLE_SEARCH_OPTION" class="table_container">
+		<div class="table_tbody">
+			<div class="table_row">
+				<div class="table_td title">회원유형</div>
+				<div class="table_td">
+					<input id="CHECK_NORMAL1" type="checkbox"><label for="CHECK_NORMAL1"></label>전체
+					<input id="CHECK_NORMAL2" type="checkbox"><label for="CHECK_NORMAL2"></label>일반
+					<input id="CHECK_NORMAL3" type="checkbox"><label for="CHECK_NORMAL3"></label>번역사
+					<input id="CHECK_NORMAL4" type="checkbox"><label for="CHECK_NORMAL4"></label>기업
+					<input id="CHECK_NORMAL5" type="checkbox"><label for="CHECK_NORMAL5"></label>활동
+					<input id="CHECK_NORMAL6" type="checkbox"><label for="CHECK_NORMAL6"></label>정지
+					<input id="CHECK_NORMAL7" type="checkbox"><label for="CHECK_NORMAL7"></label>탈퇴
+				</div>
+			</div>
+			<div class="table_row">
+				<div class="table_td title">서비스유형</div>
+				<div class="table_td">
+					<input id="CHECK_NORMALa" type="checkbox"><label for="CHECK_NORMALa"></label>AI 원본
+					<input id="CHECK_NORMALb" type="checkbox"><label for="CHECK_NORMALb"></label>AI 번역
+					<input id="CHECK_NORMALc" type="checkbox"><label for="CHECK_NORMALc"></label>휴먼 AI원본+휴먼 감수
+					<input id="CHECK_NORMALd" type="checkbox"><label for="CHECK_NORMALd"></label>AI번역 + 휴먼감수 번역
+				</div>
+			</div>
+			<div class="table_row">
+				<div class="table_td title">번역물 유형</div>
+				<div class="table_td">
+					<input id="CHECK_NORMAL" type="checkbox"><label for="CHECK_NORMALe"></label>문서
+					<input id="CHECK_NORMALf" type="checkbox"><label for="CHECK_NORMALf"></label>STT
+					<input id="CHECK_NORMALg" type="checkbox"><label for="CHECK_NORMALg"></label>TTS
+					<input id="CHECK_NORMALh" type="checkbox"><label for="CHECK_NORMALh"></label>영상
+					<input id="CHECK_NORMALi" type="checkbox"><label for="CHECK_NORMALi"></label>유튜브
+					<input id="CHECK_NORMALj" type="checkbox"><label for="CHECK_NORMALj"></label>웹번역
+					<input id="CHECK_NORMALk" type="checkbox"><label for="CHECK_NORMALk"></label>동시통역
+				</div>
+			</div>
+			<div class="table_row">
+				<div class="table_td title">번역상태</div>
+				<div class="table_td">
+					<input id="CHECK_NORMALl" type="checkbox"><label for="CHECK_NORMALl"></label>완료
+					<input id="CHECK_NORMALm" type="checkbox"><label for="CHECK_NORMALm"></label>견적중
+					<input id="CHECK_NORMALn" type="checkbox"><label for="CHECK_NORMALn"></label>번역감수
+					<input id="CHECK_NORMALo" type="checkbox"><label for="CHECK_NORMALo"></label>감수중
+					<input id="CHECK_NORMALp" type="checkbox"><label for="CHECK_NORMALp"></label>재요청
+					<input id="CHECK_NORMALq" type="checkbox"><label for="CHECK_NORMALq"></label>환불
+					<input id="CHECK_NORMALr" type="checkbox"><label for="CHECK_NORMALr"></label>취소
+					<input id="CHECK_NORMALs" type="checkbox"><label for="CHECK_NORMALs"></label>승인대기중
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 어드민 레이아웃 -->
+<div class="page-container">
+	<div id="TRANS_ADMIN" class="box resize" style="width:300px; height:50%; display:none;">
+		<div class="box-title">번역관리<i class="btn-box-close fa-solid fa-xmark"></i></div>
+		<div class="box-content">번역관리 검색결과</div>
+	</div>
+	<div id="MEMBER_ADMIN" class="box resize" style="width:300px; height:50%; display:none;">
+		<div class="box-title">회원관리<i class="btn-box-close fa-solid fa-xmark"></i></div>
+		<div class="box-content">회원관리 검색결과</div>
+	</div>
+	<div id="CAL_ADMIN" class="box resize" style="width:300px; height:50%; display:none;">
+		<div class="box-title">정산관리<i class="btn-box-close fa-solid fa-xmark"></i></div>
+		<div class="box-content">정산관리 컨텐츠</div>
+	</div>
+	<div id="BENEFIT_ADMIN" class="box resize" style="width:300px; height:50%; display:none;">
+		<div class="box-title">수익관리<i class="btn-box-close fa-solid fa-xmark"></i></div>
+		<div class="box-content">수익관리 컨텐츠</div>
+	</div>
+	<div id="PAY_ADMIN" class="box resize" style="width:300px; height:50%; display:none;">
+		<div class="box-title">결제관리<i class="btn-box-close fa-solid fa-xmark"></i></div>
+		<div class="box-content">결제관리 컨텐츠</div>
+	</div>
+	<div id="BLOG_ADMIN" class="box resize" style="width:300px; height:50%; display:none;">
+		<div class="box-title">블로그관리<i class="btn-box-close fa-solid fa-xmark"></i></div>
+		<div class="box-content">블로그관리 컨텐츠</div>
+	</div>
+	<div id="OPERATION_ADMIN" class="box resize" style="width:300px; height:50%; display:none;">
+		<div class="box-title">운영관리<i class="btn-box-close fa-solid fa-xmark"></i></div>
+		<div class="box-content">운영관리 컨텐츠</div>
+	</div>
+	<!-- <div class="box" style="width:300px; height:50%;">
+		<div class="box-title"><input class='input-box-title' placeholder='박스명 입력'><i class="btn-box-close fa-solid fa-xmark"></i></div>
+		<div class="box-content">컨텐츠</div>
+	</div> -->
+
+	<div class="button-group flex-column-start">
+		<!-- <button class="btn btn_purple_w">레이아웃 저장</button> -->
+		<!-- <button class="btn btn_green">BUTTON</button> -->
+		<!-- <button class="btn btn_green_w">BUTTON</button> -->
+		<!-- <button class="btn btn_red">BUTTON</button> -->
+		<!-- <button class="btn btn_red_w">BUTTON</button> -->
+		<button id="BTN_SAVE_LAYOUT" class="btn btn_black">레이아웃 저장</button>
+		<!-- <button class="btn btn_black_w">BUTTON</button> -->
+		<!-- <button class="btn btn_gray">BUTTON</button> -->
+		<!-- <button class="btn btn_disable">BUTTON</button> -->
+	</div>
+</div>
+
+<script>
+$(function(){
+
+	//날짜설정
+	$(`#SELECT_DATE`).daterangepicker({
+		locale: {
+			"format": 'YYYY-MM-DD HH:mm:ss'
+    },
+		timePicker: true,
+		showDropdowns: true,                     // 년월 수동 설정 여부
+    autoApply: true,
+	});
+	$(`.default-ui`).show();
+
+	//드래그 ON
+	$('.box').draggable({
+		containment : 'parent', //부모 요소 안에서만 이동 범위 제한
+		handle : '.box-title', // drag 대상 안 특정 요소에 제한 (여러개 사용 가능)
+		autoHide: true,
+	});
+
+	//사이즈 변경가능
+	$( ".box.resize" ).resizable();
+
+
+	//겁색옵션 바깥클릭하면 닫기
+	OutsideClose(".search-option-box");
+
+});
+
+</script>

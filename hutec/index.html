@@ -45,6 +45,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js" integrity="sha512-LGXaggshOkD/at6PFNcp2V2unf9LzFq6LE+sChH7ceMTDP0g2kn6Vxwgg7wkPP7AAtX+lmPqPdxB47A0Nz0cMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/ko.min.js" integrity="sha512-3kMAxw/DoCOkS6yQGfQsRY1FWknTEzdiz8DOwWoqf+eGRN45AmjS2Lggql50nCe9Q6m5su5dDZylflBY2YjABQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 	
 	<!-- 카카오맵 API -->
 	<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=2da218e93133e6b8059c9ef4d110a2cc&libraries=services"></script>
@@ -67,15 +69,14 @@
 	<!-- JS/공통 -->
 	<script src="resource/js/common.js"></script>
 	<script src="resource/js/menu.js"></script>
+	<script src="resource/js/page/admin.js"></script>
 	<script src="router.js"></script>
 
 	<!-- JS/popup -->
-	<script src="resource/js/popup/pop_chat.js"></script>
-	<script src="resource/js/popup/pop_detail.js"></script>
+	<!-- <script src="/hutec/resource/js/popup/pop_chat.js"></script> -->
 
 	<!-- JS/page -->
-	<script src="resource/js/page/page_search.js"></script>
-	<script src="resource/js/page/page_join.js"></script>
+	<!-- <script src="/hutec/resource/js/page/page_search.js"></script> -->
 
 </head>
 <body class='fixed w-screen h-full text-white' >
@@ -91,8 +92,7 @@
 				<li>MENU</li>
 				<li>MENU</li>
 				<ul class="header-submenu drop-shadow-xl">
-					<li>submenu</li>
-					<li>submenu</li>
+					<li><a href="#/admin">관리자페이지</a></li>
 					<li>submenu</li>
 					<li>submenu</li>
 					<li>submenu</li>
@@ -110,34 +110,41 @@
 			</ul>
 		</header>
 		<ul class="h-full sidemenu">
-			<li><i class="fa-solid fa-table"></i></li>
-			<li><i class="fa-solid fa-user"></i></li>
-			<li><i class="fa-solid fa-language"></i></li>
-			<li><i class="fa-solid fa-file-circle-check"></i></li>
-			<li><i class="fa-solid fa-won-sign"></i></li>
-			<li><i class="fa-solid fa-credit-card"></i></li>
-			<li><i class="fa-solid fa-gear"></i></li>
+			<li><i name="DASHBOARD" class="fa-solid fa-table"></i></li>
+			<li><i name="TRANS_ADMIN" class="fa-solid fa-language"></i></li>
+			<li><i name="MEMBER_ADMIN" class="fa-solid fa-user"></i></li>
+			<li><i name="CAL_ADMIN" class="fa-solid fa-calculator"></i></li>
+			<li><i name="BENEFIT_ADMIN" class="fa-solid fa-won-sign"></i></li>
+			<li><i name="PAY_ADMIN" class="fa-solid fa-credit-card"></i></li>
+			<li><i name="OPERATION_ADMIN" class="fa-solid fa-gear"></i></li>
+			<li><i name="BLOG_ADMIN" class="fa-solid fa-blog"></i></li>
 		</ul>
 	</div>
 
 	<!-- PAGE_VIEW : 페이지 표시되는곳 -->
-	<section id="PAGE_VIEW" class="fixed w-full bottom-16 flex-column-center" style="">
+	<section id="PAGE_VIEW" class="fixed w-full bottom-16 flex-column-center">
 	</section>
 
 <footer class="flex-row-center">ⓒ HUTEC & METATRANCE 2023</footer>
 </section>
 
+<!-- PAGE_TRANSITION : 페이지 전환효과 -->
+<section id="PAGE_TRANSITION" style="z-index:1000;"><div></div><div></div></section>
 
 <!-- POPUP_VIEW : 팝업 표시되는곳 -->
-<!-- <section id="POPUP_VIEW" class="fixed w-screen h-full z-40 hidden flex-row-center"> -->
-<!-- </section> -->
+<section id="POPUP_VIEW" class="fixed w-screen h-full z-40 hidden flex-row-center" style="display:none;"></section>
 
 <!-- CUSTOM_ALERT   -->
-<!-- <section class="ca_container"> -->
-	<!-- <div class="ca_box" type="ok"> -->
-		<!-- <div class="ca_title"></div> -->
-	<!-- </div> -->
-<!-- </section> -->
+<section class="ca_container">
+	<div class="ca_box" type="ok">
+		<div class="ca_title"></div>
+	</div>
+</section>
 
 </body>
+<script>
+$(function(){
+  console.log('helloooo');
+});
+</script>
 </html>
