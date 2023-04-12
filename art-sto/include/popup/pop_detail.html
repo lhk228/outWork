@@ -3,42 +3,204 @@
 	<div class="popup-header">
 		<i class="fa-solid fa-xmark btn_popup_close z-10"></i>
 		<i id="BTN_FLOW_LEFT" class="fa-solid fa-arrow-left z-10"></i>
-		<span class="popup_title">상품상세정보</span>
+		<span class="popup_title">작품상세정보</span>
 	</div>
   <!-- popup-main : 팝업 메인영역 -->
 	<div class="popup-main flex-column-start">
 		<!-- detail-box : 상세정보 박스 -->
-		<div class="detail-box" style="">
+		<div class="detail-box">
 			<div class="detail-header">
 				<div class="item-thumb square-box" style="background-image:url('resource/images/test_thumb.jpg'); width:25%;"></div>
-				<div class="item-detail" style="width:75%;">
+				<div class="item-detail">
 					<p class="item-title">상품명</p>
-					<p class="item-context">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, eum?</p>
+					<p class="item-context">이우환</p>
 					<p class="item-price">500,00,000 원</p>
+	
+				<!-- Chart code -->
+				<script>
+				am5.ready(function() {
+				
+				// Create root element
+				// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+				var root = am5.Root.new("chartdiv");
+				root._logo.dispose();
+				
+				// Set themes
+				// https://www.amcharts.com/docs/v5/concepts/themes/
+				root.setThemes([
+					am5themes_Animated.new(root)
+				]);
+				
+				
+				// Create chart
+				// https://www.amcharts.com/docs/v5/charts/xy-chart/
+				var chart = root.container.children.push(am5xy.XYChart.new(root, {
+					panX: true,
+					panY: true,
+					wheelX: "panX",
+					wheelY: "zoomX",
+					pinchZoomX:true
+				}));
+				
+				chart.get("colors").set("step", 3);
+				
+				
+				// Add cursor
+				// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+				var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {}));
+				cursor.lineY.set("visible", false);
+				
+				
+				// Create axes
+				// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+				var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
+					maxDeviation: 0.3,
+					baseInterval: {
+						timeUnit: "day",
+						count: 1
+					},
+					renderer: am5xy.AxisRendererX.new(root, {
+						fill: am5.color(0xffffff),
+					}),
+					tooltip: am5.Tooltip.new(root, {}),
+					
+				}));
+				
+				var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+					maxDeviation: 0.3,
+					renderer: am5xy.AxisRendererY.new(root, {
+						fill: am5.color(0xffffff),
+					})
+				}));
+				
+				var xRenderer = xAxis.get("renderer");
+				var yRenderer = yAxis.get("renderer");
+				xRenderer.labels.template.setAll({fill: am5.color(0xffffff),fontSize:10});
+				yRenderer.labels.template.setAll({fill: am5.color(0xffffff),fontSize:10});
+
+				// Create series
+				// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+				var series = chart.series.push(am5xy.LineSeries.new(root, {
+					name: "Series 1",
+					xAxis: xAxis,
+					yAxis: yAxis,
+					valueYField: "value",
+					valueXField: "date",
+					
+					tooltip: am5.Tooltip.new(root, {
+						labelText: "{valueY}"
+					}),
+				}));
+				series.strokes.template.setAll({
+					strokeWidth: 2,
+					strokeDasharray: [3, 3]
+				});
+				
+				// Create animating bullet by adding two circles in a bullet container and
+				// animating radius and opacity of one of them.
+				series.bullets.push(function(root, series, dataItem) {  
+					if (dataItem.dataContext.bullet) {    
+						var container = am5.Container.new(root, {});
+						var circle0 = container.children.push(am5.Circle.new(root, {
+							radius: 5,
+							fill: am5.color(0xD700FF)
+						}));
+						var circle1 = container.children.push(am5.Circle.new(root, {
+							radius: 5,
+							fill: am5.color(0xD700FF)
+						}));
+				
+						circle1.animate({
+							key: "radius",
+							to: 20,
+							duration: 1000,
+							easing: am5.ease.out(am5.ease.cubic),
+							loops: Infinity
+						});
+						circle1.animate({
+							key: "opacity",
+							to: 0,
+							from: 1,
+							duration: 1000,
+							easing: am5.ease.out(am5.ease.cubic),
+							loops: Infinity
+						});
+				
+						return am5.Bullet.new(root, {
+							sprite: container
+						})
+					}
+				})
+				
+				// Set data
+				var data = [{
+					date: new Date(2023, 3, 12).getTime(),
+					value: 10
+				}, {
+					date: new Date(2023, 3, 13).getTime(),
+					value: 21
+				}, {
+					date: new Date(2023, 3, 14).getTime(),
+					value: 56
+				}, {
+					date: new Date(2023, 3, 15).getTime(),
+					value: 57
+				}, {
+					date: new Date(2023, 3, 16).getTime(),
+					value: 59
+				}, {
+					date: new Date(2023, 3, 17).getTime(),
+					value: 80
+				}, {
+					date: new Date(2023, 3, 18).getTime(),
+					value: 90,
+					bullet: true
+				}]
+				
+				series.data.setAll(data);
+				
+				
+				// Make stuff animate on load
+				// https://www.amcharts.com/docs/v5/concepts/animations/
+				series.appear(1000);
+				chart.appear(1000, 100);
+				
+				}); // end am5.ready()
+				</script>
+				
 				</div>
+				<div id="chartdiv"></div>
 			</div>
-			<div id="ITEM_PROGRESS" class="detail-flow progress-container flex-row-center">
-				<div class="progress-name-container">
-					<p class="progress-name selected">사전공개중</p>
-					<p class="progress-name">투자모집</p>
-					<p class="progress-name">운영기간</p>
-					<p class="progress-name">수익분배</p>
-				</div>
-				<div class="progress-bar-container">
-					<div class="progress-bar"><span class="progress-ball"></span></div>
-				</div>
-			</div>
+			<ul class="tab-menu">
+				<li class="selected">종합</li>
+				<li>투자TALK</li>
+				<li>뉴스</li>
+				<li>모집현황</li>
+				<li>작품정보</li>
+			</ul>
 			<div class="detail-main">
 				<!-- 모집달성률 -->
-				<div class="goal-rate-box">
-					<p style="font-size:12px;">모집현황</p>
-					<div class="goal-rate-container">
-						<div class="goal-rate-bar"></div>
-						<span class="goal-rate-text">0 / 50,000</span>
+				<div id="ITEM_PROGRESS" class="detail-flow progress-container flex-row-center" style="height:110px;" page="모집현황">
+					<div class="progress-name-container" style="height:10%;">
+						<p class="progress-name selected">사전공개중</p>
+						<p class="progress-name">투자모집</p>
+						<p class="progress-name">운영기간</p>
+						<p class="progress-name">수익분배</p>
+					</div>
+					<div class="progress-bar-container">
+						<div class="progress-bar"><span class="progress-ball"></span></div>
+					</div>
+					<div class="goal-rate-box">
+						<p style="font-size:12px;">모집현황</p>
+						<div class="goal-rate-container">
+							<div class="goal-rate-bar"></div>
+							<span class="goal-rate-text">0 / 50,000</span>
+						</div>
 					</div>
 				</div>
+
 				<!-- 투자 talk -->
-				<div class="detail-talk">
+				<div class="detail-talk" page="투자TALK">
 					<p class="title flex-row-start"><i class="fa-solid fa-comments" style="margin-right:8px;"></i> 투자 TALK</p>
 					<div id="CHAT_DIALOGUE" class="flex-row-center">
 						<div class="chat-room">
@@ -59,24 +221,48 @@
 						</div>
 					</div>
 				</div>
-				<!-- 위치정보 -->
-				<div class="overoll-box">
-					<button id="BTN_COLLAPSE" class="btn btn_magenta" >위치정보</button>
-				</div>
-				<div id="DIV_COLL_LOCATION" class="detail-location">
-					<div id="MAP_COLL" class="kakaomap"></div>
-				  </div>				
-				
-				<!-- 투자기획/설명서 -->
-				<div class="detail-location overoll-box">
-					<button id="BTN_FLOWCHART" class="btn btn_magenta">진행보고</button>
+
+				<!-- 뉴스 -->
+				<div class='news-page' page="뉴스">
+					<p><i class="fa-solid fa-newspaper" style="padding-right:8px;"></i>뉴스</p>
+					<div class="news-box" link="https://www.sedaily.com/NewsView/22QBQKSS4B">
+						<p class="news-title">2년만에 10억 껑충…'이우환 바람' 이유가 있다. - 서울경제</p>
+						<p class="news-content">문화 · 스포츠 > 문화 뉴스: 한국 추상미술을 대표하는 화가 이우환(85)이 국내 생존작가 중 처음으로 경매 낙찰가 30억 원을 넘어섰다.</p>
+						<p class="news-date">2021.08.25</p>
+					</div>
+					<div class="news-box" link="https://www.koreaittimes.com/news/articleView.html?idxno=120639">
+						<p class="news-title">DB금융투자, 쿠사마 야요이, 앤디 워홀 등 유명작가 '아트컬렉션' 개최</p>
+						<p class="news-content">DB금융투자가 DB알파플러스클럽(DB Alpha+ Club) 내 VIP 라운지에서 '아트컬렉션'을 개최하고 유명작가 작품 전시와 아트테크 세미나를 실시한다고 30...</p>
+						<p class="news-date">2주전</p>
+					</div>
+					<div class="news-box" link="https://www.joongang.co.kr/bridge?cloc=joongang-marticle-returnhome">
+						<p class="news-title">김환기 132억 ‘우주’가 열렸다…작품 30여점 볼 기회</p>
+						<p class="news-content">최근 김환기의 그림 30여 점이 서울에서 열리는 두 전시에 같이 나왔다. 서울 영동대로 S-타워의 문화예술공간 S2A에서 열리는 '환기의 노…</p>
+						<p class="news-date">20222.10.23</p>
+					</div>
 				</div>
 
-				<!-- 판매자정보 -->
-				<div class="detail-seller overoll-box">
-					<button id="BTN_ARTIST_INFO" class="btn btn_magenta">작가정보</button>
-				</div>
+				<iframe class="news-popup" style="display:none;"></iframe>
+				<div page="작품정보" style="padding:12px;">
+					<p><i class="fa-solid fa-book" style="padding-right:8px;"></i>정보</p>
+					<!-- 위치정보 -->
+					<div class="overoll-box">
+						<button id="BTN_COLLAPSE" class="btn btn_magenta" >위치정보</button>
+					</div>
+					<div id="DIV_COLL_LOCATION" class="detail-location">
+						<div id="MAP_COLL" class="kakaomap"></div>
+						</div>				
 
+					<!-- 투자기획/설명서 -->
+					<div class="detail-location overoll-box">
+						<button id="BTN_FLOWCHART" class="btn btn_magenta">진행보고</button>
+					</div>
+
+					<!-- 판매자정보 -->
+					<div class="detail-seller overoll-box">
+						<button id="BTN_ARTIST_INFO" class="btn btn_magenta">작가정보</button>
+					</div>
+				</div>
 				<div class="seller-detail-box flex-column-start" style="display:none;">
 					<p class="seller-name">작가명</p>
 					<p class="seller-explan">설명</p>
@@ -138,11 +324,24 @@
 
 <script>
 $(function() {
-//정보 채우기
-viewItemDetail();
+	//정보 채우기
+	viewItemDetail();
+
+	$(".tab-menu li").click(function(){
+		$(".tab-menu li").removeClass("selected");
+		$(this).addClass("selected");
+
+		let pageName = $(this).text();
+
+		if(pageName == '종합'){ $(`div[page]`).show(); }
+		else {
+			$(`div[page]`).hide();
+			$(`div[page='${pageName}']`).show();
+		}
+	});
 
 
-// click FILE INPUT
+	// click FILE INPUT
 	$('#FILE_UPLOAD').change(function(){
 		var upload_fileName = $(this).val().split('\\').pop();
 		g_fileArray.push(` ${event.target.value}`);

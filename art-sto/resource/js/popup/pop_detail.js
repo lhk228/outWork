@@ -141,10 +141,15 @@ $(document).on('click','#BTN_FLOW_LEFT',function(){
 	let postBox 		= $(`.post-view-box`);			//진행보고 > 포스팅박스
   let postList 		= $(".post-list-container");//포스트 목록 컨테이너
 	let artistBox		= $(`.seller-detail-box`);
-
+	let newsBox			= $(`.news-popup`);
 	if(artistBox.css("display") != "none")
 	{
 		artistBox.fadeOut();
+		return;
+	}
+	if(newsBox.css("display") != "none")
+	{
+		newsBox.fadeOut();
 		return;
 	}
 	//상품상세정봉에서 뒤로가기면 닫기
@@ -177,6 +182,14 @@ $(document).on('click','#BTN_ARTIST_INFO',function(){
 	$(`.seller-name`).text(artist);
 	$(`.seller-explan`).text(explan);	$(`.seller-url a`).attr("href",url);
 
+})
+
+//뉴스클릭 : 뉴스링크 iframe으로 열어준다..
+$(document).on('click','.news-box',function(){
+	$(`.news-popup`).fadeIn();
+	let link = $(this).attr("link");
+	$(`.news-popup`).attr("src", link);
+	
 })
 //-- make flow list
 function makeFlowChartList(obj)

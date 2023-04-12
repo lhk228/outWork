@@ -30,12 +30,18 @@ position:relative;
 	padding:0 12px;
 }
 
+.detail-header > #chartdiv { width:55%; height:120%; }
+.detail-header > .item-detail { width:25%; }
 .detail-header > .item-detail p { font-size:12px; padding-left:8px; }
 .detail-header > .item-detail p.item-title { font-size:14px; }
 .detail-header > .item-detail p.item-context { padding:4px 0 4px 8px; }
 .detail-header > .item-detail p.item-price { font-weight:600; }
 .detail-header > .item-button { display:flex; align-items: center; justify-content: center; flex-flow:row wrap; height:100%; }
 .detail-header > .item-button button { width:100%; font-size:14px; }
+
+.tab-menu { display:flex; width:100%; justify-content: space-between; align-items: center; height:40px; padding:0 16px; font-size:14px; color:#ddd; }
+.tab-menu li { padding-bottom:4px; font-weight:400; }
+.tab-menu li.selected { color:#fff; border-bottom:1px solid #FF00D7; font-weight:600; }
 
 /* goal-rate : 모집달성률 */
 .goal-rate-box {
@@ -78,7 +84,7 @@ position:relative;
 	display:flex;
 	justify-content: center;
 	align-items: center;
-	padding:20px 0;
+	padding:10px 0;
 }
 
 .overoll-box button {
@@ -178,6 +184,21 @@ position:relative;
 .chat-input input { width:calc(95% - 60px); height:80%; }
 .chat-input button { width:50px; height:80%; margin-left:10px; }
 
+/* 뉴스 */
+.news-page	{ padding:8px; }
+.news-box { margin:8px 0; }
+.news-title { font-weight:600; }
+.news-content { font-size:14px; font-weight:400; margin-top:8px; }
+.news-date { font-size:12px; font-weight:400; color:#bbb; text-align:right; padding-right:8px; }
+.news-popup	{
+	position:fixed; width:90%; height:90%;
+	background:rgba(255,255,255,0.8);
+	top:50%;
+	left:50%;
+	transform:translate(-50%, -50%);
+	padding:12px;
+	z-index:2;
+}
 /* 플로우 */
 .flow-box { height:100%; width:100%; }
 #BTN_FLOW_LEFT { position:fixed; top:12px; left:8px; font-size:30px; }
@@ -256,7 +277,7 @@ position:relative;
 
 
 /* LOCATION ADDED MAP */
-#MAP_COLL { width:100%; height:100%; }
+#MAP_COLL { width:100%; height:100%; z-index:0; }
 #DIV_COLL_LOCATION { height:200px; width:100%; display:none; }
 
 /* TITLE INPUT  */
