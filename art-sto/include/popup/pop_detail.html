@@ -5,7 +5,7 @@
 		<i id="BTN_FLOW_LEFT" class="fa-solid fa-arrow-left z-10"></i>
 		<span class="popup_title">작품상세정보</span>
 	</div>
-  <!-- popup-main : 팝업 메인영역 -->
+	<!-- popup-main : 팝업 메인영역 -->
 	<div class="popup-main flex-column-start">
 		<!-- detail-box : 상세정보 박스 -->
 		<div class="detail-box">
@@ -167,18 +167,18 @@
 				
 				}); // end am5.ready()
 				</script>
-				
 				</div>
 				<div id="chartdiv"></div>
 			</div>
 			<ul class="tab-menu">
 				<li class="selected">종합</li>
-				<li>투자TALK</li>
+				<li>투자 큐레이션</li>
 				<li>뉴스</li>
 				<li>모집현황</li>
 				<li>작품정보</li>
 			</ul>
 			<div class="detail-main">
+				
 				<!-- 모집달성률 -->
 				<div id="ITEM_PROGRESS" class="detail-flow progress-container flex-row-center" style="height:110px;" page="모집현황">
 					<div class="progress-name-container" style="height:10%;">
@@ -198,10 +198,10 @@
 						</div>
 					</div>
 				</div>
-
+				
 				<!-- 투자 talk -->
 				<div class="detail-talk" page="투자TALK">
-					<p class="title flex-row-start"><i class="fa-solid fa-comments" style="margin-right:8px;"></i> 투자 TALK</p>
+					<p class="title flex-row-start"><i class="fa-solid fa-comments" style="margin-right:8px;"></i>투자 큐레이션</p>
 					<div id="CHAT_DIALOGUE" class="flex-row-center">
 						<div class="chat-room">
 							<div class="chat-box p-4">
@@ -209,7 +209,7 @@
 									<div class="square-box" style="background-image:url('resource/images/test_thumb.jpg')"></div>
 								</div>
 								<div class="chat-content">
-									<div class="user-id">관리자</div>
+									<div class="user-id">큐레이터</div>
 									<div class="user-chat">안녕하세요</div>
 									<div class="chat-timelog text-sm">19:37</div>
 								</div>
@@ -242,27 +242,30 @@
 					</div>
 				</div>
 
+				<!-- 뉴스팝업 -->
 				<iframe class="news-popup" style="display:none;"></iframe>
+
 				<div page="작품정보" style="padding:12px;">
 					<p><i class="fa-solid fa-book" style="padding-right:8px;"></i>정보</p>
+					<!-- 작가정보 -->
+					<div class="detail-seller overoll-box">
+						<button id="BTN_ARTIST_INFO" class="btn btn_magenta">작가정보</button>
+					</div>
+					
+					<!-- 투자기획/설명서 -->
+					<div class="detail-location overoll-box">
+						<button id="BTN_FLOWCHART" class="btn btn_magenta">진행보고</button>
+					</div>
+					
 					<!-- 위치정보 -->
 					<div class="overoll-box">
 						<button id="BTN_COLLAPSE" class="btn btn_magenta" >위치정보</button>
 					</div>
 					<div id="DIV_COLL_LOCATION" class="detail-location">
 						<div id="MAP_COLL" class="kakaomap"></div>
-						</div>				
-
-					<!-- 투자기획/설명서 -->
-					<div class="detail-location overoll-box">
-						<button id="BTN_FLOWCHART" class="btn btn_magenta">진행보고</button>
-					</div>
-
-					<!-- 판매자정보 -->
-					<div class="detail-seller overoll-box">
-						<button id="BTN_ARTIST_INFO" class="btn btn_magenta">작가정보</button>
-					</div>
+					</div>				
 				</div>
+
 				<div class="seller-detail-box flex-column-start" style="display:none;">
 					<p class="seller-name">작가명</p>
 					<p class="seller-explan">설명</p>
@@ -279,46 +282,46 @@
 				</ul>
 			</div>
 
-      <!-- 일지 리스트 -->
+			<!-- 일지 리스트 -->
 			<ul class="post-list-container">
 				<li class="post-list" style="text-align: center">  
-          <i id="BTN_ADD_FLOW" class="fa-solid fa-plus"></i>
+					<i id="BTN_ADD_FLOW" class="fa-solid fa-plus"></i>
 				</li>
 			</ul>
-      
-      <!-- POST_PAGE : 글 작성하기-->
+			
+			<!-- POST_PAGE : 글 작성하기-->
 			<div id="POST_PAGE" class="post-view-box hidden">
 				<button></button>
 				<input class="inputTitle" id="TITLE_INPUT" type="text" autocomplete="off" placeholder="제목을 입력해주세요">
 				<div class="post-menu">
-          <div class="inputBtnBox flex-row-start">
-            <i id="BTN_IMG_UPLOAD" class="fa-solid fa-image"></i>
-            <i id="BTN_VIDEO_UPLOAD" class="fa-sharp fa-solid fa-photo-film"></i>
-            <i id="BTN_FILE_UPLOAD" class="fa-solid fa-file"></i>
-            <p id="UPLOAD_FILE_NAME"></p>
+					<div class="inputBtnBox flex-row-start">
+						<i id="BTN_IMG_UPLOAD" class="fa-solid fa-image"></i>
+						<i id="BTN_VIDEO_UPLOAD" class="fa-sharp fa-solid fa-photo-film"></i>
+						<i id="BTN_FILE_UPLOAD" class="fa-solid fa-file"></i>
+						<p id="UPLOAD_FILE_NAME"></p>
 					</div>
-        </div>
+				</div>
 				<div contenteditable="true" id="CONTEXT_INPUT" class="contextInput"></div> 
 				<input type="file" id="IMG_UPLOAD" value="file name" placeholder="file name" accept="image/*" style="display: none;">
 				<input type="file" id="FILE_UPLOAD" value="file name" placeholder="file name" accept=".doc,.xls,.ppt,.pdf,.hwp" style="display: none;">
 				<button id="BTN_SAVE_FLOWCHART" class="btn btn_magenta w-52 mt-4 text-sm">저장하기</button>
 			</div>
 
-      <!-- POPUP_ADD_VIDEO : 동영상 추가팝업 -->
-      <div id="POPUP_ADD_VIDEO" class="popup-container flex-row-center" style="display:none;">
-        <div class="popup video-popup" style="">
-          <div class="popup-header">동영상 추가하기 <i class="fa-solid fa-xmark btn_popup_close z-10"></i></div>
-          <div class="popup-main">
-            <input id="INPUT_VIDEO_LINK" type="text" placeholder="동영상 링크를 넣어주세요">
-          </div>
-          <div class="popup-bottom justify-end pt-0">
-            <button id="BTN_VIDEO_CONFIRM" class="btn btn_magenta w-full h-full">확인</button>
-          </div>
-        </div>
-      </div>
+			<!-- POPUP_ADD_VIDEO : 동영상 추가팝업 -->
+			<div id="POPUP_ADD_VIDEO" class="popup-container flex-row-center" style="display:none;">
+				<div class="popup video-popup" style="">
+					<div class="popup-header">동영상 추가하기 <i class="fa-solid fa-xmark btn_popup_close z-10"></i></div>
+					<div class="popup-main">
+						<input id="INPUT_VIDEO_LINK" type="text" placeholder="동영상 링크를 넣어주세요">
+					</div>
+					<div class="popup-bottom justify-end pt-0">
+						<button id="BTN_VIDEO_CONFIRM" class="btn btn_magenta w-full h-full">확인</button>
+					</div>
+				</div>
+			</div>
 			<i id="BTN_WRITE_FLOW" class="fa-solid fa-pen-to-square"></i>
 		</div>
-  <!-- popup-main : 팝업 메인영역 END -->
+	<!-- popup-main : 팝업 메인영역 END -->
 	</div>
 </div>
 
@@ -396,44 +399,41 @@ $(function() {
 
 	//click VIDEO UPLOAD
 
-  //영상추가버튼 클릭 : 영상추가팝업
+	//영상추가버튼 클릭 : 영상추가팝업
 	$("#BTN_VIDEO_UPLOAD").click(function(){
-    var popup = $("#POPUP_ADD_VIDEO");
-    popup.show();
-  });
+		var popup = $("#POPUP_ADD_VIDEO");
+		popup.show();
+	});
 
-  //영상추가팝업 닫기
+	//영상추가팝업 닫기
 	$("#POPUP_ADD_VIDEO .btn_popup_close").click(function(){
-    $("#POPUP_ADD_VIDEO").fadeOut();
+		$("#POPUP_ADD_VIDEO").fadeOut();
 		return false;
 	});
 
-  //동영상링크 확인버튼 : 본문에 영상삽입
-  $("#BTN_VIDEO_CONFIRM").click(function(){
+	//동영상링크 확인버튼 : 본문에 영상삽입
+	$("#BTN_VIDEO_CONFIRM").click(function(){
 
-    let link = $("#INPUT_VIDEO_LINK").val();
+		let link = $("#INPUT_VIDEO_LINK").val();
 
-    //영상목록에 링크추가
-    g_videoArray.push(` ${link}`)
+		//영상목록에 링크추가
+		g_videoArray.push(` ${link}`)
 		console.log("videoArray :",g_videoArray);
 
 		$("#INPUT_VIDEO_LINK").val('')
 		$("#CONTEXT_INPUT").append(`${link}`)
-    $("#POPUP_ADD_VIDEO").fadeOut();
+		$("#POPUP_ADD_VIDEO").fadeOut();
 	})
 
-  });
-
-
-
+});
 
 	goalRateBarControl(); //상품 모집달성률
 
 	var mapContainer = document.getElementById('MAP_COLL'), // 지도를 표시할 div 
-    mapOption = { 
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
-    };
+		mapOption = { 
+				center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+				level: 3 // 지도의 확대 레벨
+		};
 
 	// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 	var map = new kakao.maps.Map(mapContainer, mapOption); 

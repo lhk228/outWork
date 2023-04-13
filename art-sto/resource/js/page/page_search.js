@@ -1,5 +1,5 @@
 var searchText = '';
-var sampleData = 
+var sampleData =
 [
 	{ key:'a1', name:'바람', artist:'이우환', price:3100000000, explan:'이우환(李禹煥, 1936년 6월 24일 ~ )은 대한민국의 조각가, 화가이다. 일본의 획기적 미술 운동인 모노파의 창시자이며, 동양사상으로 미니멀리즘의 한계를 극복하여 국제적으로 명성이 높다. 주요 작품으로는 〈선으로부터〉(1974), 〈동풍〉(1974), 〈조응〉(1988), 〈점에서〉(1975), 〈상응〉(1998) <관계항(Relatum> (2010)등이 있다.', url:'https://ko.wikipedia.org/wiki/%EC%9D%B4%EC%9A%B0%ED%99%98'},
 	{ key:'a2', name:'바람과 함께', artist:'이우환', price:400000000, explan:'이우환(李禹煥, 1936년 6월 24일 ~ )은 대한민국의 조각가, 화가이다. 일본의 획기적 미술 운동인 모노파의 창시자이며, 동양사상으로 미니멀리즘의 한계를 극복하여 국제적으로 명성이 높다. 주요 작품으로는 〈선으로부터〉(1974), 〈동풍〉(1974), 〈조응〉(1988), 〈점에서〉(1975), 〈상응〉(1998) <관계항(Relatum> (2010)등이 있다.', url:'https://ko.wikipedia.org/wiki/%EC%9D%B4%EC%9A%B0%ED%99%98'},
@@ -8,8 +8,8 @@ var sampleData =
 	{ key:'c1', name:'호박', artist:'쿠사마야요이', price:4500000000, explan:'쿠사마 야요이(1929년 3월 22일 ~ )는 일본의 조각가 겸 설치미술가이다. 쿄토시립 미술 공예학교(현 교토예대) 졸업. 1929년 일본 나가노현에서 출생, 1957년부터 1972년까지 뉴욕에서 작품 활동을 전개하였다. ',url:'https://ko.wikipedia.org/wiki/%EA%B5%AC%EC%82%AC%EB%A7%88_%EC%95%BC%EC%9A%94%EC%9D%B4'},
 	{ key:'c2', name:'붉은호박', artist:'쿠사마야요이', price:200000000, explan:'쿠사마 야요이(1929년 3월 22일 ~ )는 일본의 조각가 겸 설치미술가이다. 쿄토시립 미술 공예학교(현 교토예대) 졸업. 1929년 일본 나가노현에서 출생, 1957년부터 1972년까지 뉴욕에서 작품 활동을 전개하였다. ',url:'https://ko.wikipedia.org/wiki/%EA%B5%AC%EC%82%AC%EB%A7%88_%EC%95%BC%EC%9A%94%EC%9D%B4' },
 ];
+
 var SELECTED_ITEM;
-//READY FUNCTION
 
 //맵뷰변경버튼 클릭 : 랭킹 <=> 카카오맵 전환
 $(document).on('click','.btn-change-mapview',function(){
