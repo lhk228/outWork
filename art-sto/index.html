@@ -72,7 +72,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://webfontworld.github.io/SCoreDream/SCoreDream.css" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
 	<!-- CSS  -->
 	<link rel="stylesheet" href="resource/css/reset.css">
 	<link rel="stylesheet" href="resource/css/custom_alert.css">
@@ -103,7 +103,7 @@
 <section id="MODAL" class="fixed w-screen h-screen z-40 bg-neutral-900/90 hidden"></section>
 <section class="z-40">
 	<header class="fixed w-full p-2 flex-row-center top-0 left-0">
-		<a href="#/" class="absolute left-4 flex-row-center" style="color:#fff;"><p class="cursor-pointer w-16" alt="">BLUECHIP</p></a>
+		<a href="#/" class="absolute left-4 flex-row-center" style="color:#fff;"><p class="cursor-pointer w-16" alt="" style="font-family: 'Orbitron'!important; font-size:13px; ">BLUECHIP</p></a>
 		<input class='p-2 text-sm absolute' id="SEARCH_ITEM_NAME" type="text" placeholder="상품명 /위치를 입력해주세요" style="width:calc(100% - 200px); left:100px;">
 		<i id="BTN_SEARCH_ITEM" class="fa-solid fa-magnifying-glass text-xl"></i>
 		<nav class="grow absolute right-4">
@@ -121,11 +121,11 @@
 	</header>
 	
 	<footer class="fixed w-screen bottom-0 flex-row-sb px-4 left-0">
-		<i id="BTN_BOOKMARK" class="btn_nav fa-solid fa-star text-4xl" page="search"></i>
-		<i id="BTN_ALLIST"class="btn_nav fa-solid fa-list text-4xl" page="search"></i>
-		<i class="btn_nav fa-solid fa-cubes text-4xl" popup="pop_sto"></i>
-		<i class="btn_nav fa-solid fa-robot text-4xl" popup="pop_gpt"></i>
-		<i id="GO_MARKET" class="fa-solid fa-sack-dollar text-4xl"></i>
+		<i id="BTN_BOOKMARK" class="btn_nav fa-solid fa-bookmark text-3xl" page="search"></i>
+		<i id="BTN_ALLIST"class="btn_nav fa-solid fa-list text-3xl" page="search"></i>
+		<i class="btn_nav fa-solid fa-cubes text-3xl" popup="pop_sto"></i>
+		<i class="btn_nav fa-brands fa-app-store text-3xl" popup="pop_gpt"></i>
+		<i id="GO_MARKET" class="fa-solid fa-sack-dollar text-3xl"></i>
 	</footer>
 </section>
 <!-- UI END -->
@@ -135,7 +135,6 @@
 	<div></div>
 	<div></div>
 </section>
-
 
 <!-- PAGE_VIEW : 페이지 표시되는곳 -->
 <section id="PAGE_VIEW" class="fixed w-full bottom-16 flex-column-center" style="height:calc(100% - 120px);"></section>
@@ -151,10 +150,6 @@
 	</div>
 </section>
 
-<!-- CAMERA_VIEW : 사진촬영 페이지 -->
-<!-- <section id="CAMERA_VIEW"></section> -->
-
-</section>
 <script>
 $(function(){
 	$("#PAGE_VIEW").niceScroll();

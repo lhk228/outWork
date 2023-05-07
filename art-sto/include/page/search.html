@@ -5,32 +5,35 @@
 		<i id="BTN_MAPVIEW" class="btn btn_magenta btn-change-mapview fa-solid fa-map-location-dot text-xl"></i>
 		<i id="BTN_SEARCHVIEW" class="btn btn_magenta fa-solid fa-trophy btn-change-mapview text-xl" style="display:none;"></i>
 		<div class="toprank-view">
-			<div class="rank-box" style="width:40%; left:10px; background:var(--gradient2); max-width:150px; background-image:url('resource/images/frame_silver.png'); background-size:cover; padding:10px;" key="b1">
-        <img src="resource/images/b1.jpg" alt="" style="width:100%; height:100%;">
-				<p class="rank-title">김환기<br></p>
-			</div>
-			<div class="rank-box" style="width:50%; z-index:1; max-width:190px; background-image:url('resource/images/frame.png'); background-size:cover; padding:10px;" key="a1">
+			<div class="rank-box" style="width:40%; left:10px; background:var(--gradient2); max-width:150px; background-image:url('resource/images/frame_silver.png'); background-size:cover; padding:10px;" key="a1">
+        <p class="rank-score">2nd</p>
         <img src="resource/images/a1.jpg" alt="" style="width:100%; height:100%;">
-				<p class="rank-title text-xl">이우환</p>
+				<p class="rank-title">이우환</p>
 			</div>
-			<div class="rank-box" style="width:35%; right:10px; background:var(--gradient3); max-width:140px; background-image:url('resource/images/frame_bronze.png'); background-size:cover; padding:10px;" key="c1">
+			<div class="rank-box" style="width:50%; z-index:1; max-width:190px; background-image:url('resource/images/frame.png'); background-size:cover; padding:10px;" key="c1">
+        <p class="rank-score">1st</p>
         <img src="resource/images/c1.jpg" alt="" style="width:100%; height:100%;">
-				<p class="rank-title text-xs">K.야요이</p>
+				<p class="rank-title text-xs">쿠사마 야요이</p>
+			</div>
+			<div class="rank-box" style="width:35%; right:10px; background:var(--gradient3); max-width:140px; background-image:url('resource/images/frame_bronze.png'); background-size:cover; padding:10px;" key="b1">
+        <p class="rank-score">3rd</p>
+        <img src="resource/images/b1.jpg" alt="" style="width:100%; height:100%;">
+				<p class="rank-title text-xs">김환기</p>
 			</div>
 		</div>
 		<div class="topmap-view" style="display:none;">
 			<div id="searchMap" class="kakao-map"></div>
 		</div>
 	</div>
-	<div class="category-list">
+	<!-- <div class="category-list">
 		<button class="btn btn_magenta">현대미술</button>
 		<button class="btn btn_magenta">소묘</button>
 		<button class="btn btn_magenta">설치미술</button>
 		<button class="btn btn_magenta">캔버스</button>
 		<button class="btn btn_magenta">그래피티</button>
-	</div>
+	</div> -->
 	<!-- TABLE_SEARCH : 검색결과 테이블 -->
-	<div id="TABLE_SEARCH" class="item-rank-list table_container">
+	<div id="TABLE_SEARCH" class="item-rank-list table_container mt-4">
 		<div id="TABLE_SEARCH_TBODY" class="table_tbody">
 			<div class="table_row" key="a1">
 				<div class="table_td">
@@ -40,7 +43,7 @@
 					<div class="item-title">바람</div>
 					<div class="item-step mint">투자모집중</div>
 					<div class="item-price">3,100,000,000 ￦ <span class="item-piece">(남은조각수 : 3,211)</span></div>
-					<i class="item-bookmark fa-regular fa-star"></i>
+					<i class="item-bookmark fa-solid fa-bookmark"></i>
 				</div>
 			</div>
 			<div class="table_row" key="b1">
@@ -51,7 +54,7 @@
 					<div class="item-title">우주</div>
 					<div class="item-step mint">투자모집중</div>
 					<div class="item-price">13,200,000,000 ￦ <span class="item-piece">(남은조각수 : 311)</span></div>
-					<i class="item-bookmark fa-regular fa-star"></i>
+					<i class="item-bookmark fa-solid fa-bookmark"></i>
 				</div>
 			</div>
 			<div class="table_row" key="c1">
@@ -62,7 +65,7 @@
 					<div class="item-title">호박</div>
 					<div class="item-step blue">발행중</div>
 					<div class="item-price">4,500,000,000 ￦ <span class="item-piece">(남은조각수 : 23)</span></div>
-					<i class="item-bookmark fa-regular fa-star"></i>
+					<i class="item-bookmark fa-solid fa-bookmark"></i>
 				</div>
 			</div>
 			<div class="table_row" key="a2">
@@ -73,7 +76,7 @@
 					<div class="item-title">바람과 함께</div>
 					<div class="item-step red">투자마감</div>
 					<div class="item-price">400,000,000 ￦</div>
-					<i class="item-bookmark fa-regular fa-star"></i>
+					<i class="item-bookmark fa-solid fa-bookmark"></i>
 				</div>
 			</div>
 			<div class="table_row"key="b2">
@@ -84,7 +87,7 @@
 					<div class="item-title">붉은점화</div>
 					<div class="item-step gray">정산중</div>
 					<div class="item-price">8,500,000,000 ￦</div>
-					<i class="item-bookmark fa-regular fa-star"></i>
+					<i class="item-bookmark fa-solid fa-bookmark"></i>
 				</div>
 			</div>
 		</div>

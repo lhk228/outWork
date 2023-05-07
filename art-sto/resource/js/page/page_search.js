@@ -44,8 +44,7 @@ $(document).on('click','.rank-box',function(){
 
 //북마크 ON/OFF
 $(document).on('click','.item-bookmark',function(){
-	$(this).toggleClass("fa-regular")
-	$(this).toggleClass("fa-solid");
+	$(this).toggleClass("selected")
 })
 
 //검색결과목록 클릭 : 상세정보 오픈
